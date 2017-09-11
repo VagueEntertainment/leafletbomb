@@ -1,0 +1,35 @@
+<template name="teamList">
+
+    <div class="dashBoard-PressRelease" >
+ 
+  <h2> PR Team: </h2>
+ 
+        
+     <div class="dashBoard-Posts">
+        <div class="dashposts">
+                {{> MasterAccount}}
+                
+                <div class="list_Item"> </div>
+                <br/>
+                <table style="width:100%">
+                <tr>
+                <td style="width:100%"><h3>Team Members</h3></td>
+                <td style="text-align:right"> <button style="width:60px; height:60px" type="button" id="teamadd" onclick="">+</button> </td> 
+                </tr>
+                </table> 
+                    <br/>
+            {{#each team}}
+            {{> TeamItem}}
+            <!-- <div id="{{docId}}" class="prPreview">
+                    {{>DashpostItem}}
+                </div> -->
+            {{/each}}
+            <div class="list_Item"> </div> 
+        </div>    
+        
+ 
+ </div>
+    </div>
+
+
+</template>

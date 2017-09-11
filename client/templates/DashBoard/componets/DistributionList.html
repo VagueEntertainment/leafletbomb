@@ -1,0 +1,146 @@
+<template name="distributionList">
+
+    <div >
+ 
+  <h2> Distribution: </h2>
+  
+  <div style="width:50%;float:left;padding:5px;" >
+ 
+        
+     <div class="dashBoard-Posts">
+        <div class="dashposts">
+                <div class="list_Item"> </div>
+                <br/>
+                <table style="width:100%">
+                <tr>
+                <td style="width:100%"><h3>Influencers</h3></td>
+                <td style="text-align:right"> <button style="width:60px; height:60px" type="button" id="influenceradd">+</button> </td>
+                </tr>
+                </table> 
+                    <br/>
+           {{#each influencerlist}}
+                
+                {{> distroInfluencer}}
+                
+            {{/each}}
+            
+            <div class="list_Item"> </div> 
+        </div>    
+        
+        </div>
+ 
+ </div>
+ 
+ <div style="width:50%;float:left;padding:5px;" >
+ 
+        
+     <div class="dashBoard-Posts">
+        <div class="dashposts">
+                <div class="list_Item"> </div>
+                <br/>
+                <table style="width:100%">
+                <tr>
+                <td style="width:100%"><h3>Distribution Lists</h3></td>
+                <td style="text-align:right"> <button style="width:60px; height:60px" type="button" id="distroadd">+</button> </td>
+                </tr>
+                </table> 
+                    <br/>
+            {{#each distributionlists}}
+            {{> DistributionListItem}}
+            <!-- <div id="{{docId}}" class="prPreview">
+                    {{>DashpostItem}}
+                </div> -->
+            {{/each}}
+            <div class="list_Item"> </div> 
+        </div>    
+        
+        </div>
+ 
+ </div>
+ 
+    </div>
+    
+    <div class="popup" id="distroaddwindow"  >
+<h2>Distribution List</h2>
+<div style="width:100%;height:2px;background:#000"> </div>
+<br/>
+<div class="row">
+<form style="text-align:left;padding:10px;" id="distributionform">
+ <div class="col-sm-8">
+
+<h3 style="text-align:left;">List Options</h3>
+Name: <input type="text" name="listname" value="">
+<br/>Custom message:
+<textarea cols="80" rows="17" name="message"> </textarea>
+<br/>
+<table style="width:100%;">
+<tr>
+<td><button type="button" id="distrocancel">Cancel</button></td>
+<td><input type="submit" value="Submit" name="dsubmit"></td>
+</tr></table> 
+</div>
+<div class="col-sm-4">
+<h3>Influencers</h3>
+Search: <input type="text" name="search" value="">
+<br/>
+<table style="width=100%">
+            
+            {{#each influencerlist}}
+                
+                {{> distroInfluencer}}
+                
+            {{/each}}
+            
+        </table>
+        
+</div>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+
+<div class="popup" id="influenceraddwindow"  >
+<h2>Influencer</h2>
+<div style="width:100%;height:2px;background:#000"> </div>
+<br/>
+<form style="text-align:right;padding:10px;" id="influencerform">
+<div class="row">
+
+<div class="col-sm-4">
+<h3 style="text-align:left">General</h3>
+<br/>
+Name: <input type="text" name="name" value=""><br/>
+Company: <input type="text" name="company" value=""><br/>
+Email: <input type="text" name="email" value=""><br/>
+URL: <input type="text" name="url" value=""><br/>
+<br/>
+<h3 style="text-align:left">Optional</h3>
+Address: <input type="text" name="address" value=""><br/>
+State: <input type="text" name="state" value=""><br/>
+Country: <input type="text" name="country" value=""><br/>
+Phone: <input type="text" name="phone" value=""><br/>
+
+</div>
+ <div class="col-sm-8">
+ <br><br>Notes:
+<textarea cols="80" rows="18" name="notes"> </textarea>
+
+</div></div>
+
+<br/>
+<table style="width:100%;">
+<tr>
+<td><button type="button" id="influencercancel">Cancel</button></td>
+<td><input type="submit" value="Submit" name="isubmit"></td>
+</tr></table> 
+
+</form>
+</div>
+
+
+</template>

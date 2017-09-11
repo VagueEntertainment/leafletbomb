@@ -1,0 +1,78 @@
+<template name="influencerSetup" >
+<div class="dashBoard-AaG" >
+<h2> Welcome Influencer </h2>
+
+<form action="/action_page.php">
+ <div class="dashBoard-AaG">
+<div style="float:left;width:33%">
+  <h3>General</h3>
+  
+  Company Name:<br>
+  <input type="text" name="companyName" value="{{companyName}}">
+  <br>
+
+  <h3>Communication</h3>
+  Phone #:<br>
+  <input type="text" name="companyPhone" value="{{companyPhone}}">
+  <br>
+  Email:<br>
+  <input type="text" name="email" value="{{email}}">
+  <br>
+</div>
+
+  <div style="float:left;width:33%">  
+  <h3>Visual Assets</h3>
+  Trademark:<img src="{{companyLogo}}" width=128px height=64px > 
+    <input name="companyLogo" class="LogoInput" type="file" single />
+  <br>
+  Logo:<img src="{{companyLogoSmall}}" width=64px height=64px >
+    <input name="companyLogoSmall" class="LogoSmallInput" type="file" single />
+   
+  <h3>Web Pressence</h3>
+  Home Page:<br>
+  <input type="text" name="companyState" value="">
+  <br>
+  Twitter:<br>
+  <input type="text" name="twitter" value="{{twitter}}">
+  <br>
+  Facebook:<br>
+  <input type="text" name="facebook" value="{{facebook}}">
+  <br/>
+  </div>
+  
+  <div style="float:left;width:33%">  
+  <h3>Publications</h3>
+  YouTube:<br>
+  <input type="text" name="youtube" value="{{youtube}}">
+  <br>
+  Vimeo:<br>
+  <input type="text" name="vimeo" value="{{vimeo}}">
+  <br>
+  Tumblr:<br>
+  <input type="text" name="tumblr" value="{{tumblr}}">
+  <br>
+  RSS:<br>
+  <input type="text" name="rss" value="{{rss}}">
+  <br/>
+  URL1:<br>
+  <input type="text" name="url1" value="{{url1}}">
+  <br/>
+  URL2:<br>
+  <input type="text" name="url2" value="{{url2}}">
+  <br/>
+  </div>
+  
+  
+  </div>
+    <div class="dashBoard-AaG">
+  <h3>About</h3>
+    <textarea name="about" cols="80" rows="10"> </textarea>
+  </div>
+  
+  <input type="submit" value="Submit">
+  
+</form>
+ <button style="float:right" type="button" onclick="AccountsTemplates.logout()">Cancel</button> 
+  </div>
+
+</template>

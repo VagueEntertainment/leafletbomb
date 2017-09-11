@@ -1,0 +1,87 @@
+<template name="newPressRelease" >
+<div style="position:static;top:-10px;bottom:0px;left:0px;right:0px;background:#fff;overflow:hidden">
+<form id = "therelease" method=POST  enctype=multipart/form-data action="/file-upload" style="width:100%">
+<div style="width:100%;padding:10px;">
+<div style="width:80%;float:left">
+<h1 style="text-align:center">{{pagetitle}}</h1>
+
+<input style="width:100%" type="text" name="title" placeholder="Title" value="{{thetitle}}"><br/>
+
+<input style="width:100%" type="text" name="tagline" placeholder="Tag Line" value="{{thetagline}}">
+</div>
+
+<div style="float:left;width:20%;text-align:right" >
+<br/>
+Release on:
+<input type="date" name="releasedate" value="{{releasedate}}" placeholder="mm/dd/yyyy">
+<br/>
+Archive on:
+<input type="date" name="archivedate" value="{{archivedate}}" placeholder="mm/dd/yyyy">
+
+</div>
+
+
+
+<div style="width:80%;height:100%;float:left;">
+<h3>Release</h3>
+   <textarea name="release" cols="80" rows="32">{{releasedata}} </textarea>
+   <!--{{> markdown_editor}} -->
+</div>
+<div style="float:left;width:20%;text-align:right" >
+<h3>Assets</h3>
+
+ 
+ <div class="imageView">
+ 
+ <table style="width=100%">
+                        <tr>
+                             <td>
+                                 <a href="{{asset1}}" target="_blank"><img src="{{asset1}}" alt="" class="thumbnail" /></a>      
+                             </td>
+                                             
+                             <td>
+                                 <a href="{{asset2}}" target="_blank"><img src="{{asset2}}" alt="" class="thumbnail" /></a>      
+                             </td>
+                                             
+                             <td>
+                                 <a href="{{asset3}}" target="_blank"><img src="{{asset3}}" alt="" class="thumbnail" /></a>      
+                             </td>
+                                             
+                             <td>
+                                  <a href="{{asset4}}" target="_blank"><img src="{{asset4}}" alt="" class="thumbnail" /></a>      
+                             </td>
+                                             
+                             <td>
+                                 <a href="{{asset5}}" target="_blank"><img src="{{asset5}}" alt="" class="thumbnail" /></a>      
+                             </td>
+    </tr> </table>
+    
+     <input name="file" class="myFileInput" type="file" multiple />
+    
+</div>      
+</div>
+
+<div style="float:left;width:20%;text-align:right" >
+ <h3> Discovery </h3>
+  Tags: (Seperate with ',' )<br>
+  <input style="width:100%" type="text" name="keywords" value="{{tags}}" >
+  <br>
+  
+</div>
+
+<div style="position:absolute;width:20%;text-align:right;bottom:6px;right:0px" >
+<button style="float:left" type="button" onclick="Router.go('/dashboard/{{userId}}')">Cancel</button> 
+<input style="float:right" type="submit" value="Submit">
+
+<input name="docId" type="hidden" value="{{documentId}}">
+</div>
+
+</div>
+
+
+</form>
+
+</div>
+
+ 
+</template>

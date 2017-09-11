@@ -1,0 +1,79 @@
+<template name="TeamItem">
+
+<div class="list_Item"> 
+<H2>{{title}}:</H2>{{tagline}}
+
+<input name="userid" type="hidden" value="{{userId}}">
+
+</div>
+
+</template>
+
+
+<template name="MasterAccount">
+
+<div class="list_Item"> 
+<table style="height:100%"> 
+<tr>
+<td> <img src="{{avatar}}"  height="64" width="auto" alt="" style="margin-top:35%"> </td>
+
+<td> <H3>{{userName}}</H3>
+{{email}} </td>
+
+<td><input name="userid" type="hidden" value="{{userId}}"></td>
+</tr></table>
+<i style="float:right;"> Master Account </i>
+</div>
+
+</template>
+
+
+<template name="PublishedItem">
+
+<div class="list_Item"> 
+<H2>{{title}}:</H2>{{tagline}}
+
+<input name="docid" type="hidden" value="{{docId}}">
+</div>
+
+</template>
+
+
+
+<template name="DraftItem">
+
+<div class="list_Item"> 
+<H2>{{title}}:</H2>
+{{tagline}}
+
+<input name="docid" type="hidden" value="{{docId}}">
+
+</div>
+
+</template>
+
+
+
+<template name="ScheduledItem">
+
+<div class="list_Item"> 
+<H2>{{title}}:</H2>{{tagline}}
+
+<input name="docid" type="hidden" value="{{docId}}">
+</div>
+
+</template>
+
+
+<template name="DistributionListItem">
+
+<div class="list_Item"> 
+<tr>
+   <td>{{listname}}</td>
+   <td>{{numinlist}}</td>
+</tr>    
+
+<input name="docid" type="hidden" value="{{docId}}">
+</div>
+
+</template>

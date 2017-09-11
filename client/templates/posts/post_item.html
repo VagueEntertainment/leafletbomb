@@ -1,0 +1,81 @@
+<template name="postItem">
+    <div class="post">
+        <div class="post-content">
+        
+         <div class="post-logo">
+            <a href="{{url}}"><img src="{{companyLogo}}" alt="HomePage" height="100" width="auto"></a>
+         </div>
+            <div style="float:left;padding:5px;"> <img src="{{companyLogoSmall}}" alt="HomePage" height="64" width="auto"></div>
+            <h1>{{title}}</h1>
+            <h3>{{tagline}}</h3>
+            <br/>
+            Release on: {{releasedate}}
+            <br/>
+            <br/>
+            <p>{{{releasechanged}}}</p>
+            
+                    <h2>About</h2>
+            <p>{{about}}</p>
+            
+            <!-- Contact info area -->
+            <div class="post-contactInfo"> 
+             <h3><b>Contact Us:</b></h3>
+              {{companyName}} <br/>
+              {{companyAddress}} <br/>
+              {{companyCity}}, {{companyState}}, {{companyCountry}}<br/>
+              {{companyPhone}} <br/>
+              
+             
+              <table>
+              <tr>
+                <th><a href="http://twitter.com/{{twitter}}"><img src="Social/twitter.png" style="width:25px;height:auto;"></a> </th>
+                <th><a href="https://www.facebook.com/{{facebook}}"><img src="Social/fb.png" style="width:25px;height:auto;"></a> </th>
+              </tr>
+              </table> 
+            </div>
+            
+            <!-- About us area -->
+            <div class="post-companyInfo">
+            <h3><b>Spokes Person:</b></h3>
+                 <h2><img src="{{companySPImg}}" style="width:34px;height:auto"> {{companySP}} </h2>
+                 email: <a href="mailto:{{email}}">{{email}}</a> <br/>
+                 <br/>
+                 <br/>
+            </div> 
+            
+            </div> 
+            
+             <!-- Press Assets -->
+            <div class="post-packets">
+                <h2>Assets </h2>
+                    <table style="width=100%">
+                        <tr>
+                           
+                                            <td>
+                                                <a href="{{asset1}}" target="_blank"><img src="{{asset1}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset2}}" target="_blank"><img src="{{asset2}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset3}}" target="_blank"><img src="{{asset3}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset4}}" target="_blank"><img src="{{asset4}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset5}}" target="_blank"><img src="{{asset5}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                             
+                            
+                    
+                        </tr>
+                    </table>
+            </div>   
+         </div>    
+           
+</template>

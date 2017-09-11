@@ -1,0 +1,19 @@
+<template name="marketerSignup">
+
+
+<div class="login-dialog">
+<table >
+<tr>
+<td><div style="text-align:center;width:60px;height:60px;background:green;border-radius:100%;color:#fff;"> </div></td>
+<td style="text-align:left"> <h1>Become a Marketer</h1><i>Write the news of tomorrow</i></td>
+</tr>
+</table>
+
+{{> atForm state='signUp' accounttype="marketer"}}
+
+
+<button type="button" onclick="AccountsTemplates.logout()">Log Out</button> 
+
+</div>
+
+</template>

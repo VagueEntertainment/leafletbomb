@@ -1,0 +1,78 @@
+<template name="DashpostItem">
+    <div class="post">
+                   <table style="width:100%">
+                <tr>
+                <td style="width:10%;left:0px;"><img id="delete" src="/Buttons/edit-delete.svg" alt="Delete" height="24" width="auto"></td>
+                <td style="width:80%;text-align:center"></td>
+              <td style="width:10%;right:0px;text-align:right"><img id="edit" src="/Buttons/edit.svg" alt="Edit" height="24" width="auto"></td>
+                
+                </tr>
+            </table>  
+        
+    
+        
+    
+        <div class="post-content">
+        
+        
+        
+         <div class="post-logo">
+            <a href="{{url}}"><img src="{{companyLogo}}" alt="HomePage" height="80" width="auto"></a>
+        
+         </div>
+         <div style="float:left;padding:5px;"> <img src="{{companyLogoSmall}}" alt="HomePage" height="56" width="auto"></div>   
+            <h1>{{title}} ( {{pubstatus}} )</h1>
+            <h3>{{tagline}}</h3>
+            <br/>
+            Release on: {{releasedate}}
+            <br/>
+            <br/>
+            <p>{{{releasechanged}}}</p>
+           
+            </div> 
+            
+             <!-- Press Assets -->
+            <div class="post-packets">
+                <h2>Assets </h2>
+                    <table style="width=100%">
+                        <tr>
+                           
+                                            <td>
+                                                <a href="{{asset1}}" target="_blank"><img src="{{asset1}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset2}}" target="_blank"><img src="{{asset2}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset3}}" target="_blank"><img src="{{asset3}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset4}}" target="_blank"><img src="{{asset4}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                                             
+                                             <td>
+                                                <a href="{{asset5}}" target="_blank"><img src="{{asset5}}" alt="" class="thumbnail" /></a>      
+                                             </td>
+                            
+                        </tr>
+                    </table>
+                    
+                 <div class="post-tools" style="background:#eee;padding:10px;height:50px;">
+                <button style="float:right" type="button" class= "postAction" onclick="">{{action}}</button>
+        </div>   
+            </div> 
+            
+            <div id="seen" class="dashBoard-AaG"> 
+                <h3>Seen by: </h3>
+            </div>
+            
+            <div id="question" class="dashBoard-AaG"> 
+                <h3>Questions: </h3>
+            </div>
+              
+         </div>    
+           
+</template>

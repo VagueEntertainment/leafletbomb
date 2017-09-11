@@ -1,0 +1,97 @@
+<template name="influencerDashBoard">
+
+<div class="row">
+    <div class="col-sm-4">
+<!-- <div class="dashBoard-AaG" > -->
+
+<div class="dashBoard-companyInfo">
+   
+    <h1><img src="{{companyLogoSmall}}"  height ="64" width="auto"> {{companyName}}
+    <!-- <button style="width:60px; height:60px;" type="button" onclick="Router.go('/marketerSetup/{{userId}}')">+</button> -->
+    </h1>
+    <a href={{url}} > <img class=dashBoard-largeLogo src="{{companyLogo}}" alt="HomePage" height="128" width="auto"> </a>
+    
+    <div class= "dashBoard-locationInfo" >
+    <h2> Location: </h2>
+    {{companyAddress}} <br/>
+    {{companyCity}}.{{companyState}},{{companyCountry}} <br/>
+    {{companyPhone}}
+    
+    </div> 
+    
+    <div class= "dashBoard-contactInfo" >
+    <h2> Contact: </h2>
+    Community Manager: {{companySP}}<br/>
+    Email: {{email}} <br/>
+    <br/>
+    </div> 
+    
+    <div class="dashBoard-AaG" >
+    <h2>About</h2>
+    {{about}}
+    
+    </div>
+    <button style="float:right" type="button" onclick="AccountsTemplates.logout()">Log Out</button> 
+</div>
+
+</div>
+
+<!-- <div class="dashBoard-AaG" id="widgets"> -->
+<div class="col-sm-4">
+<div class="dashBoard-PRViews" >
+    <h2> Trending </h2>
+    
+    <table style="width=100%"> 
+        <tr>
+        <th> Title </th>
+        <th> Views </th>
+        </tr>
+        <tr>
+        <td> Ryan Sipes Leaving </td>
+        <td> 9001 </td>
+        </tr>
+        <tr> 
+        <td> Pop!_OS </td>
+        <td> 100 </td>
+        </tr>
+        <tr>
+        <td> Galago_Pro </td>
+        <td> 1000 </td>
+        </tr>
+        
+    </table>
+</div>
+
+<div class="dashBoard-PREngagment">
+    <h2> Engagement </h2>
+
+</div>
+ </div>
+ 
+ </div>
+ 
+ <div class="dashBoard-PressRelease" >
+ <table style="width:100%">
+ <tr>
+ <td style="width:90%"> <h2> Press Releases: </h2></td>
+ <td style="text-align:right"> <button style="width:60px; height:60px" type="button" onclick="Router.go('/dashboard/{{userId}}/newPressRelease')">+</button> </td>
+ </tr>
+ </table>
+ 
+ <div class="dashBoard-Posts">
+        <div class="dashposts">
+            {{#each dashposts}}
+            {{> DashpostItem}}
+            {{/each}}
+        </div>    
+         
+ 
+ </div>
+
+</div>
+
+
+
+
+
+</template>

@@ -1,0 +1,36 @@
+<template name="publishedList">
+
+<div sytle="width:50%;float:left;">
+
+</div>
+
+<div sytle="width:50%;float:left;">
+
+<div class="dashBoard-PressRelease" >
+ <table style="width:100%">
+ <tr>
+ <td style="width:90%"> <h2> Published: </h2></td>
+ 
+ </tr>
+ </table>
+ 
+ <div class="dashBoard-Posts">
+        <div class="dashposts">
+            {{#each dashposts}}
+            {{> PublishedItem}}
+            <div id="{{docId}}" class="prPreview">
+                    {{>DashpostItem}}
+                </div> 
+            
+            {{/each}}
+        </div>    
+         
+ 
+ </div>
+
+</div>
+
+</div>
+
+
+</template>

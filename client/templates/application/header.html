@@ -1,0 +1,34 @@
+<template name="header">
+    
+     <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+                  
+           <!-- <a class="navbar-brand" href="{{optional}}"></a> -->
+            <table style ="padding:20px;height:100%">
+            <tr>
+            <td style="text-align:center">&nbsp;<i class="fa fa-bomb fa-2x" aria-hidden="true" ></i></td>
+            <td><div style="height:40px;width:1px;background:lightgray;padding:1px;"> </div> </td>
+            <td><img src="{{logo}}" height="16" width="auto" alt={{title}} ></td>
+            {{> headerButtons}}
+            
+            
+            </tr></table>
+        </div>
+        <div class="collapse navbar-collapse" id="navigation">
+        <div class="navbar-right" role="navigation">
+            <table style="padding:10px">
+                <tr>
+                    <th><div class="input-group margin-bottom-sm">
+                             <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                                <input class="form-control" type="text" placeholder="Search">
+                        </div></th>
+                    <th><i class="fa fa-bell" aria-hidden="true" ></i></th>
+                    <th><i class="fa fa-user-circle-o" aria-hidden="true" ></i></th>
+                    <th><div class="header-button"><a href="{{url}}">
+                    <img src="{{avatar}}"  height="18" width="auto" alt={{user}} ></a></div></th>
+                </tr>
+             </table>
+            </div>
+        </div>
+    </nav>
+</template>    

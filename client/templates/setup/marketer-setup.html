@@ -1,0 +1,128 @@
+<template name="marketerSetup" >
+<div style="background:#fff;padding:10px;radius:4px;">
+<h1>Welcome Marketer</h1>
+
+<form>
+
+
+
+<h2> Company Info</h2>
+<div class="dashBoard-AaG">
+<div style="float:left;width:33%">
+  <h3>General</h3>
+  
+  Company Name:<br>
+  <input type="text" name="companyName" value="{{companyName}}">
+  <br>
+  Category:<br>
+  <input type="text" name="category" value="{{category}}">
+  <br>
+  <h3>Communication</h3>
+  Phone #:<br>
+  <input type="text" name="companyPhone" value="{{companyPhone}}">
+  <br>
+  Email:<br>
+  <input type="text" name="email" value="{{email}}">
+  <br>
+  
+  </div>
+  <div style="float:left;width:33%">  
+  <h3>Address</h3>
+  Address:<br>
+  <input type="text" name="companyAddress" value="{{companyAddress}}">
+  <br>
+  City:<br>
+  <input type="text" name="companyCity" value="{{companyCity}}">
+  <br/>
+  State:<br>
+  <input type="text" name="companyState" value="{{companyState}}">
+  <br>
+  Country:<br>
+    <input type="text" name="companyCountry" value="{{companyCountry}}">
+  <br/>
+  </div>
+  
+  <div style="float:left;width:33%">  
+  <h3>Visual Assets</h3>
+  Trademark:<img src="{{companyLogo}}" width=128px height=64px > 
+  
+  <div class="fallback">
+    <input name="companyLogo" class="LogoInput" type="file" single />
+  
+ </div>
+ <!-- <input type="text" name="companyLogo" value=""> -->
+  <br>
+  Logo:<img src="{{companyLogoSmall}}" width=64px height=64px >
+  
+  <div class="fallback">
+    <input name="companyLogoSmall" class="LogoSmallInput" type="file" single />
+  
+ </div>
+  <br/>
+  <h3>Web Pressence</h3>
+  Home Page:<br>
+  <input type="text" name="url" value="{{url}}">
+  <br>
+  Twitter:<br>
+  <input type="text" name="twitter" value="{{twitter}}">
+  <br>
+  Facebook:<br>
+  <input type="text" name="facebook" value="{{facebook}}">
+  <br/>
+  </div>
+  </div>
+  
+  
+   <div class="dashBoard-AaG">
+   
+  <h2>Optional</h2>
+ 
+  
+ <!-- <div style="float:left;width:33%">  
+  
+  <h3> Spokes Person </h3>
+  Name:<br>
+  <input type="text" name="companySP" value="{{companySP}}">
+  <br>
+  Avatar:<img src="{{companySPImg}}" width=64px height=64px >
+  
+  <div class="fallback">
+    <input name="companySPImg" class="SPImgInput" type="file" single />
+  
+ </div>
+  <br>
+  
+  </div> -->
+  
+   <div style="float:left;width:33%">  
+  
+  <h3> Misc </h3>
+  Tags: (Seperate with ',' )<br>
+  <input type="text" name="keywords" value="{{keywords}}" >
+  <br>
+  Other Sites: (Seperate with ',' ) <br>
+  <input type="text" name="othersites" value="{{othersites}}" >
+  <br>
+  
+  </div>
+  </div>
+ 
+  
+  
+ 
+  <div class="dashBoard-AaG">
+  <h3>About</h3>
+    <textarea name="about" cols="80" rows="10">{{about}} </textarea>
+  </div>
+  <button style="float:right" type="button" onclick="{{wherewego}}">Cancel</button> 
+  <input type="submit" value="Submit">
+ 
+ 
+</form>
+ 
+</div>
+
+
+</template>
+
+
