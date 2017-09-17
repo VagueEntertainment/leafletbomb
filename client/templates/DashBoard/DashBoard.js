@@ -82,22 +82,7 @@ Template.dashBoard.helpers({
                         return list;
                     },
                     
-        teamCounter:function() {
-        
-                return 0;
-                },                               
-            
-        draftCounter:function() {
-                    return Posts.find({userId: Company.findOne().userId, status:0 }).count();
-                },
-                
-        scheduleCounter:function() {
-                    return Posts.find({userId: Company.findOne().userId, status:1 }).count();
-                },
-                
-        publishCounter:function() {
-                    return Posts.find({userId: Company.findOne().userId, status:2 }).count();
-                },                
+      
                     
             
             });
@@ -112,6 +97,9 @@ Template.dashBoard.events({
                // Router.go('/marketerSetup/'+id+'?edit="all"')
                
                $("#dashboard_CompanyConfig").css("visibility", "visible");
+               $("#dashboard_CompanyConfig").css("animation-name" , "slideInAnim");
+               $('#DashboardSidebar').css("visibility", "hidden");
+               $('#SettingsSidebar').css("visibility", "visible");
         
         
         },
@@ -145,7 +133,10 @@ Template.dashBoard.events({
                     } ,
                     
         'click #teamcancel' : function(e) {
+                                var theid = "#"+this._id;
                                 $("#teamaddwindow").css('visibility', 'hidden');
+                                $(theid).css('visibility', 'hidden');
+                                
                             
                     } ,
                     
@@ -218,9 +209,44 @@ Template.dashBoard.events({
                               }
                         
                             $("#distroaddwindow").css('visibility', 'hidden');
+                            
     
                     
-                } ,                
+                } , 
+                
+                
+                'submit #teamform' : function(e) {
+                                     e.preventDefault();
+                                var theId =  Meteor.users.findOne()._id;
+                            
+                                var info = {
+                                    companyId:Company.findOne()._id,
+                                    name:$(e.target).find('[name=name]').val(),
+                                    email:$(e.target).find('[name=email]').val(),
+                                    url:$(e.target).find('[name=url]').val(),
+                                    phone:$(e.target).find('[name=phone]').val(),
+                                    about:$(e.target).find('[name=about]').val(),
+                                    avatar:""
+                                    
+                                    
+                                };
+                                
+                            
+                           if(CompanyTeam.find({"_id":$(e.target).find('[name=userid]').val()}).count() == 0) {
+    
+                                CompanyTeam.insert(info); 
+                        
+                              } else {
+                                    console.log("Updating");
+                                   var listId = $(e.target).find('[name=userid]').val();
+                                         CompanyTeam.update({"_id": listId},{$set: info}); 
+                              }
+                                var theid = "#"+$(e.target).find('[name=userid]').val();
+                                
+                            $("#teamaddwindow").css('visibility', 'hidden');
+                            $(theid).css('visibility', 'hidden');
+                                    },
+                                                   
 
         'click #teamListItem' : function(e) {
                                 $("#dashboard_Teams").css('visibility', 'visible');

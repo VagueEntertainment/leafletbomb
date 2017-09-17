@@ -1,3 +1,10 @@
+Template.newPressRelease.rendered=function () {
+
+    $('#releasedatepicker').datepicker();
+    $('#archivedatepicker').datepicker();
+
+}
+
 Template.newPressRelease.helpers ({
     
     
@@ -45,15 +52,45 @@ Template.newPressRelease.helpers ({
         }
     },
     releasedate: function() {
-                if (Router.current().params.query.edit.length == 0) {
-                    return "";    
+                if (Router.current().params.query.edit == undefined) {
+                        var d = new Date();
+                        var theday = "";
+                        var themonth = "";
+                        if(d.getDate() < 10) {
+                            theday = "0"+d.getDate();
+                            } else {
+                            theday = d.getDate();
+                            }
+                            
+                            if((d.getMonth() + 1) < 10) {
+                            themonth = "0"+(d.getMonth() + 1);
+                            } else {
+                            themonth = (d.getMonth() + 1);
+                            }
+                            
+                    return theday+'/'+themonth+'/'+d.getFullYear();    
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).releasedate;
         }
     },
     archivedate: function() {
-                if (Router.current().params.query.edit.length == 0) {
-                    return "";    
+                if (Router.current().params.query.edit == undefined) {
+                        var d = new Date();
+                        var theday = "";
+                        var themonth = "";
+                        if(d.getDate() < 10) {
+                            theday = "0"+d.getDate();
+                            } else {
+                            theday = d.getDate();
+                            }
+                            
+                            if((d.getMonth() + 1) < 10) {
+                            themonth = "0"+(d.getMonth() + 1);
+                            } else {
+                            themonth = (d.getMonth() + 1);
+                            }
+                            
+                    return theday+'/'+themonth+'/'+(d.getFullYear() +1);        
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).archivedate;
         }

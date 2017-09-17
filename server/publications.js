@@ -13,8 +13,8 @@ Meteor.publish('companies', function(user) {
                                         return Company.find({userId: user});}
                                         });
 
-Meteor.publish('team', function(user) {
-                                  return CompanyTeam.find({userId: user});
+Meteor.publish('prteam', function(user) {
+                                  return CompanyTeam.find();
                                         }); 
 Meteor.publish('distrolist', function(user) {
                                   return DistributionLists.find({userId: user});

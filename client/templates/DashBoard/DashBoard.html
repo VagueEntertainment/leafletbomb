@@ -1,19 +1,13 @@
 <template name="dashBoard">
 
 
-        <div class="side_navbar" >
-            <h4>{{companyName}}</h4>
+        <div class="side_navbar" id="DashboardSidebar">
+            {{>dashboardMenu}}
             
-            <div class="nav_buttons"><a class="nav_button" id="DashBoard"><div> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Information</div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="teamListItem"><div> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Team<span class="nav_info"> {{teamCounter}} </span></div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="DistrobutionListItem"> <div> <i class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Distribution</div> 
-            </a></div> 
-            <br/>
-            Press Releases <i style="float:right;margin-right:10px;" class="fa fa-plus" aria-hidden="true"></i><br/>
-            
-           <div class="nav_buttons"><a class="nav_button" id="DraftsItem" ><div><i class="fa fa-file-code-o" aria-hidden="true"></i>&nbsp;Drafts<span class="nav_info"> {{draftCounter}} </span></div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="ScheduledItem" ><div><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;Scheduled<span class="nav_info"> {{scheduleCounter}} </span></div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="PublishedItem"><div><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Published<span class="nav_info"> {{publishCounter}} </span></div></a></div>
+        </div>
+        
+        <div class="side_navbar" id="SettingsSidebar" style="visibility:hidden">
+            {{>settingsMenu}}
             
         </div>
     
@@ -134,42 +128,6 @@
 <div id="dashboard_Teams" class="slideIn" >
 {{> teamList }}
 
-
-<div class="popup" id="teamaddwindow">
-<h2>Team Memeber</h2>
-<div style="width:100%;height:2px;background:#000"> </div>
-<br/>
-<form style="text-align:right;padding:10px;" id="teamform">
-<div class="row">
-
-<div class="col-sm-4">
-<h3 style="text-align:left">General</h3>
-<br/>
-Name: <input type="text" name="name" value=""><br/>
-Email: <input type="text" name="email" value=""><br/>
-
-<br/>
-<h3 style="text-align:left">Optional</h3>
-Blog: <input type="text" name="url" value=""><br/>
-Phone: <input type="text" name="phone" value=""><br/>
-
-</div>
- <div class="col-sm-8">
- <br><br>Bio:
-<textarea cols="80" rows="18" name="notes"> </textarea>
-
-</div></div>
-
-<br/>
-<table style="width:100%;">
-<tr>
-<td><button type="button" id="teamcancel">Cancel</button></td>
-<td><input type="submit" value="Submit" name="tsubmit"></td>
-</tr></table> 
-
-</form>
-</div>
-
 </div>
 
 <div id="dashboard_Drafts" class="slideIn" >
@@ -198,7 +156,7 @@ Phone: <input type="text" name="phone" value=""><br/>
 </div>
 
 <div id="dashboard_CompanyConfig" class="slideIn" >
-{{> marketerSetup edit="true" }}
+{{> marketerSettings edit="true" }}
 
 </div>
 
