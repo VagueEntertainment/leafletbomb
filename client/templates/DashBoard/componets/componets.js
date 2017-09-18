@@ -35,13 +35,6 @@ dashposts:function() {
                 return Posts.find({userId: id, status:1 }, {sort:{releasedate: -1}});
             }
 
-
-
-
-
-
-
-
 });
 
 Template.draftsList.helpers ({
@@ -153,10 +146,29 @@ distributionlists:function() {
  });
  
  Template.distrobutionForm.helpers({
+ 
+    
 
      influencerlist:function() {
+                          var list = [];
+                          var selected = DistributionLists.findOne({"listname":this.listname}).list;
+                          var listindex = 0;
+                          Influencers.find().forEach( function(stuff) {
+                            list.push({"_id":stuff._id, "Name":stuff.Name , "companyName":stuff.companyName, "selected":"unchecked"});
+                            
+                            for(var num = 0;num < selected.length;num++) {
+                                      if(list[listindex]._id == selected[num]) {
+                                        list[listindex] = ({"_id":stuff._id, "Name":stuff.Name , "companyName":stuff.companyName, "selected":"checked"});
+                                      }
+                                    
+                                    }
+                                   
+                                listindex = listindex +1;
+                           });
+                                   
+                          return list;  
                         
-                        return Influencers.find();
+                        //return Influencers.find();
                     },
 
 });
@@ -164,10 +176,10 @@ distributionlists:function() {
  
  Template.DistributionListItem.helpers({
  
- userid: function() {return this._id;},
+ distid: function() {return this._id;},
  
  numinlist:function() {return DistributionLists.findOne({listname:this.listname}).list.length;}
- 
+                          
  });
  
  
@@ -250,6 +262,23 @@ Template.TeamItem.events ({
 });
 
 Template.influencerItem.events ({
+
+    'click .list_Item': function(e) {
+                        var theid = "#"+$(e.target).find('[name=userid]').val();
+                        if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                               $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                        $(theid).css('visibility', 'visible');
+                       $(theid).css("animation-name" , "slideInAnim");
+                                    }
+                       
+                    }
+
+
+});
+
+Template.DistributionListItem.events ({
 
     'click .list_Item': function(e) {
                         var theid = "#"+$(e.target).find('[name=userid]').val();

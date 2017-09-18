@@ -2,7 +2,7 @@
 
 <div class="list_Item"> 
 <table style="height:100%"> 
-<tr>
+<tr style="border-radius:10px;pointer-events: none;">
 <td> {{{avatar}}} </td>
 
 <td> <H3>{{name}}</H3>
@@ -24,7 +24,7 @@
 
 <div class="list_Item"> 
 <table style="height:100%"> 
-<tr>
+<tr style="border-radius:10px;pointer-events: none;">
 <td> <img src="{{avatar}}"  height="64" width="auto" alt="" style="margin-top:35%"> </td>
 
 <td> <H3>{{userName}}</H3>
@@ -34,6 +34,10 @@
 </tr></table>
 <i style="float:right;"> Master Account </i>
 </div>
+
+<div id="{{userid}}" class="prPreview">
+                    {{>teamTemplate }}
+                </div> 
 
 </template>
 
@@ -83,12 +87,12 @@
    <td style="pointer-events: none;">{{listname}}</td>
    <td>{{numinlist}}</td>
    
-   <td><input name="userid" type="hidden" value="{{userid}}"></td>
+   <td><input name="userid" type="hidden" value="{{distid}}"></td>
 </tr>    
 
 </div>
 
-<div id="{{userid}}" class="prPreview">
+<div id="{{distid}}" class="prPreview">
                     {{>distrobutionForm}}
                 </div> 
 
