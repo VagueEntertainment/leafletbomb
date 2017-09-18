@@ -261,6 +261,23 @@ Template.TeamItem.events ({
 
 });
 
+Template.MasterAccount.events ({
+
+ 'click .list_Item': function(e) {
+                        var theid = "#"+$(e.target).find('[name=userid]').val();
+                        if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                               $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                        $(theid).css('visibility', 'visible');
+                       $(theid).css("animation-name" , "slideInAnim");
+                                    }
+                       
+                    }
+                    
+
+});
+
 Template.influencerItem.events ({
 
     'click .list_Item': function(e) {

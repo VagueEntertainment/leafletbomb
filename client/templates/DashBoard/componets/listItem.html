@@ -57,8 +57,10 @@
 <template name="DraftItem">
 
 <div class="list_Item"> 
-<H2>{{title}}:</H2>
-{{tagline}}
+<tr style="border-radius:10px;pointer-events: none;"> 
+<td> <H2>{{title}}:</H2></td>
+<td>{{tagline}}</td>
+</tr>
 
 <input name="docid" type="hidden" value="{{docId}}">
 
@@ -71,7 +73,11 @@
 <template name="ScheduledItem">
 
 <div class="list_Item"> 
-<H2>{{title}}:</H2>{{tagline}}
+<tr style="border-radius:10px;pointer-events: none;"> 
+<td> <H2>{{title}}:</H2></td></tr>
+<tr style="border-radius:10px;pointer-events: none;">
+<td>{{tagline}}</td>
+</tr>
 
 <input name="docid" type="hidden" value="{{docId}}">
 </div>
@@ -97,6 +103,22 @@
                 </div> 
 
 </template>
+
+<template name="DistributionListItemSelect">
+
+<div class="list_Item"> 
+<tr >
+    <td style="width:10%"><i class="fa fa-envelope-open-o fa-2x" aria-hidden="true"></i></td>
+   <td style="pointer-events: none;width:90%;text-align:center">{{listname}}</td>
+   <td style="text-align:right;width:10%"><input id="checker" type="checkbox" name="{{Name}}" value="{{_id}}" {{selected}} ></td> 
+   <td><input name="userid" type="hidden" value="{{distid}}"></td>
+</tr>    
+
+</div>
+
+</template>
+
+
 
 <template name="influencerItem">
  <div class="list_Item" >

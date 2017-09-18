@@ -100,6 +100,7 @@ Template.dashBoard.events({
                $("#dashboard_CompanyConfig").css("animation-name" , "slideInAnim");
                $('#DashboardSidebar').css("visibility", "hidden");
                $('#SettingsSidebar').css("visibility", "visible");
+               
         
         
         },
@@ -124,11 +125,15 @@ Template.dashBoard.events({
                     },           
                     
         'click #distrocancel' : function(e) {
+                                var theid = "#"+this._id;
                                 $("#distroaddwindow").css('visibility', 'hidden');
+                                $(theid).css('visibility', 'hidden');
                             
                     },
         'click #influencercancel' : function(e) {
+                                 var theid = "#"+this._id;
                                 $("#influenceraddwindow").css('visibility', 'hidden');
+                                $(theid).css('visibility', 'hidden');
                             
                     } ,
                     

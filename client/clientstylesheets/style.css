@@ -141,9 +141,10 @@ font-weight: 400;
     
     .main-content {
      position:relative;
-     left:12%;
-     width:88%;
+     left:13%;
+     width:87%;
      top:-5px;
+     overflow:auto;
     
     
     }
@@ -403,16 +404,14 @@ font-weight: 400;
  }
  
  .dashBoard-companyInfo {
-    position: relative;
-    float:right;
-    margin-top:5px;
-    border-radius: 0px 0px 3px 3px;
-    width:30%;
-    bottom:0px;
-    height:100%;
-    background:#FBFBFC;
-    top:0px;
-    max-width:800px;
+        position: absolute;
+        border-radius: 0px 0px 3px 3px;
+        right:0px;
+        background:#FBFBFC;
+        top:0px;
+        bottom:0px;
+        width:25%;
+        max-width:800px;
     
  
  }

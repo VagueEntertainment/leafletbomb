@@ -10,14 +10,14 @@
             {{>settingsMenu}}
             
         </div>
-    
-<!-- <div class="dashBoard-AaG" > -->
-<div class="main-content" >
+        
+        
 <div class="dashBoard-companyInfo">
     
-    <h1> {{companyName}} <img style="float:right" id="companyedit" src="/Buttons/edit.svg" alt="Edit" height="24" width="auto"> 
-    <!-- <button style="width:60px; height:60px;" type="button" onclick="Router.go('/marketerSetup/{{userId}}')">+</button> -->
-    </h1>
+    <h1> {{companyName}} <img style="float:right" id="companyedit" src="/Buttons/edit.svg" alt="Edit" height="24" width="auto"> </h1>
+    
+    
+    
     <a href={{url}} > <img class=dashBoard-largeLogo src="{{companyLogo}}" alt="HomePage" height="128" width="auto"> </a>
     
     <div class= "dashBoard-locationInfo" >
@@ -35,16 +35,33 @@
     <br/>
     </div> 
     
-    <div class="dashBoard-AaG" >
+    <div>
     <h2>About</h2>
     {{about}}
-    
     </div>
     
-
-   
-    <button style="float:right" type="button" onclick="AccountsTemplates.logout()">Log Out</button> 
+    <button style="position:absolute;right:10px;bottom:10px" type="button" onclick="AccountsTemplates.logout()">Log Out</button> 
 </div>
+
+
+    
+<!-- <div class="dashBoard-AaG" > -->
+<div class="main-content" >
+
+<div style="width:72.5%;height:100%;padding:0.5%:position:absolute" >
+
+<!--class="dashBoard-PressRelease"-->
+
+{{>pluginContainer name="plugin1"}}
+
+{{>pluginContainer name="plugin2"}}
+
+{{>pluginContainer name="plugin3"}}
+
+
+</div>
+
+
 
 <div id="dashboard_PR" class="slideIn" >
 
@@ -73,49 +90,6 @@
     
 </div>
 
-<!--<div class="dashBoard-distlist" >
-     <table style="width:100%">
- <tr>
- <td style="width:90%"> <h3> Distribution List: </h3></td>
- <td style="text-align:right"> <button style="width:60px; height:60px" type="button" id="distroadd">+</button> </td>
- </tr>
- </table>
-        <table style="width=100%">
-            
-            {{#each distributionlists}}
-            
-                {{> distrilist}}
-               
-            {{/each}}
-            
-        </table>
-    
-    <table style="width=100%"> 
-        
-        
-    </table>
-    
-</div>
-
-<div class="dashBoard-influencelist">
-         <table style="width:100%">
- <tr>
- <td style="width:90%"> <h3> Influencers: </h3></td>
- <td style="text-align:right"> <button style="width:60px; height:60px" type="button" id="influenceradd">+</button> </td>
- </tr>
- </table>
-    
-    <table style="width=100%">
-            
-            {{#each presslist}}
-            
-                {{> influencer}}
-               
-            {{/each}}
-            
-        </table>
-
-</div> -->
 
 </div> 
  

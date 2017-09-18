@@ -20,11 +20,9 @@ Archive on:
 
 </div>
 
-
-
 <div style="width:80%;height:100%;float:left;">
 <h3>Release</h3>
-   <textarea name="release" cols="80" rows="32">{{releasedata}} </textarea>
+   <textarea name="release" cols="80" rows="30" style="height:100%">{{releasedata}} </textarea>
    <!--{{> markdown_editor}} -->
 </div>
 <div style="float:left;width:20%;text-align:right" >
@@ -36,23 +34,29 @@ Archive on:
  <table style="width=100%">
                         <tr>
                              <td>
-                                 <a href="{{asset1}}" target="_blank"><img src="{{asset1}}" alt="" class="thumbnail" /></a>      
+                                    
+
+                                <a href="{{asset1}}" target="_blank"><img src="{{asset1}}" alt="" class="thumbnail" /></a>
                              </td>
                                              
                              <td>
-                                 <a href="{{asset2}}" target="_blank"><img src="{{asset2}}" alt="" class="thumbnail" /></a>      
+                                   
+                                 <a href="{{asset2}}" target="_blank"><img src="{{asset2}}" alt="" class="thumbnail" /></a>  
                              </td>
                                              
                              <td>
-                                 <a href="{{asset3}}" target="_blank"><img src="{{asset3}}" alt="" class="thumbnail" /></a>      
+                                    
+                                 <a href="{{asset3}}" target="_blank"><img src="{{asset3}}" alt="" class="thumbnail" /></a>
                              </td>
                                              
                              <td>
-                                  <a href="{{asset4}}" target="_blank"><img src="{{asset4}}" alt="" class="thumbnail" /></a>      
+                                    
+                                  <a href="{{asset4}}" target="_blank"><img src="{{asset4}}" alt="" class="thumbnail" /></a>   
                              </td>
                                              
                              <td>
-                                 <a href="{{asset5}}" target="_blank"><img src="{{asset5}}" alt="" class="thumbnail" /></a>      
+                                    
+                                 <a href="{{asset5}}" target="_blank"><img src="{{asset5}}" alt="" class="thumbnail" /></a> 
                              </td>
     </tr> </table>
     
@@ -66,8 +70,20 @@ Archive on:
   Tags: (Seperate with ',' )<br>
   <input style="width:100%" type="text" name="keywords" value="{{tags}}" >
   <br>
+  <h3> Distribution </h3>
+  <br>
+  <table style="width:100%">
+    {{#each distributionlists}}
+            {{> DistributionListItemSelect}}
+            
+            {{/each}}
+
+
+</table>
   
 </div>
+
+
 
 <div style="position:absolute;width:20%;text-align:right;bottom:6px;right:0px" >
 <button style="float:left" type="button" onclick="Router.go('/dashboard/{{userId}}')">Cancel</button> 

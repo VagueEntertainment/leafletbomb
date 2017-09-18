@@ -270,6 +270,11 @@ Template.newPressRelease.helpers ({
              //return thefiles;
             
         },
+        
+        distributionlists:function() {
+                        
+                        return DistributionLists.find();
+                    },
   
   
 });
