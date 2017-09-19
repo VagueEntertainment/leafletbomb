@@ -256,7 +256,20 @@ Template.TeamItem.events ({
                        $(theid).css("animation-name" , "slideInAnim");
                                     }
                        
-                    }
+                    },
+                    
+      'click #delete': function(e) {
+                        var theid = "#"+$(e.target).find('[name=userid]').val();
+                        if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                               $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                        $(theid).css('visibility', 'visible');
+                       $(theid).css("animation-name" , "slideInAnim");
+                                    }
+                                    CompanyTeam.remove({"_id":this._id});
+                       
+                    }              
                     
 
 });
@@ -290,7 +303,20 @@ Template.influencerItem.events ({
                        $(theid).css("animation-name" , "slideInAnim");
                                     }
                        
-                    }
+                    },
+                    
+     'click #delete': function(e) {
+                        var theid = "#"+$(e.target).find('[name=userid]').val();
+                        if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                               $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                        $(theid).css('visibility', 'visible');
+                       $(theid).css("animation-name" , "slideInAnim");
+                                    }
+                                    Influencers.remove({"_id":this._id});
+                       
+                    }    
 
 
 });
@@ -307,7 +333,20 @@ Template.DistributionListItem.events ({
                        $(theid).css("animation-name" , "slideInAnim");
                                     }
                        
-                    }
+                    },
+                    
+     'click #delete': function(e) {
+                        var theid = "#"+$(e.target).find('[name=userid]').val();
+                        if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                               $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                        $(theid).css('visibility', 'visible');
+                       $(theid).css("animation-name" , "slideInAnim");
+                                    }
+                                    DistributionLists.remove({"_id":this._id});
+                       
+                    }                  
 
 
 });
