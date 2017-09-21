@@ -6,12 +6,33 @@ Meteor.publish('posts', function(company) {
                             return Posts.find({userId: company});
                             }
                            });
+                           
 Meteor.publish('companies', function(user) {
+                    
+
+                    let query    = {},
+                        projection = { limit: 10, sort: { companyName: 1 } };
+      
                                   if(user == "all") {
                                         return Company.find();
                                     } else {
-                                        return Company.find({userId: user});}
-                                        });
+                                           let regex = new RegExp( user, 'i' );
+                                           query = {
+                                                    $or: [
+                                                        { userId: regex},
+                                                        { companyName: regex },
+                                                        { keywords: regex }
+                                                        ]
+                                                    };
+                                           projection.limit = 100;
+                                    
+                                        return Company.find(query, projection);
+                                        
+                                        }
+                                        }); 
+                                        
+                              
+                                        
 
 Meteor.publish('prteam', function(user) {
                                   return CompanyTeam.find();

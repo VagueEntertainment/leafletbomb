@@ -5,7 +5,7 @@
 <img src="/media/testlogo.png" width=auto height=100% style="opacity:0.05;float:right">
 
 
-<div style="position:absolute;top:20%;bottom:20%;left:20%;right:20%;padding:10px;">
+<div id="searcharea" style="position:absolute;top:20%;bottom:40%;left:20%;right:20%;padding:10px;">
 
 <h1 style="text-align:center"> Welcome </h1>
 <br/>
@@ -17,6 +17,24 @@
 
 </div>
 
+<div id="found" style="position:absolute;top:20%;bottom:0%;left:10%;right:10%;padding:10px;visibility:hidden;overflow:auto">
+
+ <ul class="list-group">
+    {{#if searching}}
+      {{> loading}}
+    {{else}}
+      {{#each company}}
+        <li class="list-group-item clearfix">
+          <span class="pull-left"><h1><strong>{{companyName}}</strong></h1> <h3>About:</h3> {{about}}</span>
+          <span class="pull-right">{{keywords}}</span>
+        </li>
+      {{else}}
+        <p class="alert alert-warning">Nothing found for {{query}}.</p>
+      {{/each}}
+    {{/if}}
+  </ul>
+
+</div>
 
 
 </div>
