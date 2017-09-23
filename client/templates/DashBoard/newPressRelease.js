@@ -68,7 +68,7 @@ Template.newPressRelease.helpers ({
                             themonth = (d.getMonth() + 1);
                             }
                             
-                    return theday+'/'+themonth+'/'+d.getFullYear();    
+                    return themonth+'/'+theday+'/'+d.getFullYear();    
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).releasedate;
         }
@@ -90,7 +90,7 @@ Template.newPressRelease.helpers ({
                             themonth = (d.getMonth() + 1);
                             }
                             
-                    return theday+'/'+themonth+'/'+(d.getFullYear() +1);        
+                    return themonth+'/'+theday+'/'+(d.getFullYear() +1);        
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).archivedate;
         }
@@ -272,10 +272,27 @@ Template.newPressRelease.helpers ({
         },
         
         distributionlists:function() {
-                        
-                        return DistributionLists.find();
-                    },
-  
+                          var list = [];
+                          var selected = 0;
+                          if(PostDistribution.findOne({"docId":this.docId}) != undefined) {
+                                selected = PostDistribution.findOne({"docId":this.docId}).list;
+                          }
+                          var listindex = 0;
+                          DistributionLists.find().forEach( function(stuff) {
+                            list.push({"_id":stuff._id, "listname":stuff.listname ,  "selected":"unchecked"});
+                            
+                            for(var num = 0;num < selected.length;num++) {
+                                if(list[listindex]._id == selected[num]) {
+                                   list[listindex] = ({"_id":stuff._id, "listname":stuff.listname ,  "selected":"checked"});
+                                      }
+                                    
+                                    }
+                                   
+                                listindex = listindex +1;
+                           });
+                                   
+                          return list; 
+                        },
   
 });
 
@@ -287,8 +304,17 @@ Template.newPressRelease.events ({
                 var theId =  Meteor.users.findOne()._id;
                 var d = new Date();
                 var docs = $("#therelease").find('[name=docId]').val();
+                
+                var thelist = [];
+                            
+                DistributionLists.find().forEach( function(stuff) { 
+                     if($(e.target).find('[name="'+stuff.listname+'"]').is(":checked")) {
+                               
+                               thelist.push ($(e.target).find('[name="'+stuff.listname+'"]').val() );
+                                                                                }
+                                                                           } );
     
-   
+                    
    if(Router.current().params.query.edit === undefined) {
    
    var Info = {
@@ -303,10 +329,21 @@ Template.newPressRelease.events ({
         assets:$(e.target).find('[name=file]').val(),
         docId:docs,
         status:0
-    };
-   
-    
+    }; 
     Posts.insert(Info);
+    
+    var schedule = {
+    
+                docId:docs,
+                releasedate:$(e.target).find('[name=releasedate]').val(),
+                archivedate:$(e.target).find('[name=archivedate]').val(),
+                list:thelist
+    
+    
+    };
+    
+    PostDistribution.insert(schedule);
+    
     
     } else {
     var listId = Posts.findOne({"docId":Router.current().params.query.edit})._id;
@@ -324,7 +361,21 @@ Template.newPressRelease.events ({
         status:0
     };
     
-    Posts.update({"_id": listId},{$set: Info});
+    var scheduleId = PostDistribution.findOne({"docId":Router.current().params.query.edit})._id;
+    
+     var schedule = {
+    
+                //docId:docs,
+                releasedate:$(e.target).find('[name=releasedate]').val(),
+                archivedate:$(e.target).find('[name=archivedate]').val(),
+                list:thelist
+    
+    
+    };
+    
+    Posts.update({"_id": listId},{$set: Info});  
+    PostDistribution.update({"_id": scheduleId},{$set: schedule});
+  
     
     }
     

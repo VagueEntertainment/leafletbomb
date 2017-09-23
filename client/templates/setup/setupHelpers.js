@@ -82,15 +82,15 @@ Template.marketerSetup.events ({
     
         userId:theId,
         companyName:$(e.target).find('[name=companyName]').val(),
-        companyLogo:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companyLogo"}).filename,
-        companyLogoSmall:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companyLogoSmall"}).filename,
+        companyLogo:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogo"}).filename,
+        companyLogoSmall:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogoSmall"}).filename,
         companyAddress:$(e.target).find('[name=companyAddress]').val(),
         companyCity:$(e.target).find('[name=companyCity]').val(),
         companyState:$(e.target).find('[name=companyState]').val(),
         companyCountry:$(e.target).find('[name=companyCountry]').val(),
         companyPhone:$(e.target).find('[name=companyPhone]').val(),
         companySP:$(e.target).find('[name=companySP]').val(),
-        companySPImg:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companySPImg"}).filename,
+        companySPImg:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companySPImg"}).filename,
         about:$(e.target).find('[name=about]').val(),
         url:$(e.target).find('[name=url]').val(),
         email:$(e.target).find('[name=email]').val(),
@@ -112,15 +112,15 @@ Template.marketerSetup.events ({
     
         //userId:theId,
         companyName:$(e.target).find('[name=companyName]').val(),
-        companyLogo:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companyLogo"}).filename,
-        companyLogoSmall:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companyLogoSmall"}).filename,
+        companyLogo:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogo"}).filename,
+        companyLogoSmall:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogoSmall"}).filename,
         companyAddress:$(e.target).find('[name=companyAddress]').val(),
         companyCity:$(e.target).find('[name=companyCity]').val(),
         companyState:$(e.target).find('[name=companyState]').val(),
         companyCountry:$(e.target).find('[name=companyCountry]').val(),
         companyPhone:$(e.target).find('[name=companyPhone]').val(),
         companySP:$(e.target).find('[name=companySP]').val(),
-        companySPImg:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companySPImg"}).filename,
+        companySPImg:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companySPImg"}).filename,
         about:$(e.target).find('[name=about]').val(),
         url:$(e.target).find('[name=url]').val(),
         email:$(e.target).find('[name=email]').val(),
@@ -136,7 +136,7 @@ Template.marketerSetup.events ({
     
     }
        
-    Router.go("/dashboard/"+theId);
+    Router.go('/dashboard/'+Meteor.users.findOne()._id);
     
 
 },
@@ -228,15 +228,15 @@ Template.influencerSetup.events ({
     
         userId:theId,
         companyName:$(e.target).find('[name=companyName]').val(),
-        companyLogo:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companyLogo"}).filename,
-        companyLogoSmall:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companyLogoSmall"}).filename,
+        companyLogo:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogo"}).filename,
+        companyLogoSmall:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogoSmall"}).filename,
         companyAddress:$(e.target).find('[name=companyAddress]').val(),
         companyCity:$(e.target).find('[name=companyCity]').val(),
         companyState:$(e.target).find('[name=companyState]').val(),
         companyCountry:$(e.target).find('[name=companyCountry]').val(),
         companyPhone:$(e.target).find('[name=companyPhone]').val(),
         companySP:$(e.target).find('[name=companySP]').val(),
-        companySPImg:CompanyAssets.findOne({"companyId":Meteor.userId()} && {"type":"companySPImg"}).filename,
+        companySPImg:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companySPImg"}).filename,
         about:$(e.target).find('[name=about]').val(),
         url:$(e.target).find('[name=url]').val(),
         email:$(e.target).find('[name=email]').val(),

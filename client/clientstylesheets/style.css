@@ -9,7 +9,7 @@ font-weight: 400;
 
 
 
-.grid-block, .main, .post, .comments, .comment-form, .login-dialog, .popup , .side_navbar , .slideIn{
+.grid-block, .main, .post, .comments, .comment-form, .login-dialog, .popup , .side_navbar , .slideIn  {
 
     /*background: #fff; */
     
@@ -52,6 +52,19 @@ font-weight: 400;
         height:100%;
         background: #fff; 
         overflow:auto;
+        /*background-image: url("media/Suru_BG.png"); */
+       
+    
+    }
+     .photocontainer {
+        width:64px;
+        height:64px;
+        margin-bottom: 10px;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0, 0.15);
+        -moz-box-shadow: 0 1px 1px rgba(0,0,0, 0.15);
+        box-shadow: 0 1px 1px 2px rgba(0,0,0,0.15);
+         
+        
         /*background-image: url("media/Suru_BG.png"); */
        
     
@@ -447,6 +460,11 @@ font-weight: 400;
  padding:3px;
  margin-bottom:10px;
  
+ }
+ 
+ .list_Item:hover {
+ 
+    font-size: 15px;
  }
  
  .prPreview {

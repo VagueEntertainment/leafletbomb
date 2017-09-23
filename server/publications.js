@@ -47,4 +47,6 @@ Meteor.publish("postassets",function(){return PostAssets.find(); });
 
 Meteor.publish("companyassets",function(){return CompanyAssets.find(); });                
                 
-Meteor.publish("influencers",function(){return Influencers.find(); });                 
+Meteor.publish("influencers",function(){return Influencers.find(); });    
+
+Meteor.publish('postdistribution',function(){return PostDistribution.find(); });             
