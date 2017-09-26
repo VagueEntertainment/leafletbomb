@@ -7,9 +7,9 @@
 <div style="width:100%;height:2px;background:#000"> </div>
 
 <table style="width:100%">
-<tr><td><div class="list_Item"> Stuff</div></td></tr>
-<tr><td><div class="list_Item"> More Stuff</div></td></tr>
-<tr><td><div class="list_Item"> Even More Stuff</div></td></tr>
+ {{#each list}}
+        {{> releaseItem}}
+  {{/each}}
 </table>
 </div>
 

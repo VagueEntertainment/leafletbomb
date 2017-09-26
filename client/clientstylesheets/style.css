@@ -464,7 +464,8 @@ font-weight: 400;
  
  .list_Item:hover {
  
-    font-size: 15px;
+    border-style: solid none none solid ;
+        border-width: 1px 0px 0px 8px;
  }
  
  .prPreview {
@@ -657,6 +658,22 @@ font-weight: 400;
         
         .slideIn {
             left:12%;
+            right:0%; 
+            /*animation-name:slideInAnim; */
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            position:absolute;
+            top:0px;
+            bottom:0px;
+            
+            background:#fff;
+            visibility: hidden; 
+        
+        
+        }
+        
+         .slideInFull {
+            left:0%;
             right:0%; 
             /*animation-name:slideInAnim; */
             animation-duration: 0.5s;

@@ -358,7 +358,7 @@ Template.newPressRelease.events ({
         release:$(e.target).find('[name=release]').val(),
         tags:$(e.target).find('[name=keywords]').val(),
         assets:$(e.target).find('[name=file]').val(),
-        status:0
+        status:this.status
     };
     
     var scheduleId = PostDistribution.findOne({"docId":Router.current().params.query.edit})._id;

@@ -1,0 +1,35 @@
+  <template name="companyInfo">
+  
+  <h1> {{companyName}} <img style="float:right" id="companyedit" src="/Buttons/edit.svg" alt="Edit" height="24" width="auto"> </h1>
+    
+    
+    
+    <a href=http://{{url}} > <img class=dashBoard-largeLogo src="{{companyLogo}}" alt="HomePage" height="128" width="auto"> </a>
+    
+    
+    
+    
+    <div class= "dashBoard-locationInfo" >
+    <h2> Location: </h2>
+    {{companyAddress}} <br/>
+    {{companyCity}}.{{companyState}},{{companyCountry}} <br/>
+    {{companyPhone}}
+    
+    </div> 
+    
+    <div class= "dashBoard-contactInfo" >
+    <h2> Contact: </h2>
+    Community Manager: {{companySP}}<br/>
+    Email: {{email}} <br/>
+    <br/>
+    </div> 
+    
+    <div>
+    <h2>About</h2>
+    {{about}}
+    </div>
+    
+    <button style="position:absolute;right:10px;bottom:10px" type="button" onclick="AccountsTemplates.logout()">Log Out</button> 
+    
+    
+    </template>

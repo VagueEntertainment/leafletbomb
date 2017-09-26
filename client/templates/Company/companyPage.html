@@ -3,7 +3,7 @@
 <div style="position:absolute;top:0px;left:0px;bottom:0px;right:0px;overflow:auto" >
 
 
-<div style="position:absolute;left:1%">
+<div style="position:absolute;left:20%">
  {{#each  posts}}  
     {{>postItem}} 
    {{/each}} 
@@ -15,34 +15,7 @@
  
  <div class="dashBoard-companyInfo" >
     
-    <h1> {{companyName}}</h1>
-    
-    
-    
-    <a href=http://{{url}} > <img class=dashBoard-largeLogo src="{{companyLogo}}" alt="HomePage" height="128" width="auto"> </a>
-    
-    
-    
-    
-    <div class= "dashBoard-locationInfo" >
-    <h2> Location: </h2>
-    {{companyAddress}} <br/>
-    {{companyCity}}.{{companyState}},{{companyCountry}} <br/>
-    {{companyPhone}}
-    
-    </div> 
-    
-    <div class= "dashBoard-contactInfo" >
-    <h2> Contact: </h2>
-    Community Manager: {{companySP}}<br/>
-    Email: {{email}} <br/>
-    <br/>
-    </div> 
-    
-    <div>
-    <h2>About</h2>
-    {{about}}
-    </div>
+   
     
 </div>
 
