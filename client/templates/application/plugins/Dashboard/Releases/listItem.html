@@ -1,10 +1,20 @@
 <template name="releaseItem">
-<div id={{Name}} class="list_Item">
+<div id={{docid}} class="list_Item">
 
 <tr>
-   <td style="text-align:left;width:50%">{{Name}}</td>
-   <td style="text-align:left;width:50%">({{companyName}})</td>
-   <td style="text-align:right;width:10%">+</td>
+    <td ><img src="{{companyLogoSmall}}" height="64" width="auto" ></td>
+   <td style="text-align:left;width:90%"><h3>{{title}}</h3>
+   
+   <table style="width:50%;float:left">
+            <tr>
+            <td>Seen: {{totalseen}}</td>
+            <td>Created: {{totalcreated}} </td>
+            <td>Shared: {{totalshared}}</td>
+            </tr>
+        </table>
+     </td>   
+   
+   
 </tr>
 </div>
 

@@ -19,7 +19,7 @@ Template.dashBoard.helpers({
             
 Template.dashBoard.events({
 
-        'click #companyedit' : function(e) {
+      /*  'click #companyedit' : function(e) {
                 //    var id= Meteor.users.findOne()._id;
                // Router.go('/marketerSetup/'+id+'?edit="all"')
                
@@ -28,10 +28,7 @@ Template.dashBoard.events({
                $('#DashboardSidebar').css("visibility", "hidden");
                $('#SettingsSidebar').css("visibility", "visible");
                 
-               
-        
-        
-        },
+        }, */
                                                    
 
         'click #teamListItem' : function(e) {
@@ -86,6 +83,14 @@ Template.dashBoard.events({
                                   $("#dashboard_DistributionList").css('visibility', 'hidden');
                             
                     },
+                    
+          'click #SettingListItem' : function(e) {
+                              $("#dashboard_CompanyConfig").css("visibility", "visible");
+                              $("#dashboard_CompanyConfig").css("animation-name" , "slideInAnim");
+                              $('#DashboardSidebar').css("visibility", "hidden");
+                              $('#SettingsSidebar').css("visibility", "visible");   
+          
+                    },          
                     
                    
 });   

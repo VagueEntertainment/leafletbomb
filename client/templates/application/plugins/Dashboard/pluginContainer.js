@@ -26,15 +26,13 @@ height:function(e) {
         default:return "33.3%";break;
     }
 },
-
 list: function(e) {
-
-         switch(this.name) {
-            case "plugin1": { var thelist = [{Name:"test1"},{Name:"test2"},{Name:"test3"}];
-                        return thelist; }; break;
-            default:return "";break;            
-            }
-            
+    switch(this.name) {
+        case "plugin2": return ["{title:list}","{title:list1}"];break;
+        
+        
+    }
+    
  }
 
 });
