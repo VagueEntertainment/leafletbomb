@@ -235,6 +235,10 @@ Template.DashpostItem.events ({
 
            'click .postAction': function (e) {
            
+                        var docId = this.docId;
+                        
+                        console.log(docId);
+           
                     switch(this.status) {
                         case 2: {
                     var listnum = 0;
@@ -294,7 +298,7 @@ Template.DashpostItem.events ({
                          `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
                          To be release on: `+this.releasedate+` <br/><br/>
                             `+fullRelease+` <br/><br/>
-                        For full release {{publicaddress}}`
+                        For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`>Click Here<a>`
                          
                         );
                         

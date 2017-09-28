@@ -3,9 +3,12 @@ Meteor.publish('posts', function(company) {
                             if(company == "all") {
                             return Posts.find();
                             } else {
-                            return Posts.find({userId: company});
+                                
+                            return Posts.find({docId: company});
                             }
                            });
+                           
+                         
                            
 Meteor.publish('companies', function(user) {
                     
@@ -49,4 +52,8 @@ Meteor.publish("companyassets",function(){return CompanyAssets.find(); });
                 
 Meteor.publish("influencers",function(){return Influencers.find(); });    
 
-Meteor.publish('postdistribution',function(){return PostDistribution.find(); });             
+Meteor.publish('postdistribution',function(){return PostDistribution.find(); });
+
+Meteor.publish('postquestions',function(){return PostQuestions.find(); });   
+
+Meteor.publish('postfaq',function(){return PostFAQ.find(); });            
