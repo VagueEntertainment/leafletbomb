@@ -1,11 +1,16 @@
 Meteor.publish('posts', function(company) {
-
-                            if(company == "all") {
+                           
+                           if (company == undefined) { 
+                            return Posts.find({userId: company});
+                           } else if(company == "all") {
                             return Posts.find();
+                            } else if(company.split("=")[0] == "company") {
+                                           var userid= Company.findOne({companyName:company.split("=")[1]}).userId;
+                            return Posts.find({userId: userid});
                             } else {
-                                
-                            return Posts.find({docId: company});
+                                 return Posts.find({docId: company.split("=")[1]});   
                             }
+                            
                            });
                            
                          
