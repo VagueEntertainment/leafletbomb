@@ -17,6 +17,19 @@ Template.stopPage.helpers({
 
 });
 
+Template.stopPage.rendered=function () {
+
+   if (Company.find().count() == 0) {
+    console.log("found "+Company.find().count());
+    Router.go("/marketerSignup?accounttype=marketer");
+    } else if (Company.find().count() == 1) {
+    
+    Router.go("/"+Company.findOne().companyName);
+    } 
+    
+
+}
+
 Template.stopPage.events({
 
 

@@ -473,7 +473,7 @@ font-weight: 400;
  top:0px;
  bottom:0px;
  right:0px;
- width:40%;
+ width:60%;
  overflow:auto;
  visibility:hidden;
  
@@ -783,15 +783,24 @@ font-weight: 400;
 #fileUploadLabel {
     float:right;
    cursor: pointer;
-   background-color: #4CAF50;
+   color: black;
+    
+    border-width:1px;
+   
+    
     border: none;
-    color: white;
-    padding: 15px 32px;
+     background: #fff;
+    border-radius: 6px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    
+    padding:20px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0, 0.15);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0, 0.15);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
    
 }
 

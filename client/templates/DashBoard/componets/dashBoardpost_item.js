@@ -237,20 +237,24 @@ Template.DashpostItem.events ({
            
                         var docId = this.docId;
                         
-                        console.log(docId);
+                        
            
                     switch(this.status) {
                         case 2: {
-                    var listnum = 0;
-                   var list= DistributionLists.find().fetch()[0].list;
-                   
-                   while(listnum < list.length) {
-                   var name = Influencers.findOne({_id:list[listnum]}).Name;
-                   var emailaddress = Influencers.findOne({_id:list[listnum]}).email;
-                    var title = this.title;
-                    var tagline = this.tagline;
-                    var company = Company.findOne().companyName;
-                    var text = DistributionLists.find().fetch()[0].message +"\n\n"+ this.release;
+                        
+                    for(var PDnum = 0;PDnum < PostDistribution.findOne({docId:docId}).list.length;PDnum = PDnum+1) {
+                         var listnum = 0;   
+                         var listId = PostDistribution.findOne({docId:docId}).list[PDnum];
+                         var list= DistributionLists.findOne({_id:listId}).list;
+                         
+                        
+                        while(listnum < list.length) {
+                            var name = Influencers.findOne({_id:list[listnum]}).Name;
+                            var emailaddress = Influencers.findOne({_id:list[listnum]}).email;
+                             var title = this.title;
+                             var tagline = this.tagline;
+                             var company = Company.findOne().companyName;
+                            var text = DistributionLists.findOne({_id:listId}).message +"\n\n"+ this.release;
        
                              text = text.replace(/\n/g, "<br/>");
       
@@ -288,8 +292,7 @@ Template.DashpostItem.events ({
                             num = num + 1;
                              }
                          //End citation check //
-       
-
+                        
                     Meteor.call(
                         'sendEmail',
                         name +"<"+emailaddress+">",
@@ -300,11 +303,11 @@ Template.DashpostItem.events ({
                             `+fullRelease+` <br/><br/>
                         For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`>Click Here<a>`
                          
-                        );
+                        ); 
                         
                         listnum = listnum + 1;
                         }
-                        
+                  }
                         } break;
                         
                         case 0: {var listId = Posts.findOne({"docId":this.docId})._id;

@@ -51,6 +51,15 @@ Template.newPressRelease.helpers ({
                     return Posts.findOne({docId:Router.current().params.query.edit}).tagline;
         }
     },
+    releaseButton : function() {
+                if( Router.current().params.query.edit == undefined) {
+                
+                
+                 } else {
+    return ``;
+    }
+    },
+    
     releasedate: function() {
                 if (Router.current().params.query.edit == undefined) {
                         var d = new Date();
@@ -271,11 +280,18 @@ Template.newPressRelease.helpers ({
             
         },
         
-        distributionlists:function() {
+        distributionlists:function(e) {
                           var list = [];
                           var selected = 0;
-                          if(PostDistribution.findOne({"docId":this.docId}) != undefined) {
-                                selected = PostDistribution.findOne({"docId":this.docId}).list;
+                          var thisdoc = "";
+                          if ( Router.current().params.query.edit !=undefined) {
+                            thisdoc =Router.current().params.query.edit;
+                           } else {
+                            thisdoc = $("#therelease").find('[name=docId]').val();
+                           }
+                          console.log();
+                          if(PostDistribution.findOne({"docId":thisdoc}) != undefined) {
+                                selected = PostDistribution.findOne({"docId":thisdoc}).list;
                           }
                           var listindex = 0;
                           DistributionLists.find().forEach( function(stuff) {
@@ -298,6 +314,14 @@ Template.newPressRelease.helpers ({
 
 Template.newPressRelease.events ({
 
+'click #calender': function(e) {
+                    $("#calenderpicker").css('visibility','visible');
+                },
+                
+'click #calenderpicker': function(e) {
+                    $("#calenderpicker").css('visibility','hidden');
+                },
+
 
 'submit form': function(e) {
            // e.preventDefault();
@@ -314,7 +338,7 @@ Template.newPressRelease.events ({
                                                                                 }
                                                                            } );
     
-                    
+                               
    if(Router.current().params.query.edit === undefined) {
    
    var Info = {
@@ -361,9 +385,11 @@ Template.newPressRelease.events ({
         status:this.status
     };
     
-    var scheduleId = PostDistribution.findOne({"docId":Router.current().params.query.edit})._id;
+    var schedule = "";
     
-     var schedule = {
+    var scheduleId = PostDistribution.findOne({"docId":Router.current().params.query.edit})._id;
+    if(scheduleId != undefined) {
+     schedule = {
     
                 //docId:docs,
                 releasedate:$(e.target).find('[name=releasedate]').val(),
@@ -372,9 +398,25 @@ Template.newPressRelease.events ({
     
     
     };
+    PostDistribution.update({"_id": scheduleId},{$set: schedule});
+    } else {
+    
+    schedule = {
+    
+                docId:docs,
+                releasedate:$(e.target).find('[name=releasedate]').val(),
+                archivedate:$(e.target).find('[name=archivedate]').val(),
+                list:thelist
+    
+    
+    };
+    
+    PostDistribution.insert(schedule);
+    }
+    
     
     Posts.update({"_id": listId},{$set: Info});  
-    PostDistribution.update({"_id": scheduleId},{$set: schedule});
+    
   
     
     }

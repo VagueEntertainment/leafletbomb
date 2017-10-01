@@ -1,13 +1,16 @@
 <template name="marketerSetup" >
-<div style="background:#fff;padding:10px;radius:4px;">
+<img src="/media/testlogo.png" width=auto height=100% style="opacity:0.05;float:right">
+<div style="background:#fff;padding:10px;radius:4px;position:absolute;top:10%;bottom:20%;left:20%;right:20%;">
+
+
 <h1>Welcome Marketer</h1>
 
 <form>
 
 
-
-<h2> Company Info</h2>
 <div class="dashBoard-AaG">
+<h2> Company Info</h2>
+
 <div style="float:left;width:33%">
   <h3>General</h3>
   
@@ -43,21 +46,21 @@
   </div>
   
   <div style="float:left;width:33%">  
-  <h3>Visual Assets</h3>
+<!-- <h3>Visual Assets</h3>
   Trademark:<img src="{{companyLogo}}" width=128px height=64px > 
   
   <div class="fallback">
     <input name="companyLogo" class="LogoInput" type="file" single />
   
- </div>
+ </div> -->
  <!-- <input type="text" name="companyLogo" value=""> -->
-  <br>
+<!--  <br>
   Logo:<img src="{{companyLogoSmall}}" width=64px height=64px >
   
   <div class="fallback">
     <input name="companyLogoSmall" class="LogoSmallInput" type="file" single />
   
- </div>
+ </div> -->
   <br/>
   <h3>Web Pressence</h3>
   Home Page:<br>
@@ -76,23 +79,6 @@
    <div class="dashBoard-AaG">
    
   <h2>Optional</h2>
- 
-  
- <!-- <div style="float:left;width:33%">  
-  
-  <h3> Spokes Person </h3>
-  Name:<br>
-  <input type="text" name="companySP" value="{{companySP}}">
-  <br>
-  Avatar:<img src="{{companySPImg}}" width=64px height=64px >
-  
-  <div class="fallback">
-    <input name="companySPImg" class="SPImgInput" type="file" single />
-  
- </div>
-  <br>
-  
-  </div> -->
   
    <div style="float:left;width:33%">  
   
@@ -113,10 +99,10 @@
   <div class="dashBoard-AaG">
   <h3>About</h3>
     <textarea name="about" cols="80" rows="10">{{about}} </textarea>
-  </div>
+  
   <button style="float:right" type="button" onclick="{{wherewego}}">Cancel</button> 
   <input type="submit" value="Submit">
- 
+ </div>
  
 </form>
  
