@@ -53,7 +53,7 @@ Meteor.publish("images", function(){return Images.find();});
 
 Meteor.publish("postassets",function(){return PostAssets.find(); });
 
-Meteor.publish("companyassets",function(){return CompanyAssets.find(); });                
+Meteor.publish("companyassets",function(user){return CompanyAssets.find(); });                
                 
 Meteor.publish("influencers",function(){return Influencers.find(); });    
 
@@ -61,4 +61,6 @@ Meteor.publish('postdistribution',function(){return PostDistribution.find(); });
 
 Meteor.publish('postquestions',function(){return PostQuestions.find(); });   
 
-Meteor.publish('postfaq',function(){return PostFAQ.find(); });            
+Meteor.publish('postfaq',function(){return PostFAQ.find(); });
+
+Meteor.publish('postengagement',function(){return PostEngage.find(); });            

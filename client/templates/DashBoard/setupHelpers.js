@@ -10,10 +10,6 @@ Template.marketerSettings.helpers ({
                           return Images.findOne({_id:file}).url();
     
    },
-   companySPImg:function(){
-                            var file = CompanyAssets.findOne({"companyId":Meteor.userId() , "type":"companySPImg"}).filename;
-                          return Images.findOne({_id:file}).url();
-   },
    
    companyName:function() {return Company.findOne().companyName;},
        
@@ -50,20 +46,29 @@ Template.marketerSettings.events ({
                     
         var listId = Company.findOne()._id;
          var theId = Company.findOne().userId;
+         
+         var trademark = "";
+         if(CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogo"}) != undefined) {
+         trademark = CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogo"}).filename
+         }
+         var logo = "";
+         if(CompanyAssets.findOne({"companyId":Meteor.userId()}, {"type":"companyLogoSmall"}) != undefined) {
+         logo = CompanyAssets.findOne({"companyId":Meteor.userId()}, {"type":"companyLogoSmall"}).filename
+         }
     
         var info = {
     
         //userId:theId,
         companyName:$(e.target).find('[name=companyName]').val(),
-        companyLogo:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companyLogo"}).filename,
-        companyLogoSmall:CompanyAssets.findOne({"companyId":Meteor.userId()}, {"type":"companyLogoSmall"}).filename,
+        companyLogo:trademark,
+        companyLogoSmall:logo,
         companyAddress:$(e.target).find('[name=companyAddress]').val(),
         companyCity:$(e.target).find('[name=companyCity]').val(),
         companyState:$(e.target).find('[name=companyState]').val(),
         companyCountry:$(e.target).find('[name=companyCountry]').val(),
         companyPhone:$(e.target).find('[name=companyPhone]').val(),
         companySP:$(e.target).find('[name=companySP]').val(),
-        companySPImg:CompanyAssets.findOne({"companyId":Meteor.userId()} , {"type":"companySPImg"}).filename,
+        companySPImg:"",
         about:$(e.target).find('[name=about]').val(),
         url:$(e.target).find('[name=url]').val(),
         email:$(e.target).find('[name=email]').val(),
@@ -104,7 +109,9 @@ Template.marketerSettings.events ({
                    filename:fileObj._id
             };
             
-            if(CompanyAssets.find({companyId:theId}).count == 0) {           
+            console.log(info);
+            
+            if(CompanyAssets.findOne({companyId:theId} && {type:"companyLogo"}) == undefined) {           
                     CompanyAssets.insert(info);
                     } else {
                         var assId = CompanyAssets.findOne({companyId:theId})._id;
@@ -135,7 +142,9 @@ Template.marketerSettings.events ({
                    filename:fileObj._id
             };
             
-            if(CompanyAssets.find({companyId:theId}).count == 0) {           
+            
+            
+            if(CompanyAssets.findOne({companyId:theId} && {type:"companyLogoSmall"}) == undefined) {           
                     CompanyAssets.insert(info);
                     } else {
                         var assId = CompanyAssets.findOne({companyId:theId})._id;
@@ -152,28 +161,7 @@ Template.marketerSettings.events ({
       
       
       
- 'change .SPImgInput': function(event, template) {
-    var files = event.target.files;
-    
-    var theId = Meteor.userId();
-     
-    for (var i = 0, ln = files.length; i < ln; i++) {
-      Images.insert(files[i], function (err, fileObj) {
-        if (err) {
-        
-        } else {
-            var info = {
-                    companyId:theId,
-                    type:"companySPImg",
-                   filename:fileObj._id
-            };
-            CompanyAssets.insert(info);
-          }
-        
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-      }); 
-      }
-  } 
+ 
       
 
 });

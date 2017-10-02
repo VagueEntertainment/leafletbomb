@@ -289,7 +289,7 @@ Template.newPressRelease.helpers ({
                            } else {
                             thisdoc = $("#therelease").find('[name=docId]').val();
                            }
-                          console.log();
+                          
                           if(PostDistribution.findOne({"docId":thisdoc}) != undefined) {
                                 selected = PostDistribution.findOne({"docId":thisdoc}).list;
                           }

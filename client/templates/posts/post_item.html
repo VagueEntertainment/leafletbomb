@@ -2,14 +2,14 @@
     <div class="post">
         <div class="post-content">
         
-         <div class="post-logo">
+        <!-- <div class="post-logo">
             <a href="{{url}}"><img src="{{companyLogo}}" alt="HomePage" height="100" width="auto"></a>
-         </div>
+         </div> -->
             <div style="float:left;padding:5px;"> <img src="{{companyLogoSmall}}" alt="HomePage" height="64" width="auto"></div>
             <h1>{{title}}</h1>
             <h3>{{tagline}}</h3>
             <br/>
-            Release on: {{releasedate}}
+            Release on: {{releasedate}} to {{influencer}}
             <br/>
             <br/>
             <p>{{{releasechanged}}}</p>
@@ -75,7 +75,9 @@
                     
                         </tr>
                     </table>
-            </div>   
+            </div>  
+            
+           <div style="position:absolute;top:10px;right:10px"> <i class="fa fa-question-circle-o fa-4x " aria-hidden="true"></i> </div>
          </div>    
            
 </template>

@@ -243,10 +243,15 @@ Template.DashpostItem.events ({
                         case 2: {
                         
                     for(var PDnum = 0;PDnum < PostDistribution.findOne({docId:docId}).list.length;PDnum = PDnum+1) {
-                         var listnum = 0;   
-                         var listId = PostDistribution.findOne({docId:docId}).list[PDnum];
-                         var list= DistributionLists.findOne({_id:listId}).list;
-                         
+                         var listnum = 0;  
+                         var listId = [];
+                         var list = [];
+                            if( PostDistribution.findOne({docId:docId}) != undefined) {
+                                 listId = PostDistribution.findOne({docId:docId}).list[PDnum];    
+                         }
+                            if(DistributionLists.findOne({_id:listId}) != undefined) {
+                                list= DistributionLists.findOne({_id:listId}).list;
+                            }
                         
                         while(listnum < list.length) {
                             var name = Influencers.findOne({_id:list[listnum]}).Name;
@@ -292,22 +297,36 @@ Template.DashpostItem.events ({
                             num = num + 1;
                              }
                          //End citation check //
+                            
+                            var engage = {
+                                            docId:docId,
+                                            influencerName:name,
+                                            influencerEmail:emailaddress,
+                                            opened:0,
+                                            seen:0,
+                                            questions:""
+                                            
+                                        };
+                    if(PostEngage.findOne({docId:docId} , {influencerEmail:emailaddress}) == undefined) {                    
+                           PostEngage.insert(engage);                 
+                                 
+                            Meteor.call(
+                                    'sendEmail',
+                                     name +"<"+emailaddress+">",
+                                    'No Reply <noreply@vagueentertainment.com>',
+                                    title+' - '+company,
+                                    `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
+                                        To be release on: `+this.releasedate+` <br/><br/>
+                                      `+fullRelease+` <br/><br/>
+                                      For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`?inf=`+list[listnum]+`>Click Here<a>`
+                                     
+                                    ); 
                         
-                    Meteor.call(
-                        'sendEmail',
-                        name +"<"+emailaddress+">",
-                        'No Reply <noreply@vagueentertainment.com>',
-                        title+' - '+company,
-                         `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
-                         To be release on: `+this.releasedate+` <br/><br/>
-                            `+fullRelease+` <br/><br/>
-                        For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`>Click Here<a>`
-                         
-                        ); 
+                        }
                         
                         listnum = listnum + 1;
                         }
-                  }
+                    }
                         } break;
                         
                         case 0: {var listId = Posts.findOne({"docId":this.docId})._id;

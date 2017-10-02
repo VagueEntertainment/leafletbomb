@@ -184,12 +184,13 @@ avatar: function () {
                          //   Meteor.subscribe('images');
                          //   Meteor.subscribe('companyassets');
              
-                            var file = CompanyAssets.findOne({"companyId":masterUserId},{ "type":"companySPImg"}).filename;
+                            var file = CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename;
                         
-                                
-                         // return Images.findOne({_id:file}).url();
-                         
-                         return '<i class="fa fa-user-circle-o fa-5x">';
+                           if( CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename != undefined) {    
+                          return '<img height=96px width=auto src="'+Images.findOne({_id:file}).url()+'"> </img>';
+                         } else {
+                            return '<i class="fa fa-user-circle-o fa-5x">';
+                         }
                 }                            
         
 });
@@ -220,12 +221,13 @@ avatar: function () {
                          //   Meteor.subscribe('images');
                          //   Meteor.subscribe('companyassets');
              
-                            var file = CompanyAssets.findOne({"companyId":masterUserId},{ "type":"companySPImg"}).filename;
+                             var file = CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename;
                         
-                                
-                         // return Images.findOne({_id:file}).url();
-                         
-                         return '<i class="fa fa-user-circle-o fa-5x">';
+                           if( CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename != undefined) {    
+                          return '<img height=96px width=auto src="'+Images.findOne({_id:file}).url()+'"> </img>';
+                         } else {
+                            return '<i class="fa fa-user-circle-o fa-5x">';
+                         }
                 }                              
         
 });
@@ -515,7 +517,38 @@ Template.teamList.events ({
                                 $(theid).css('visibility', 'hidden');
                                 
                             
-                    },                       
+                    },
+                    
+                    'change .SPImgInput': function(event, template) {
+                            var files = event.target.files;
+    
+                            var theId = Meteor.userId();
+         
+                            for (var i = 0, ln = files.length; i < ln; i++) {
+                                  Images.insert(files[i], function (err, fileObj) {
+                               if (err) {
+          
+                                    } else {
+                                        var info = {
+                                              companyId:theId,
+                                                 type:"companySPImg",
+                                               filename:fileObj._id
+                                            };
+                                 console.log(info);
+            
+                             if(CompanyAssets.findOne({companyId:theId} && {type:"companySPImg"}) == undefined) {           
+                                    CompanyAssets.insert(info);
+                            } else {
+                                  var assId = CompanyAssets.findOne({companyId:theId} && {type:"companySPImg"})._id;
+                               CompanyAssets.update({"_id": assId},{$set: info});
+                    
+                             }
+                    }
+        
+            
+                     }); 
+                 }
+  }                     
 
 });
 
