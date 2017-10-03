@@ -57,7 +57,7 @@ releaselist: function(e) {
 Template.releaseItem.helpers({
 
     docid: function(e) {
-            return this.docid;
+            return this.docId;
         },
     title: function(e) {
         return this.title;
@@ -68,11 +68,37 @@ Template.releaseItem.helpers({
     
    }, 
    
-   totalseen:function(e) { return 0; },
+   showcounters:function(e) { if(this.docId) {
+                                return "visible";
+                                } else {
+                                return "hidden";
+                                }
+                            },    
    
-   totalcreated:function(e) { return 0; },
+   totalseen:function(e) { 
+                Meteor.subscribe('postengagement',this.docId);
+                var numberSeen = PostEngage.find({docId:this.docId} && {seen:1}).count();      
+   return numberSeen;
+   },
+   
+   totalcomments:function(e) { return 0; },
    
    totalshared:function(e) {return 0; },
         
+
+});
+
+Template.releaseItems.events({
+
+
+    'click .list_Item' : function(e) {
+                    
+                    var theid = e.target.id;
+                    
+                    console.log(theid);
+                    Router.go("/dashboard/"+this.userId+"/postCtrl/"+theid);
+                }
+
+
 
 });

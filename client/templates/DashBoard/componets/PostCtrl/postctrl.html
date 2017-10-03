@@ -1,0 +1,47 @@
+<template name="postCtrl">
+
+ <img src="/media/testlogo.png" width=auto height=100% style="opacity:0.05;z:-1;float:right"> 
+ 
+<div class="side_navbar" id="postCtrlSidebar" style="visibility:visible">
+            {{>postCtrlMenu}}
+            
+        </div>
+        
+        
+<div style="position:absolute;top:0px;left:12%;bottom:0px;right:30%;overflow:auto;" >
+
+   
+        {{#each posts}}
+        {{> postItem}}
+        {{/each}}
+ 
+   
+  
+   
+</div>   
+
+<div style="position:absolute;top:0px;bottom:0px;right:0px;width:30%;overflow:auto"> 
+
+<div class="dashBoard-AaG" style="width:100%;height:45%">
+<h3><i class="fa fa-address-card-o" aria-hidden="true"></i>
+ Email </h3>
+ 
+<div style="width:100%;height:2px;background:#000"> </div>
+<br/>
+<div style="overflow:auto;width:100%;height:100%"> 
+<table style="width:100%;max-height:90%;">
+
+    {{#each emailEngagment}}
+    {{> postSendItem}}
+    {{/each}}
+
+</table>
+</div>
+
+</div>
+
+
+{{>postQA }}
+</div>
+
+</template>

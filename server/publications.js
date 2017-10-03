@@ -63,4 +63,4 @@ Meteor.publish('postquestions',function(){return PostQuestions.find(); });
 
 Meteor.publish('postfaq',function(){return PostFAQ.find(); });
 
-Meteor.publish('postengagement',function(){return PostEngage.find(); });            
+Meteor.publish('postengagement',function(doc){return PostEngage.find({docId:doc}); });            

@@ -13,5 +13,24 @@ Template.postsList.helpers({
                         }
             } 
             });
+            
+Template.postsList.rendered=function() {
+
+       var influencer = "";
+       
+        if(Router.current().params.query.inf != undefined) {
+         influencer = Router.current().params.query.inf;
+         var influencername = Influencers.findOne({_id:influencer}).Name;
+         var id = PostEngage.findOne({docId:this.docId} && {influencerName:influencername})._id;
+            console.log("from stuff "+id);
+            var seen = {
+                        seen:1
+                        };
+                        
+            PostEngage.update({_id:id}, {$set:seen});
+        }
+
+
+}
            
             

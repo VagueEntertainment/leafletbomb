@@ -5,13 +5,7 @@ Template.postItem.helpers ( {
        a.href = this.url;
        return a.hostname;
        },
-       
-       influencer: function(e) {
-       
-       return Router.current().params.query.inf;
-       
-       },
-       
+              
        releasechanged: function() {
        var text = this.release;
         

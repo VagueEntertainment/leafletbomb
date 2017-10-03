@@ -1,7 +1,0 @@
-Template.previewPost.helpers ({
-
-
-
-
-
-});
