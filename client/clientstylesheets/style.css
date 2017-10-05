@@ -473,7 +473,7 @@ font-weight: 400;
  top:0px;
  bottom:0px;
  right:0px;
- width:60%;
+ width:40%;
  overflow:auto;
  visibility:hidden;
  
@@ -647,11 +647,14 @@ font-weight: 400;
         }
         .nav_info {
         float:right;
-        background:red;
+        background:#aaa;
         padding:2px;
         text-align:center;
-        border-radius: 20px;
-        width:30px;
+        border-radius: 50%;
+        border-width:1px;
+        border-style:solid;
+        border-color:#666;
+        width:24px;
         color:#fff;
         
         }
@@ -810,5 +813,9 @@ font-weight: 400;
    z-index: -1;
 }  
   
-
+#upload-avatar {
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+} 
                     

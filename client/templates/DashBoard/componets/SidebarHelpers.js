@@ -29,3 +29,20 @@ Template.dashboardMenu.helpers({
 
 
 });
+
+
+Template.dashboardMenu.events({
+
+
+    'click #releaseAdd': function() {
+    
+                            var id = Company.findOne().userId;
+                            Router.go('/dashboard/'+id+'/newPressRelease');
+                        }
+
+
+
+
+
+
+});

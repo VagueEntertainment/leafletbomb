@@ -6,7 +6,7 @@
  <table style="width:100%">
  <tr>
  <td style="width:90%"> <h2> Drafts: </h2></td>
- <td style="text-align:right"> <button style="width:60px; height:60px" type="button" onclick="Router.go('/dashboard/{{userId}}/newPressRelease')">+</button> </td>
+ <!-- <td style="text-align:right"> <button style="width:60px; height:60px" type="button" onclick="Router.go('/dashboard/{{userId}}/newPressRelease')">+</button> </td> -->
  </tr>
  </table>
  
@@ -14,9 +14,9 @@
         <div class="dashposts">
             {{#each dashposts}}
             {{> DraftItem}}
-            <div id="{{docId}}" class="prPreview">
+            <!-- <div id="{{docId}}" class="prPreview">
                     {{>DashpostItem}}
-                </div> 
+                </div>   -->
             {{/each}}
         </div>    
          

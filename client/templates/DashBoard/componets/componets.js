@@ -139,124 +139,6 @@ dashposts:function() {
 
 });
 
-Template.teamList.helpers ({
-
-userId:function() {
-                
-                return Meteor.users.findOne()._id;
-            },
-            
-//docId: function() {
-               //return this.docId;
-               //   },
-
-team: function() {
-                    var id= Meteor.users.findOne()._id;
-                return CompanyTeam.find();
-            }
-
-
-});
-
-
-Template.MasterAccount.helpers ({
-
-userId:function() {
-                return Meteor.users.findOne()._id;
-            },
-companyId:function() {
-                return Company.findOne().userId;
-            },            
-            
-userName: function() {
-                var masterUserId = Company.findOne().userId;
-                return Meteor.users.findOne({_id:masterUserId}).profile.name;
-                },
-                
-email: function() {
-                var masterUserId = Company.findOne().userId;
-                return Meteor.users.findOne({_id:masterUserId}).emails[0].address;
-                },
-                
-avatar: function () {
-                var masterUserId = Company.findOne().userId;
-             
-                         //   Meteor.subscribe('images');
-                         //   Meteor.subscribe('companyassets');
-             
-                            var file = CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename;
-                        
-                           if( CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename != undefined) {    
-                          return '<img height=96px width=auto src="'+Images.findOne({_id:file}).url()+'"> </img>';
-                         } else {
-                            return '<i class="fa fa-user-circle-o fa-5x">';
-                         }
-                }                            
-        
-});
-
-
-Template.maTemplate.helpers ({
-
-userId:function() {
-                return Meteor.users.findOne()._id;
-            },
-companyId:function() {
-                return Company.findOne().userId;
-            },            
-            
-userName: function() {
-                var masterUserId = Company.findOne().userId;
-                return Meteor.users.findOne({_id:masterUserId}).profile.name;
-                },
-                
-email: function() {
-                var masterUserId = Company.findOne().userId;
-                return Meteor.users.findOne({_id:masterUserId}).emails[0].address;
-                },
-                
-avatar: function () {
-                var masterUserId = Company.findOne().userId;
-             
-                         //   Meteor.subscribe('images');
-                         //   Meteor.subscribe('companyassets');
-             
-                             var file = CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename;
-                        
-                           if( CompanyAssets.findOne({"companyId":masterUserId} && { "type":"companySPImg"}).filename != undefined) {    
-                          return '<img height=96px width=auto src="'+Images.findOne({_id:file}).url()+'"> </img>';
-                         } else {
-                            return '<i class="fa fa-user-circle-o fa-5x">';
-                         }
-                }                              
-        
-});
-
-
-
-Template.TeamItem.helpers ({
-
-avatar: function(e) {
-            
-            if(CompanyTeam.findOne({_id:this._id}).avatar == "") {
-            
-            return '<i class="fa fa-user-circle-o fa-5x"  aria-hidden="true"></i>';
-            
-            } else {
-             return '<img src="{{avatar}}"  height="64" width="auto" alt="" style="margin-top:35%">';
-            }
-
-        },
- userid: function(e) {
-            return CompanyTeam.findOne({name:this.name})._id;
- 
- }
-
-
-});
-
-
-
 Template.distributionList.helpers ({
 
 distributionlists:function() {
@@ -326,14 +208,17 @@ userid: function() {return this._id;}
 Template.draftsList.events ({
 
     'click .list_Item': function(e) {
-                        var theid = "#"+$(e.target).find('[name=docid]').val();
-                        if($(theid).css('visibility') == 'visible') {
+                        var theid = '#'+this.docId;
+                      /*  if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
                                $(theid).css("animation-name" , "slideOutAnim");
                                 } else {
                         $(theid).css('visibility', 'visible');
                        $(theid).css("animation-name" , "slideInAnim");
-                                    }
+                                    } */
+                                    
+                         Router.go("/dashboard/"+this.userId+"/postCtrl/"+this.docId);
+                                    
                        
                     }
                     
@@ -344,7 +229,7 @@ Template.draftsList.events ({
 Template.scheduledList.events ({
 
     'click .list_Item': function(e) {
-                        var theid = "#"+$(e.target).find('[name=docid]').val();
+                        var theid = '#'+this.docId;
                         if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
                                 $(theid).css("animation-name" , "slideOutAnim");
@@ -352,6 +237,7 @@ Template.scheduledList.events ({
                         $(theid).css('visibility', 'visible');
                          $(theid).css("animation-name" , "slideInAnim");
                                     }
+                                   
                        
                     }
                     
@@ -362,195 +248,22 @@ Template.scheduledList.events ({
 Template.publishedList.events ({
 
     'click .list_Item': function(e) {
-                        var theid = "#"+$(e.target).find('[name=docid]').val();
+                        var theid = '#'+this.docId;
                         if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
                                 $(theid).css("animation-name" , "slideOutAnim");
                                 } else {
-                        $(theid).css('visibility', 'visible');
-                         $(theid).css("animation-name" , "slideInAnim");
+                                      $(theid).css('visibility', 'visible');
+                                      $(theid).css("animation-name" , "slideInAnim");
                                     }
+                                    
                        
                     }
                     
 
 });
 
-Template.TeamItem.events ({
 
-    'click .list_Item': function(e) {
-                        var theid = "#"+$(e.target).find('[name=userid]').val();
-                        if($(theid).css('visibility') == 'visible') {
-                                $(theid).css('visibility', 'hidden');
-                               $(theid).css("animation-name" , "slideOutAnim");
-                                } else {
-                        $(theid).css('visibility', 'visible');
-                       $(theid).css("animation-name" , "slideInAnim");
-                                    }
-                       
-                    },
-                    
-      'click #delete': function(e) {
-                        var theid = "#"+$(e.target).find('[name=userid]').val();
-                        if($(theid).css('visibility') == 'visible') {
-                                $(theid).css('visibility', 'hidden');
-                               $(theid).css("animation-name" , "slideOutAnim");
-                                } else {
-                        $(theid).css('visibility', 'visible');
-                       $(theid).css("animation-name" , "slideInAnim");
-                                    }
-                                    CompanyTeam.remove({"_id":this._id});
-                       
-                    }              
-                    
-
-});
-
-Template.MasterAccount.events ({
-
-        'click .list_Item': function(e) {
-                        var theid = "#"+Company.findOne().userId;
-                            
-                        if($(theid).css('visibility') == 'visible') {
-                                $(theid).css('visibility', 'hidden');
-                               $(theid).css("animation-name" , "slideOutAnim");
-                                } else {
-                        $(theid).css('visibility', 'visible');
-                       $(theid).css("animation-name" , "slideInAnim");
-                                    }
-                       
-                    },
-                    
-                    
-        
-                    
-
-});
-
-
-Template.teamList.events ({
-
-     'submit #teamform' : function(e) {
-                                     e.preventDefault();
-                                var theId =  Meteor.users.findOne()._id;
-                                var theid = "#"+this._id;
-                            
-                                var info = {
-                                    companyId:Company.findOne()._id,
-                                    name:$(e.target).find('[name=name]').val(),
-                                    email:$(e.target).find('[name=email]').val(),
-                                    url:$(e.target).find('[name=url]').val(),
-                                    phone:$(e.target).find('[name=phone]').val(),
-                                    about:$(e.target).find('[name=about]').val(),
-                                    avatar:""  
-                                };
-                                
-                            
-                           if(CompanyTeam.find({"name":$(e.target).find('[name=name]').val()}).count() == 0) {
-                                    
-                                CompanyTeam.insert(info); 
-                        
-                              } else {
-                                    
-                                   var listId = $(theid).find('[name=userid]').val();
-                                         CompanyTeam.update({"_id": listId},{$set: info}); 
-                              }
-                              //  var theid = "#"+$(e.target).find('[name=userid]').val();
-                                
-                            $("#teamaddwindow").css('visibility', 'hidden');
-                            $(theid).css('visibility', 'hidden');
-                            
-                                    },
-                                    
-                                    
-            'click #teamcancel' : function(e) {
-                                var theid = "#"+this._id;
-                                $("#teamaddwindow").css('visibility', 'hidden');
-                                $(theid).css('visibility', 'hidden');
-                                
-                            
-                    },
-                    
-                     'click #teamadd' : function(e) {
-                                $("#teamaddwindow").css('visibility', 'visible');
-                            
-                    } ,
-                    
-                    
-                    
-             'submit #maform' : function(e) {
-                                     e.preventDefault();
-                                var theId =  Meteor.users.findOne()._id;
-                                var theid = "#"+this._id;
-                            
-                                var info = {
-                                    companyId:Company.findOne()._id,
-                                    name:$(e.target).find('[name=name]').val(),
-                                    email:$(e.target).find('[name=email]').val(),
-                                    url:$(e.target).find('[name=url]').val(),
-                                    phone:$(e.target).find('[name=phone]').val(),
-                                    about:$(e.target).find('[name=about]').val(),
-                                    avatar:""  
-                                };
-                                
-                            
-                           if(CompanyTeam.find({"name":$(e.target).find('[name=name]').val()}).count() == 0) {
-                                    
-                                CompanyTeam.insert(info); 
-                        
-                              } else {
-                                    
-                                   var listId = $(theid).find('[name=userid]').val();
-                                         CompanyTeam.update({"_id": listId},{$set: info}); 
-                              }
-                              //  var theid = "#"+$(e.target).find('[name=userid]').val();
-                                
-                            $("#teamaddwindow").css('visibility', 'hidden');
-                            $(theid).css('visibility', 'hidden');
-                            
-                                    },       
-                   
-                    
-                    'click #macancel' : function(e) {
-                                 var theid = "#"+Company.findOne().userId;
-                                
-                                $(theid).css('visibility', 'hidden');
-                                
-                            
-                    },
-                    
-                    'change .SPImgInput': function(event, template) {
-                            var files = event.target.files;
-    
-                            var theId = Meteor.userId();
-         
-                            for (var i = 0, ln = files.length; i < ln; i++) {
-                                  Images.insert(files[i], function (err, fileObj) {
-                               if (err) {
-          
-                                    } else {
-                                        var info = {
-                                              companyId:theId,
-                                                 type:"companySPImg",
-                                               filename:fileObj._id
-                                            };
-                                 console.log(info);
-            
-                             if(CompanyAssets.findOne({companyId:theId} && {type:"companySPImg"}) == undefined) {           
-                                    CompanyAssets.insert(info);
-                            } else {
-                                  var assId = CompanyAssets.findOne({companyId:theId} && {type:"companySPImg"})._id;
-                               CompanyAssets.update({"_id": assId},{$set: info});
-                    
-                             }
-                    }
-        
-            
-                     }); 
-                 }
-  }                     
-
-});
 
 Template.influencerItem.events ({
 

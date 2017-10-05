@@ -69,32 +69,33 @@
 
 
 <div style="position:absolute;width:20%;text-align:right;bottom:6px;right:0px" >
-<button style="float:left" type="button" onclick="Router.go('/dashboard/{{userId}}')">Cancel</button> 
-<input style="float:right" type="submit" value="Submit">
+    <button style="float:left" type="button" onclick="Router.go('/dashboard/{{userId}}')">Cancel</button> 
+    <input style="float:right" type="submit" value="Submit">
 
-<input name="docId" type="hidden" value="{{documentId}}">
+    <input name="docId" type="hidden" value="{{documentId}}">
 </div>
 
+<div id="calenderpicker" style="padding:20px;text-align:center;border-width:1px;border-style:solid;background:#fff;position:absolute;visibility:hidden;top:30%;bottom:30%;left:30%;right:30%"> 
+        <img src="/media/testlogo.png" width=auto height=100% style="opacity:0.05;float:right">   
+        
+        <div style="position:absolute;top:10px;bottom:0px;right:0px;left:0px;">
+                <h2><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Release On</h2>  
+         <br/>
+        Release on:<input style="width:79%" id= "releasedatepicker" type="text" name="releasedate" placeholder="mm/dd/yyyy" value="{{releasedate}}"> 
+        <br/>
+        <br/>
+        Archive on:<input style="width:79%" id= "archivedatepicker" type="text" name="archivedate" placeholder="mm/dd/yyyy" value="{{archivedate}}"> 
 
+        <div style="position:absolute;width:20%;bottom:6px;right:6px" >
+            <button id="setCalender" style="float:right" type="button" name="calenderSet">Set</button> 
+            </div>
+        </div>
+</div>
 
 
 </form>
 
 </div>
-<div id="calenderpicker" style="padding:20px;text-align:center;border-width:1px;border-style:solid;background:#fff;position:absolute;visibility:hidden;top:30%;bottom:30%;left:30%;right:30%"> 
-<img src="/media/testlogo.png" width=auto height=100% style="opacity:0.05;float:right">   
-<div style="position:absolute;top:10px;bottom:0px;right:0px;left:0px;">
- <h2><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Release On</h2>  
- <br/>
-  Release on:
- <input style="width:79%" id= "releasedatepicker" type="text" name="releasedate" placeholder="mm/dd/yyyy" value="{{releasedate}}"> 
-<br/><br/>Archive on:
-<input style="width:79%" id= "archivedatepicker" type="text" name="archivedate" placeholder="mm/dd/yyyy" value="{{archivedate}}"> 
-<div style="position:absolute;width:20%;bottom:6px;right:6px" >
-<button style="float:right" type="button" name="calenderSet">Set</button> 
-</div>
-</div>
-            
- 
- </div>
+
+
 </template>

@@ -112,7 +112,7 @@ Template.postItem.helpers ( {
         },
         companySP:function() {
         
-        return Company.findOne({userId:this.userId}).companySP;
+        return CompanyTeam.findOne({userId:this.userId}).Name;
         },
         companySPImg:function() {
                          Meteor.subscribe('postassets');

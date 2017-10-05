@@ -315,10 +315,10 @@ Template.newPressRelease.helpers ({
 Template.newPressRelease.events ({
 
 'click #calender': function(e) {
-                    $("#calenderpicker").css('visibility','visible');
+                   $("#calenderpicker").css('visibility','visible');
                 },
                 
-'click #calenderpicker': function(e) {
+'click #setCalender': function(e) {
                     $("#calenderpicker").css('visibility','hidden');
                 },
 
@@ -340,6 +340,32 @@ Template.newPressRelease.events ({
     
                                
    if(Router.current().params.query.edit === undefined) {
+   
+    
+               var theDate = function() { 
+                                var d = new Date();
+                                var theday = "";
+                                var themonth = "";
+                        
+                                    if(d.getDate() < 10) {
+                                        theday = "0"+d.getDate();
+                                      } else {
+                                        theday = d.getDate();
+                                      }
+                            
+                                    if((d.getMonth() + 1) < 10) {
+                                        themonth = "0"+(d.getMonth() + 1);
+                                     } else {
+                                        themonth = (d.getMonth() + 1);
+                                     }
+                            
+                                return themonth+'/'+theday+'/'+(d.getFullYear()); 
+                               };     
+   
+    if($(e.target).find('[name=releasedate]').val() == theDate) {
+    
+        console.log("Dates match");
+    }
    
    var Info = {
         userId:theId,
@@ -385,23 +411,29 @@ Template.newPressRelease.events ({
         status:this.status
     };
     
+    Posts.update({"_id": listId},{$set: Info});  
+    
     var schedule = "";
     
-    var scheduleId = PostDistribution.findOne({"docId":Router.current().params.query.edit})._id;
-    if(scheduleId != undefined) {
-     schedule = {
+    if(PostDistribution.findOne() != undefined) {
     
-                //docId:docs,
-                releasedate:$(e.target).find('[name=releasedate]').val(),
-                archivedate:$(e.target).find('[name=archivedate]').val(),
-                list:thelist
+        var scheduleId = PostDistribution.findOne({"docId":Router.current().params.query.edit})._id;
+        
+        if(scheduleId != undefined) {
+             schedule = {
+    
+                    //docId:docs,
+                 releasedate:$(e.target).find('[name=releasedate]').val(),
+                 archivedate:$(e.target).find('[name=archivedate]').val(),
+                 list:thelist
     
     
-    };
-    PostDistribution.update({"_id": scheduleId},{$set: schedule});
-    } else {
+             };
+            PostDistribution.update({"_id": scheduleId},{$set: schedule});
+            
+        } else {
     
-    schedule = {
+            schedule = {
     
                 docId:docs,
                 releasedate:$(e.target).find('[name=releasedate]').val(),
@@ -409,19 +441,38 @@ Template.newPressRelease.events ({
                 list:thelist
     
     
-    };
+                };
     
-    PostDistribution.insert(schedule);
-    }
+            PostDistribution.insert(schedule);
+             }
+        } else {
+        
+        
+             schedule = {
+    
+                docId:docs,
+                releasedate:$(e.target).find('[name=releasedate]').val(),
+                archivedate:$(e.target).find('[name=archivedate]').val(),
+                list:thelist
     
     
-    Posts.update({"_id": listId},{$set: Info});  
+                };
+    
+            PostDistribution.insert(schedule);
+        
+        
+        }
+    
+    
     
   
     
     }
+    //var newrelease = Posts.findOne({"docId":Router.current().params.query.edit})._id;
     
-    Router.go("/dashboard/"+theId);
+   // Router.go('/dashboard/'+Company.findOne().userId+'/newPressRelease/?edit='+docs);
+    
+  //  Router.go("/dashboard/"+theId);
     
 
 },

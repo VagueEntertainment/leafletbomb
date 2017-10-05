@@ -1,46 +1,3 @@
-<template name="TeamItem">
-
-<div class="list_Item"> 
-<table style="height:100%"> 
-<tr style="border-radius:10px;pointer-events: none;">
-<td> {{{avatar}}} </td>
-
-<td> <H3>{{name}}</H3>
-{{email}} </td>
-
-<td><input name="userid" type="hidden" value="{{userid}}"></td>
-</tr></table>
-
-</div>
-
-<div id="{{userid}}" class="prPreview">
-                    {{>teamTemplate }}
-                </div> 
-
-</template>
-
-
-<template name="MasterAccount">
-
-<div class="list_Item"> 
-<table style="height:100%"> 
-<tr style="border-radius:10px;pointer-events: none;">
-<td> {{{avatar}}} </td>
-<!-- <img src="{{avatar}}"  height="64" width="auto" alt="" style="margin-top:35%"> -->
-<td> <H3>{{userName}}</H3>
-{{email}} </td>
-
-<td><input name="userid" type="hidden" value="{{userId}}"></td>
-</tr></table>
-<i style="float:right;"> Master Account </i>
-</div>
-
-<div id="{{companyId}}" class="prPreview">
-                    {{>maTemplate }}
-                </div> 
-
-</template>
-
 
 <template name="PublishedItem">
 
@@ -51,7 +8,6 @@
 </div>
 
 </template>
-
 
 
 <template name="DraftItem">

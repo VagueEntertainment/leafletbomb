@@ -1,16 +1,37 @@
 <template name="postCtrlMenu">
-
-            <h4>{{companyName}}</h4>
-            
-            <div class="nav_buttons"><a class="nav_button" id="DashBoard"><div> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Information</div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="teamListItem"><div> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Team<span class="nav_info" style="visibility:hidden"> {{teamCounter}} </span></div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="DistrobutionListItem"> <div> <i class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Distribution</div> 
-            </a></div> 
-            <div class="nav_buttons"><a class="nav_button" id="SettingListItem"> <div> <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Settings</div> 
-            </a></div> 
+ <h3>{{companyName}}</h3>
             <br/>
-
-
+            <div style="width:100%;height:2px;background:#000"> </div>
+            
+            <h4> Status <i style="margin-right:5px;float:right">{{currentstatus}}</i> </h4>
+            
+            <div style="width:100%;height:2px;background:#000"> </div>
+            <br/>
+            
+            <div class="nav_buttons"><a class="nav_button" id="scheduleIt"><div>Schedule</div></a></div>
+            <div class="nav_buttons"><a class="nav_button" id="publishIt"><div>Publish Now</div></a></div>
+            
+            <br/>
+            <br/>
+            
+            <h4> Controls </h4>
+            
+            <div style="width:100%;height:2px;background:#000"> </div>
+            
+             <div class="nav_buttons"><a class="nav_button" id="editRelease"><div> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit</div></a></div>
+             <div class="nav_buttons"><a class="nav_button" id="removeRelease"><div> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Remove </div></a></div>
+             
+             <br/>
+            <br/>
+            
+            <h4> Schedule </h4>
+            
+            <div style="width:100%;height:2px;background:#000"> </div>
+            
+            <div class="nav_buttons"><a class="nav_button" id="DashBoard"><div> <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;Release On: {{releasedate}}</div></a></div>
+            <div class="nav_buttons"><a class="nav_button" id="DashBoard"><div> <i class="fa fa-calendar-times-o" aria-hidden="true"></i>&nbsp;Archive On: {{archivedate}} </div></a></div>
+            
+            
 
 
  <button id="backbutton" style="position:absolute;left:1%;right:1%;bottom:10px;width:98%;height:5%" type="button" >Back</button> 
