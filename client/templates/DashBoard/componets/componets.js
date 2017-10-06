@@ -230,15 +230,15 @@ Template.scheduledList.events ({
 
     'click .list_Item': function(e) {
                         var theid = '#'+this.docId;
-                        if($(theid).css('visibility') == 'visible') {
+                       /* if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
                                 $(theid).css("animation-name" , "slideOutAnim");
                                 } else {
                         $(theid).css('visibility', 'visible');
                          $(theid).css("animation-name" , "slideInAnim");
-                                    }
+                                    } */
                                    
-                       
+                       Router.go("/dashboard/"+this.userId+"/postCtrl/"+this.docId);
                     }
                     
 
@@ -249,15 +249,15 @@ Template.publishedList.events ({
 
     'click .list_Item': function(e) {
                         var theid = '#'+this.docId;
-                        if($(theid).css('visibility') == 'visible') {
+                       /* if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
                                 $(theid).css("animation-name" , "slideOutAnim");
                                 } else {
                                       $(theid).css('visibility', 'visible');
                                       $(theid).css("animation-name" , "slideInAnim");
-                                    }
+                                    } */
                                     
-                       
+                       Router.go("/dashboard/"+this.userId+"/postCtrl/"+this.docId);
                     }
                     
 

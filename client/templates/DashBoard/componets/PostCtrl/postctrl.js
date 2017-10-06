@@ -105,15 +105,92 @@ Template.postCtrl.events ({
                         },
                         
                         
-    'click #editRelease': function() {
-                           var doc = Router.current().params.docId;
+                 
+                        
+                        
+    'click #ScheduleOptsCancel' : function() {
     
-                            Router.go('/dashboard/'+Company.findOne().userId+'/newPressRelease/?edit='+doc);
-                        }                    
+                            $('#scheduleopts').css('visibility', 'hidden');
+                        }, 
+                        
+     'click #PublishOptsCancel' : function() {
+    
+                            $('#publishopts').css('visibility', 'hidden');
+                        } ,
+                        
+      'click  #PublishOptsPublish' : function(e) {
+                                    var doc = Router.current().params.docId;
+      
+                                    var docid = Posts.findOne({docId:doc})._id;
+                                    
+                                    console.log(docid);
+                                    var statusupdate = {
+                                                            status:2
+                                                            
+                                                       };
+                                    
+                                    Posts.update({"_id": docid},{$set:statusupdate });
+                                    
+                                    $('#publishopts').css('visibility', 'hidden');
+      
+                        },
+                        
+                        
+      'click #ScheduleOptsPublish' : function(e) {
+                                    var doc = Router.current().params.docId;
+                                    
+                                    var docid = Posts.findOne({docId:doc})._id;
+                                    
+                                    var statusupdate = {
+                                                            status:1
+                                                            
+                                                       };
+                                    
+                                    Posts.update({"_id": docid},{$set:statusupdate});
+                                    
+                                    $('#scheduleopts').css('visibility', 'hidden');
+      
+                        },                                                                                 
 
 
 
 });
 
+Template.postCtrlMenu.events ({
+
+    'click #scheduleIt' : function() {
+                            
+                            $('#scheduleopts').css('visibility', 'visible');
+                        }, 
+                        
+     'click #publishIt' : function() {
+                            
+                            $('#publishopts').css('visibility', 'visible');
+                        },
+                        
+     'click #editRelease': function() {
+                           var doc = Router.current().params.docId;
+    
+                            Router.go('/dashboard/'+Company.findOne().userId+'/newPressRelease/?edit='+doc);
+                        },  
+                        
+     'click #removeRelease' : function() {
+                                var doc = Router.current().params.docId;
+                                    
+                                    var docid = Posts.findOne({docId:doc})._id;
+                                    
+                                    var statusupdate = {
+                                                            status:4
+                                                            
+                                                       };
+                                    
+                                    Posts.update({"_id": docid},{$set:statusupdate});
+     
+                        },                                               
+
+
+
+
+});
 
 
