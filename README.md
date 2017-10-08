@@ -6,5 +6,10 @@ Linux:
   Install Meteor
     curl https://install.meteor.com/ | sh
 
-install npm if meteor install didn't do it for you.
+Install npm if meteor install didn't do it for you.
     sudo apt install npm
+
+Run leaflet bomb by running these commands.
+ cd leafletbomb 
+ meteor 
+
