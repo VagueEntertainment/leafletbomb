@@ -10,3 +10,5 @@ Meteor.methods({
     Email.send({ to, from, subject, html });
   }
 });
+
+

@@ -88,7 +88,7 @@ Template.marketerSettings.events ({
    $("#DashboardSidebar").css("visibility", "visible");
    $("#SettingsSidebar").css("visibility", "hidden");
    $("#dashboard_CompanyConfig").css("animation-name" , "slideOutAnim"); 
-
+   
 },
 
 'change .LogoInput': function(event, template) {
