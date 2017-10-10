@@ -14,7 +14,7 @@ height:function(e) {
 },
 
 releaselist: function(e) {
-            var id= Meteor.users.findOne()._id;
+            var id= Company.findOne()._id;
              var postlist = [];
                 if(Posts.findOne({userId: id,status:2 }) == undefined) {
                    postlist = [{title:'No Published Releases ',tagline:'0 found'}];
@@ -26,7 +26,7 @@ releaselist: function(e) {
             
  },
  draftlist: function(e) {
-            var id= Meteor.users.findOne()._id;
+            var id= Company.findOne()._id;
             var postlist= [];
                 if(Posts.findOne({userId: id,status:0 }) == undefined) {
                    postlist = [{title:'No Drafts ',tagline:'0 found'}];
@@ -38,7 +38,7 @@ releaselist: function(e) {
             
  },
  scheduledlist: function(e) {
-            var id= Meteor.users.findOne()._id;
+            var id= Company.findOne()._id;
             var postlist = [];
                 if(Posts.findOne({userId: id,status:1 }) == undefined) {
                    postlist = [{title:'No Scheduled Releases  ',tagline:'0 found'}];

@@ -2,11 +2,11 @@ Template.marketerSettings.helpers ({
 
   userId: function() {return Meteor.users.findOne()._id;},
   companyLogo:function() { 
-                          var file = CompanyAssets.findOne({"companyId":Meteor.userId(), "type":"companyLogo"}).filename;
+                          var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}).filename;
                           return Images.findOne({_id:file}).url();
    },
   companyLogoSmall:function(){
-                            var file = CompanyAssets.findOne({"companyId":Meteor.userId() , "type":"companyLogoSmall"}).filename;
+                            var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogoSmall"}).filename;
                           return Images.findOne({_id:file}).url();
     
    },
@@ -94,7 +94,7 @@ Template.marketerSettings.events ({
 'change .LogoInput': function(event, template) {
     var files = event.target.files;
     
-    var theId = Meteor.userId();
+     var theId = Company.findOne()._id;
     
    
      
@@ -109,7 +109,7 @@ Template.marketerSettings.events ({
                    filename:fileObj._id
             };
             
-            console.log(info);
+           // console.log(info);
             
             if(CompanyAssets.findOne({companyId:theId} && {type:"companyLogo"}) == undefined) {           
                     CompanyAssets.insert(info);
@@ -127,7 +127,7 @@ Template.marketerSettings.events ({
 'change .LogoSmallInput': function(event, template) {
     var files = event.target.files;
     
-    var theId = Meteor.userId();
+    var theId = Company.findOne()._id;
     
     
      

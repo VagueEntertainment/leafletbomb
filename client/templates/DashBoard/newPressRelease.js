@@ -337,6 +337,8 @@ Template.newPressRelease.events ({
                                thelist.push ($(e.target).find('[name="'+stuff.listname+'"]').val() );
                                                                                 }
                                                                            } );
+                                                                           
+                  console.log(thelist);                                                         
     
                                
    if(Router.current().params.query.edit === undefined) {
@@ -368,7 +370,7 @@ Template.newPressRelease.events ({
     }
    
    var Info = {
-        userId:theId,
+        userId:Company.findOne()._id,
         title:$(e.target).find('[name=title]').val(),
         tagline:$(e.target).find('[name=tagline]').val(),
         creationdate:(d.getMonth()+1)+"-"+d.getDate()+"-"+d.getFullYear(),
@@ -378,7 +380,8 @@ Template.newPressRelease.events ({
         tags:$(e.target).find('[name=keywords]').val(),
         assets:$(e.target).find('[name=file]').val(),
         docId:docs,
-        status:0
+        status:0,
+        authorId:Meteor.users.findOne()._id
     }; 
     Posts.insert(Info);
     
@@ -399,7 +402,7 @@ Template.newPressRelease.events ({
     var listId = Posts.findOne({"docId":Router.current().params.query.edit})._id;
     
     var Info = {
-        userId:theId,
+        userId:Company.findOne()._id,
         title:$(e.target).find('[name=title]').val(),
         tagline:$(e.target).find('[name=tagline]').val(),
         creationdate:(d.getMonth()+1)+"-"+d.getDate()+"-"+d.getFullYear(),
@@ -408,7 +411,9 @@ Template.newPressRelease.events ({
         release:$(e.target).find('[name=release]').val(),
         tags:$(e.target).find('[name=keywords]').val(),
         assets:$(e.target).find('[name=file]').val(),
-        status:this.status
+        status:this.status,
+        authorId:Meteor.users.findOne()._id
+        
     };
     
     Posts.update({"_id": listId},{$set: Info});  
@@ -418,6 +423,7 @@ Template.newPressRelease.events ({
     if(PostDistribution.findOne() != undefined) {
     
         var scheduleId = PostDistribution.findOne({"docId":Router.current().params.query.edit})._id;
+         console.log(scheduleId);
         
         if(scheduleId != undefined) {
              schedule = {
@@ -429,6 +435,7 @@ Template.newPressRelease.events ({
     
     
              };
+             console.log(schedule);
             PostDistribution.update({"_id": scheduleId},{$set: schedule});
             
         } else {
@@ -450,7 +457,7 @@ Template.newPressRelease.events ({
         
              schedule = {
     
-                docId:docs,
+                //docId:docs,
                 releasedate:$(e.target).find('[name=releasedate]').val(),
                 archivedate:$(e.target).find('[name=archivedate]').val(),
                 list:thelist

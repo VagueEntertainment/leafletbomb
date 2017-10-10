@@ -38,6 +38,7 @@ Template.DashpostItem.helpers ( {
                                   return this.docId;},
      companyName: function() {
        Meteor.subscribe('companies',this.userId);
+       
         return Company.findOne({userId:this.userId}).companyName;
         },
        companyAddress: function() {

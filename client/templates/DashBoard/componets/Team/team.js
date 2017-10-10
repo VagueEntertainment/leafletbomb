@@ -45,7 +45,7 @@ email: function() {
                 },
                 
 avatar: function () {
-                var masterUserId = Company.findOne().userId;
+                var masterUserId = Company.findOne().id;
                 var file = ""
                          //   Meteor.subscribe('images');
                          //   Meteor.subscribe('companyassets');
@@ -323,7 +323,7 @@ Template.teamList.events ({
                     'change .SPImgInput': function(event, template) {
                             var files = event.target.files;
     
-                            var theId = Meteor.userId();
+                            var theId = Company.findOne()._id;
          
                             for (var i = 0, ln = files.length; i < ln; i++) {
                                   Images.insert(files[i], function (err, fileObj) {

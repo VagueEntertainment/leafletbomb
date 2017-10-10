@@ -76,14 +76,14 @@ Template.postItem.helpers ( {
        /* This needs to be done in one or two lines. But I'm using a hammer today. Tommorow
             I'll use a scalpel */
      companyName: function() {
-       Meteor.subscribe('companies',this.userId);
+       Meteor.subscribe('companies',"all");
        Meteor.subscribe('postassets');
                 Meteor.subscribe('images');
-        return Company.findOne({userId:this.userId}).companyName;
+        return Company.findOne({_id:this.userId}).companyName;
         },
        companyAddress: function() {
         
-        return Company.findOne({userId:this.userId}).companyAddress;
+        return Company.findOne({_id:this.userId}).companyAddress;
         },
          companyLogo:function() { 
                           var file = CompanyAssets.findOne({"companyId":this.userId , "type":"companyLogo"}).filename;
@@ -96,23 +96,25 @@ Template.postItem.helpers ( {
         
         companyCity:function() {
         
-        return Company.findOne({userId:this.userId}).companyCity;
+        return Company.findOne({_id:this.userId}).companyCity;
         },
         companyState:function() {
         
-        return Company.findOne({userId:this.userId}).companyState;
+        return Company.findOne({_id:this.userId}).companyState;
         },
         companyCountry:function() {
         
-        return Company.findOne({userId:this.userId}).companyCountry;
+        return Company.findOne({_id:this.userId}).companyCountry;
         },
         companyPhone:function() {
         
-        return Company.findOne({userId:this.userId}).companyPhone;
+        return Company.findOne({_id:this.userId}).companyPhone;
         },
         companySP:function() {
         
-        return CompanyTeam.findOne({userId:this.userId}).Name;
+        Meteor.subscribe('prteam');
+            
+        return CompanyTeam.findOne({userId:this.authorId}).name;
         },
         companySPImg:function() {
                          Meteor.subscribe('postassets');
@@ -126,23 +128,23 @@ Template.postItem.helpers ( {
         },
         about:function() {
         
-        return Company.findOne({userId:this.userId}).about;
+        return Company.findOne({_id:this.userId}).about;
         },
         url:function() {
         
-        return Company.findOne({userId:this.userId}).url;
+        return Company.findOne({_id:this.userId}).url;
         },
         email:function() {
         
-        return Company.findOne({userId:this.userId}).email;
+        return Company.findOne({_id:this.userId}).email;
         },
         twitter:function() {
         
-        return Company.findOne({userId:this.userId}).twitter;
+        return Company.findOne({_id:this.userId}).twitter;
         },
         facebook:function() {
         
-        return Company.findOne({userId:this.userId}).facebook;
+        return Company.findOne({_id:this.userId}).facebook;
         },
         /* End of ugly code */
         

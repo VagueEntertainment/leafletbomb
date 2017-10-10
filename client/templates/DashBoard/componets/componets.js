@@ -94,7 +94,7 @@ docId: function() {
 
 
 dashposts:function() {
-                    var id= Meteor.users.findOne()._id;
+                    var id= Company.findOne()._id;
                 return Posts.find({userId: id, status:2 }, {sort:{releasedate: -1}});
             }
 
@@ -114,7 +114,7 @@ docId: function() {
 
 
 dashposts:function() {
-                    var id= Meteor.users.findOne()._id;
+                    var id= Company.findOne()._id;
                 return Posts.find({userId: id, status:1 }, {sort:{releasedate: -1}});
             }
 
@@ -131,7 +131,7 @@ docId: function() {
                   },
 
 dashposts:function() {
-                    var id= Meteor.users.findOne()._id;
+                    var id= Company.findOne()._id;
                 return Posts.find({userId: id, status:0 }, {sort:{releasedate: -1}});
             }
 
