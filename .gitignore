@@ -1,0 +1,4 @@
+settings.conf
+node_modules
+media/*
+package-lock.json
