@@ -116,6 +116,10 @@ Template.postItem.helpers ( {
             
         return CompanyTeam.findOne({userId:this.authorId}).name;
         },
+        companySPPhone:function() {
+        
+        return CompanyTeam.findOne({userId:this.authorId}).phone;
+        },
         companySPImg:function() {
                          Meteor.subscribe('postassets');
                             Meteor.subscribe('images');

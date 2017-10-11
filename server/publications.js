@@ -39,6 +39,8 @@ Meteor.publish('companies', function(user) {
                                         }
                                         }); 
                                         
+                                        
+Meteor.publish('settings', function() {return Settings.find();});                                        
                               
                                         
 
