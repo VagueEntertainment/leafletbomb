@@ -30,7 +30,7 @@ cfs:standard-packages
 cfs:gridfs
 cfs:filesystem
 cohars:dropzonejs
-email@1.2.3
+email
 percolate:synced-cron
 fortawesome:fontawesome
 akasha:markdown-editor
