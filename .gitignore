@@ -1,5 +1,6 @@
 settings.conf
 node_modules
+node_modules/*
 media/*
 package-lock.json
 .vscode
