@@ -46,7 +46,7 @@ Meteor.publish('prteam', function(user) {
                                   return CompanyTeam.find();
                                         }); 
 Meteor.publish('distrolist', function(user) {
-                                  return DistributionLists.find({userId: user});
+                                  return DistributionLists.find();
                                         });                                                                                
                                         
 Meteor.publish("images", function(){return Images.find();});

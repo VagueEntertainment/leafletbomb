@@ -133,7 +133,8 @@ Template.postCtrl.events ({
                                     
                                     $('#publishopts').css('visibility', 'hidden');
                                     
-                                    sendthemall(doc);
+                                     sendthemall(doc);        
+                                 
       
                         },
                         
@@ -196,13 +197,7 @@ Template.postCtrlMenu.events ({
 });
 
 function sendthemall(docId) {
-            Meteor.subscribe('postengagement', docId);
-            Meteor.subscribe('postdistribution');
-            Meteor.subscribe('distrolist', Meteor.userId());
-            
-            
-            console.log(PostDistribution.findOne({docId:docId}).list.length);
-           
+       
 
  for(var PDnum = 0;PDnum < PostDistribution.findOne({docId:docId}).list.length;PDnum = PDnum+1) {
                          var listnum = 0;  
@@ -211,12 +206,13 @@ function sendthemall(docId) {
                             if( PostDistribution.findOne({docId:docId}) != undefined) {
                                  listId = PostDistribution.findOne({docId:docId}).list[PDnum]; 
                                  
-                                 console.log(" Post Distro "+listId);   
+                                
                          }
+                                console.log(DistributionLists.findOne());
                             if(DistributionLists.findOne({_id:listId}) != undefined) {
                                 list= DistributionLists.findOne({_id:listId}).list;
                                 
-                                 console.log(" Distribution Lists "+list);
+                                
                             }
                         
                         while(listnum < list.length) {
@@ -284,7 +280,7 @@ function sendthemall(docId) {
                                     'No Reply <noreply@vagueentertainment.com>',
                                     title+' - '+company,
                                     `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
-                                        To be release on: `+this.releasedate+` <br/><br/>
+                                        To be release on: `+Posts.findOne({docId:docId}).releasedate+` <br/><br/>
                                       `+fullRelease+` <br/><br/>
                                       For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`?inf=`+list[listnum]+`>Click Here<a>`
                                      
