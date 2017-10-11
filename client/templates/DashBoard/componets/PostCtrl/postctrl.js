@@ -271,13 +271,15 @@ function sendthemall(docId) {
                                             questions:""
                                             
                                         };
-                    if(PostEngage.findOne({docId:docId} , {influencerEmail:emailaddress}) == undefined) {                    
+                                        var reply = Settings.findOne({type:"email"}).respondTo;
+                                        //console.log(reply);
+                    if(PostEngage.findOne({docId:docId} && {influencerEmail:emailaddress}) == undefined) {                    
                            PostEngage.insert(engage);                 
                                  
                             Meteor.call(
                                     'sendEmail',
                                      name +"<"+emailaddress+">",
-                                    'No Reply <noreply@vagueentertainment.com>',
+                                    reply,
                                     title+' - '+company,
                                     `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
                                         To be release on: `+Posts.findOne({docId:docId}).releasedate+` <br/><br/>
