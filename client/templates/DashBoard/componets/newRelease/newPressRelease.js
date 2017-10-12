@@ -324,7 +324,7 @@ Template.newPressRelease.events ({
 
 
 'submit form': function(e) {
-           // e.preventDefault();
+            e.preventDefault();
                 var theId =  Meteor.users.findOne()._id;
                 var d = new Date();
                 var docs = $("#therelease").find('[name=docId]').val();
@@ -479,7 +479,7 @@ Template.newPressRelease.events ({
     
    // Router.go('/dashboard/'+Company.findOne().userId+'/newPressRelease/?edit='+docs);
     
-  //  Router.go("/dashboard/"+theId);
+   Router.go("/dashboard/"+theId+"/postCtrl/"+docs);
     
 
 },

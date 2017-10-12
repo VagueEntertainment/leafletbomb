@@ -8,6 +8,7 @@ Meteor.publish('posts', function(company) {
                                            var userid= Company.findOne({companyName:company.split("=")[1]}).userId;
                             return Posts.find({userId: userid});
                             } else {
+                                
                                  return Posts.find({docId: company.split("=")[1]});   
                             }
                             

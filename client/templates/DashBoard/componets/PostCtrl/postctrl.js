@@ -1,9 +1,9 @@
 Template.postCtrl.helpers ({
 
-   posts: function(e) {
-
+   posts: function() {
+               var docId= Router.current().url.split("/")[Router.current().url.split("/").length -1].split("?")[0];
                //return Posts.find({ status:2 }, {sort:{releasedate: -1}});
-                return Posts.find();
+                return Posts.find({docId:docId});
                             
                     },
                     

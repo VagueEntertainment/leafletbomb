@@ -76,9 +76,13 @@ Template.releaseItem.helpers({
                             },    
    
    totalseen:function(e) { 
-                Meteor.subscribe('postengagement',this.docId);
-                var numberSeen = PostEngage.find({docId:this.docId} && {seen:1}).count();      
+                    console.log(this.docId+" , "+PostEngage.find({docId:this.docId , seen:1}).count());
+                        Meteor.subscribe('postengagement',this.docId);
+                if(this.docId != undefined) {
+                      
+                var numberSeen = PostEngage.find({docId:this.docId , seen:1}).count();      
    return numberSeen;
+            }
    },
    
    totalcomments:function(e) { return 0; },

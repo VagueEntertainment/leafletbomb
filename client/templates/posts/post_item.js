@@ -171,6 +171,23 @@ Template.postItem.helpers ( {
              //return thefiles;
             
         },
+        
+        a1v: function () {
+                       var thefiles = []; 
+                     PostAssets.find({docId:this.docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                             
+                                            });
+            if(thefiles[0]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
          asset2: function () {
                // Meteor.subscribe('postassets');
                // Meteor.subscribe('images');
@@ -189,6 +206,22 @@ Template.postItem.helpers ( {
              return thefiles[1];
              //return thefiles;
             
+        },
+        
+         a2v: function () { 
+                   var thefiles = []; 
+                     PostAssets.find({docId:this.docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                             
+                                            });
+            if(thefiles[0]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
         },
          asset3: function () {
                 //Meteor.subscribe('postassets');
@@ -209,6 +242,23 @@ Template.postItem.helpers ( {
              //return thefiles;
             
         },
+        
+         a3v: function () {
+                       var thefiles = []; 
+                     PostAssets.find({docId:this.docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                             
+                                            });
+            if(thefiles[0]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
          asset4: function () {
               //  Meteor.subscribe('postassets');
               //  Meteor.subscribe('images');
@@ -228,6 +278,23 @@ Template.postItem.helpers ( {
              //return thefiles;
             
         } ,
+        
+         a4v: function () {
+                       var thefiles = []; 
+                     PostAssets.find({docId:this.docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                             
+                                            });
+            if(thefiles[0]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
         asset5: function () {
               //  Meteor.subscribe('postassets');
               //  Meteor.subscribe('images');
@@ -246,6 +313,22 @@ Template.postItem.helpers ( {
              return thefiles[4];
              //return thefiles;
             
-        }
+        },
+        
+         a5v: function () {
+                       var thefiles = []; 
+                     PostAssets.find({docId:this.docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                             
+                                            });
+            if(thefiles[0]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
         
 });
