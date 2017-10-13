@@ -147,6 +147,39 @@ Template.newPressRelease.helpers ({
              //return thefiles;
             
         },
+        
+         a1v: function () {
+                       var thefiles = []; 
+                      if (Router.current().params.query.edit.length == 0) {
+                        var theid = Meteor.users.findOne()._id;
+                        var docs = $("#therelease").find('[name=docId]').val();
+                   
+                   PostAssets.find({docId:docs}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  } else { 
+                         PostAssets.find({docId:Router.current().params.query.edit}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  }  
+                             
+            if(thefiles[0]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
      asset2: function () {
                 Meteor.subscribe('postassets');
                 Meteor.subscribe('images');
@@ -180,6 +213,38 @@ Template.newPressRelease.helpers ({
              //return thefiles;
             
         },
+        
+         a2v: function () {
+                       var thefiles = []; 
+                      if (Router.current().params.query.edit.length == 0) {
+                        var theid = Meteor.users.findOne()._id;
+                        var docs = $("#therelease").find('[name=docId]').val();
+                   
+                   PostAssets.find({docId:docs}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  } else { 
+                         PostAssets.find({docId:Router.current().params.query.edit}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  }             
+            if(thefiles[1]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
      asset3: function () {
                 Meteor.subscribe('postassets');
                 Meteor.subscribe('images');
@@ -214,6 +279,38 @@ Template.newPressRelease.helpers ({
              //return thefiles;
             
         },
+        
+         a3v: function () {
+                       var thefiles = []; 
+                      if (Router.current().params.query.edit.length == 0) {
+                        var theid = Meteor.users.findOne()._id;
+                        var docs = $("#therelease").find('[name=docId]').val();
+                   
+                   PostAssets.find({docId:docs}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  } else { 
+                         PostAssets.find({docId:Router.current().params.query.edit}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  }             
+            if(thefiles[2]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
      asset4: function () {
                 Meteor.subscribe('postassets');
                 Meteor.subscribe('images');
@@ -247,6 +344,38 @@ Template.newPressRelease.helpers ({
              //return thefiles;
             
         } ,
+        
+         a4v: function () {
+                       var thefiles = []; 
+                      if (Router.current().params.query.edit.length == 0) {
+                        var theid = Meteor.users.findOne()._id;
+                        var docs = $("#therelease").find('[name=docId]').val();
+                   
+                   PostAssets.find({docId:docs}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  } else { 
+                         PostAssets.find({docId:Router.current().params.query.edit}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  }             
+            if(thefiles[3]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
      asset5: function () {
                 Meteor.subscribe('postassets');
                 Meteor.subscribe('images');
@@ -280,9 +409,40 @@ Template.newPressRelease.helpers ({
             
         },
         
+         a5v: function () {
+                       var thefiles = []; 
+                      if (Router.current().params.query.edit.length == 0) {
+                        var theid = Meteor.users.findOne()._id;
+                        var docs = $("#therelease").find('[name=docId]').val();
+                   
+                   PostAssets.find({docId:docs}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  } else { 
+                         PostAssets.find({docId:Router.current().params.query.edit}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                  }             
+            if(thefiles[4]) {
+            return "visible";
+            } else {
+            return "hidden";
+            }
+        },
+        
         
         featured: function () {
-                    var featuredfile ="";
+                    var featuredfile ="/media/file_placeholder.png";
                     var thisdoc = "";
                         if (Router.current().params.query.edit.length == 0) {
                         var theid = Meteor.users.findOne()._id;
@@ -297,6 +457,8 @@ Template.newPressRelease.helpers ({
                                             
                                             });
                   } else { 
+                  
+                                if (PostAssets.find({docId:Router.current().params.query.edit , type:"featured"}) != undefined) {
                          PostAssets.find({docId:Router.current().params.query.edit , type:"featured"}).forEach(
                                             function(files){
                                             
@@ -305,9 +467,16 @@ Template.newPressRelease.helpers ({
                                             
                                             
                                             });
-                  } 
+                                            
+                                             return featuredfile;
+                                 } else {
+                                 
+                                    return "/media/file_placeholder.png";
+                                  }
                   
-                  return featuredfile;
+                            
+                  
+                  }
         } ,
         
         distributionlists:function(e) {

@@ -18,10 +18,12 @@
 
     <div style="position:absolute;width:20%;text-align:left;top:0px;right:0px;bottom:0px;overflow:hidden" >
             <br/>
-            <label for="upload-featured" > <img id="featured"  src="{{featured}}" alt="" class="thumbnail" /> </label>
-            <input id="upload-featured" name="featuredfile" class="featuredImgInput" type="file" single/>
+            <div  style="text-align:center;width:100%;border-style:solid;border-width:1px;border-color:#f2f2f2"><br/> <label for="upload-featured" > <img id="featured"  src="{{featured}}" alt="" class="thumbnail" /> </label> 
+            <input id="upload-featured" name="featuredfile" class="featuredImgInput" type="file" single/> 
+            <h4 style="text-align:center"> Featured Image </h4>
+            </div>
     
-        <h4 style="text-align:center"> Featured Image </h4>
+        
         
  
         <!--<div class="imageView"> -->
@@ -32,11 +34,11 @@
                      <table style="width=100%,text-align:center;">
                            
              
-                            <tr><td><img id="ass1" src="{{asset1}}" alt="" class="thumbnail" /></td></tr>         
-                            <tr><td><img id="ass2" src="{{asset2}}" alt="" class="thumbnail" /></td></tr>        
-                            <tr><td><img id="ass3" src="{{asset3}}" alt="" class="thumbnail" /></td></tr>
-                            <tr><td><img id="ass4" src="{{asset4}}" alt="" class="thumbnail" /></td></tr>
-                            <tr><td><img id="ass5" src="{{asset5}}" alt="" class="thumbnail" /></td></tr>
+                            <tr><td><img id="ass1" src="{{asset1}}" alt="" class="thumbnail" style="visibility:{{a1v}}" /></td></tr>         
+                            <tr><td><img id="ass2" src="{{asset2}}" alt="" class="thumbnail" style="visibility:{{a2v}}"/></td></tr>        
+                            <tr><td><img id="ass3" src="{{asset3}}" alt="" class="thumbnail" style="visibility:{{a3v}}"/></td></tr>
+                            <tr><td><img id="ass4" src="{{asset4}}" alt="" class="thumbnail" style="visibility:{{a4v}}"/></td></tr>
+                            <tr><td><img id="ass5" src="{{asset5}}" alt="" class="thumbnail" style="visibility:{{a5v}}" /></td></tr>
                     </table>
                     
                     
