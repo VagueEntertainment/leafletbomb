@@ -17,8 +17,12 @@
     </div>
 
     <div style="position:absolute;width:20%;text-align:left;top:0px;right:0px;bottom:0px;overflow:hidden" >
+            <br/>
+            <label for="upload-featured" > <img id="featured"  src="{{featured}}" alt="" class="thumbnail" /> </label>
+            <input id="upload-featured" name="featuredfile" class="featuredImgInput" type="file" single/>
+    
+        <h4 style="text-align:center"> Featured Image </h4>
         
-
  
         <!--<div class="imageView"> -->
         <div class="dashBoard-AaG" style="height:40%;overflow:hidden">
@@ -46,10 +50,10 @@
   <div class="dashBoard-AaG">    
 
 <div style="float:left;width:100%;text-align:left;height:55%;overflow:hidden" >
- <h3> Discovery </h3>
+ <!-- <h3> Discovery </h3>
   Tags: (Seperate with ',' )<br>
   <input style="width:100%" type="text" name="keywords" value="{{tags}}" >
-  <br>
+  <br> -->
   <h3> Distribution </h3>
   <br>
   <div style="height:60%;overflow:auto">
@@ -58,13 +62,10 @@
             {{> DistributionListItemSelect}}
             
             {{/each}}
-
-
-</table>
-</div>
+    </table>
+    </div> 
   
 </div>
-
 
    </div> 
 

@@ -280,6 +280,36 @@ Template.newPressRelease.helpers ({
             
         },
         
+        
+        featured: function () {
+                    var featuredfile ="";
+                    var thisdoc = "";
+                        if (Router.current().params.query.edit.length == 0) {
+                        var theid = Meteor.users.findOne()._id;
+                        var docs = $("#therelease").find('[name=docId]').val();
+                   
+                   PostAssets.find({docId:docs , type:"featured"}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                featuredfile =Images.findOne({_id:files.filename}).url();
+                                            
+                                            
+                                            });
+                  } else { 
+                         PostAssets.find({docId:Router.current().params.query.edit , type:"featured"}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                featuredfile = Images.findOne({_id:files.filename}).url();
+                                            
+                                            
+                                            });
+                  } 
+                  
+                  return featuredfile;
+        } ,
+        
         distributionlists:function(e) {
                           var list = [];
                           var selected = 0;
@@ -501,7 +531,8 @@ Template.newPressRelease.events ({
         } else {
             var info = {
                     docId:docs,
-                   filename:fileObj._id
+                   filename:fileObj._id,
+                   type:"asset"
             };
             PostAssets.insert(info);
             $('#assetlist').css("display","inherit");
@@ -511,8 +542,38 @@ Template.newPressRelease.events ({
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
     }
-  }
+  },
   
+  
+   'change .featuredImgInput': function(event, template) {
+                    var files = event.target.files;
+    
+                    var theId =  Meteor.users.findOne()._id;
+                     var docs = $("#therelease").find('[name=docId]').val();
+    
+                      $('#assetlist').css("display","none");
+                      $('#uploading').css("display","inherit");
+        
+     
+                      for (var i = 0, ln = files.length; i < ln; i++) {
+                              Images.insert(files[i], function (err, fileObj) {
+                        if (err) {
+        
+                         } else {
+                                var info = {
+                                       docId:docs,
+                                     filename:fileObj._id,
+                                     type:"featured"
+                                      };
+            PostAssets.insert(info);
+            $('#assetlist').css("display","inherit");
+            $('#uploading').css("display","none");
+          }
+        
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      });
+    }
+  },
   
   
 });

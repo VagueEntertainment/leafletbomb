@@ -5,6 +5,44 @@ Template.postItem.helpers ( {
        a.href = this.url;
        return a.hostname;
        },
+       
+       featured: function() {
+        
+                    var featuredfile ="";
+                    var thisdoc = "";
+                    
+                        var docs = this.docId;
+                   
+                   PostAssets.find({docId:docs , type:"featured"}).forEach(
+                                            function(files){
+
+                                                featuredfile =Images.findOne({_id:files.filename}).url();
+                                            
+                                            
+                                            });
+                  
+                  return featuredfile;
+       
+       
+       },
+       
+       topPadding: function() {
+        
+                    var featuredfile ="";
+                    var thisdoc = "";
+                    
+                        var docs = this.docId;
+                   
+                   if (PostAssets.findOne({docId:docs , type:"featured"}) == undefined) {
+                   return "10px";
+                   } else {
+                   
+                   return "280px";
+                   }
+                   
+              } ,                       
+              
+              
               
        releasechanged: function() {
        var text = this.release;
