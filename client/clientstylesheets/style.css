@@ -206,6 +206,12 @@ font-weight: 400;
         margin:auto;
    }
    
+     .postimg {
+        width: 40%;
+        height: auto;
+        margin:auto;
+   }
+   
    .header-button {
     border-color:#eee;
     border-radius:5px;

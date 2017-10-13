@@ -8,6 +8,18 @@ Template.postItem.helpers ( {
               
        releasechanged: function() {
        var text = this.release;
+       
+       
+       
+       var thefiles = [];
+                   PostAssets.find({docId:this.docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
         
           
          // text = text.replace(/\*/g, "<li>");
@@ -31,9 +43,15 @@ Template.postItem.helpers ( {
           
           text = text.replace(/\n/g, "<br/>");
       
-        // Replace quotations as a quote block //
-       // text = text.replace(/"/g, "</p></div><p>");
-      //  text = text.replace(/“​/g, "</p><div class='postquote'><p>");
+          text = text.replace(/{{asset1}}/g, "<img  src='"+thefiles[0]+"' class='postimg' />");
+          
+           text = text.replace(/{{asset2}}/g, "<img  src='"+thefiles[1]+"' class='postimg' />");
+           
+           text = text.replace(/{{asset3}}/g, "<img  src='"+thefiles[2]+"' class='postimg' />");
+          
+           text = text.replace(/{{asset4}}/g, "<img  src='"+thefiles[3]+"' class='postimg' />");
+           
+            text = text.replace(/{{asset5}}/g, "<img  src='"+thefiles[4]+"' class='postimg' />");
           
           
           var quoteCutter = text.split('"');

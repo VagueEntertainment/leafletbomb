@@ -489,6 +489,10 @@ Template.newPressRelease.events ({
     
     var theId =  Meteor.users.findOne()._id;
     var docs = $("#therelease").find('[name=docId]').val();
+    
+        $('#assetlist').css("display","none");
+         $('#uploading').css("display","inherit");
+        
      
     for (var i = 0, ln = files.length; i < ln; i++) {
       Images.insert(files[i], function (err, fileObj) {
@@ -500,6 +504,8 @@ Template.newPressRelease.events ({
                    filename:fileObj._id
             };
             PostAssets.insert(info);
+            $('#assetlist').css("display","inherit");
+            $('#uploading').css("display","none");
           }
         
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP

@@ -23,14 +23,19 @@
         <!--<div class="imageView"> -->
         <div class="dashBoard-AaG" style="height:40%;overflow:hidden">
                 <h3>Assets</h3>
-                <div style="height:60%;overflow:auto">
+                <div id="uploading" style="position:relative;width:100%;height:60%;background:white;text-align:center;display:none"> {{loading}} </div> 
+                <div id="assetlist" style="position:relative;width:100%;height:60%;overflow:auto;">
                      <table style="width=100%,text-align:center;">
-                            <tr><td><a href="{{asset1}}" target="_blank"><img src="{{asset1}}" alt="" class="thumbnail" /></a></td></tr>         
-                            <tr><td><a href="{{asset2}}" target="_blank"><img src="{{asset2}}" alt="" class="thumbnail" /></a></td></tr>        
-                            <tr><td><a href="{{asset3}}" target="_blank"><img src="{{asset3}}" alt="" class="thumbnail" /></a></td></tr>
-                            <tr><td><a href="{{asset4}}" target="_blank"><img src="{{asset4}}" alt="" class="thumbnail" /></a></td></tr>
-                            <tr><td><a href="{{asset5}}" target="_blank"><img src="{{asset5}}" alt="" class="thumbnail" /></a></td></tr>
+                           
+             
+                            <tr><td><img id="ass1" src="{{asset1}}" alt="" class="thumbnail" /></td></tr>         
+                            <tr><td><img id="ass2" src="{{asset2}}" alt="" class="thumbnail" /></td></tr>        
+                            <tr><td><img id="ass3" src="{{asset3}}" alt="" class="thumbnail" /></td></tr>
+                            <tr><td><img id="ass4" src="{{asset4}}" alt="" class="thumbnail" /></td></tr>
+                            <tr><td><img id="ass5" src="{{asset5}}" alt="" class="thumbnail" /></td></tr>
                     </table>
+                    
+                    
                </div>
     
             <label id="fileUploadLabel" for="upload-photo">Browse...</label>
