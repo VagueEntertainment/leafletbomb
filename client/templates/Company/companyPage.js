@@ -1,10 +1,16 @@
 Template.companyPage.helpers({
 
 posts:function() {
-            
-            
-        return Posts.find({status:2}, {sort:{releasedate:1}});
+                    if(Router.current().params.query.pr == undefined) {
+                  
+                        return Posts.find({status:2}, {sort:{releasedate:1}, limit: 1});
+        
+                    } else {
+                            return Posts.find({docId:Router.current().params.query.pr , status:2}, {sort:{releasedate:1}, limit: 1});
+                    }
         },
+        
+        
 
   companyName:function() {
                        if(Company.find().count() === 0) {
@@ -79,3 +85,21 @@ posts:function() {
 
 
 });
+
+Template.pressReleaseList.helpers({
+
+postlist:function() {    
+        return Posts.find({status:2}, {sort:{releasedate:1}});
+        },
+        
+});  
+
+Template.pressReleaseList.events({
+
+'click ': function() {
+                       Router.go("/"+Company.findOne().companyName+"?pr="+this.docId);
+
+                    }
+
+});      
+        

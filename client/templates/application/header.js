@@ -54,7 +54,7 @@ Template.header.helpers ( {
     logo: function() {
                         Meteor.subscribe('images');
                         Meteor.subscribe('companyassets');
-                            var file = CompanyAssets.findOne({"companyId":Meteor.users.findOne()._id , "type":"companyLogo"}).filename;
+                            var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}).filename;
                           return Images.findOne({_id:file}).url();
         
         },
@@ -104,7 +104,19 @@ Template.header.helpers ( {
                     return "/welcome";
                 }
     
+    },
+    
+    
+    whereWeAt: function() {
+                var location = Router.current().url.split("/")[1].split("?")[0];
+                if(location.replace(/%20/g," ") == Company.findOne().companyName) { 
+                return "Newsroom";           
+                } else {   
+    return location;
     }
+    
+    },
+    
     
 
 
