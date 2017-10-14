@@ -19,10 +19,7 @@ Template.newPressRelease.helpers ({
           
     documentId:function(e) {
             if (Router.current().params.query.edit == undefined) {
-        var theid = Meteor.users.findOne()._id;
-        var d = new Date();
-        var docs = Company.findOne()._id+"_"+d.getTime();
-        return theid+"_"+docs;
+                return Router.current().params.query.new
         } else {   
         return Router.current().params.query.edit;
         }
@@ -31,21 +28,21 @@ Template.newPressRelease.helpers ({
     userId:function() {return Meteor.users.findOne()._id},
     date: function() {return Date()},
     releasedata: function() {
-                if (Router.current().params.query.edit.length == 0) {
+                if (Router.current().params.query.edit == undefined) {
                     return "";    
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).release;
         }
     },
     thetitle: function() {
-                if (Router.current().params.query.edit.length == 0) {
+                if (Router.current().params.query.edit == undefined) {
                     return "";    
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).title;
         }
     },
     thetagline: function() {
-                if (Router.current().params.query.edit.length == 0) {
+                if (Router.current().params.query.edit == undefined) {
                     return "";    
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).tagline;
@@ -105,7 +102,7 @@ Template.newPressRelease.helpers ({
         }
     },
     tags: function() {
-                if (Router.current().params.query.edit.length == 0) {
+                if (Router.current().params.query.edit == undefined) {
                     return "";    
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).tags;
@@ -119,9 +116,9 @@ Template.newPressRelease.helpers ({
                 Meteor.subscribe('images');
                
                var thefiles = [];
-               if (Router.current().params.query.edit.length == 0) {
+               if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -150,9 +147,9 @@ Template.newPressRelease.helpers ({
         
          a1v: function () {
                        var thefiles = []; 
-                      if (Router.current().params.query.edit.length == 0) {
+                      if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -187,9 +184,9 @@ Template.newPressRelease.helpers ({
                // Meteor.subscribe('posts',this.userId);
                 
                var thefiles = [];
-               if (Router.current().params.query.edit.length == 0) {
+               if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                       var docs = $("#therelease").find('[name=docId]').val();
+                       var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -216,9 +213,9 @@ Template.newPressRelease.helpers ({
         
          a2v: function () {
                        var thefiles = []; 
-                      if (Router.current().params.query.edit.length == 0) {
+                      if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -252,9 +249,9 @@ Template.newPressRelease.helpers ({
                // Meteor.subscribe('posts',this.userId);
                 
                var thefiles = [];
-               if (Router.current().params.query.edit.length == 0) {
+               if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                       var docs = $("#therelease").find('[name=docId]').val();
+                       var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -282,9 +279,9 @@ Template.newPressRelease.helpers ({
         
          a3v: function () {
                        var thefiles = []; 
-                      if (Router.current().params.query.edit.length == 0) {
+                      if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -318,9 +315,9 @@ Template.newPressRelease.helpers ({
                // Meteor.subscribe('posts',this.userId);
                 
                var thefiles = [];
-               if (Router.current().params.query.edit.length == 0) {
+               if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                       var docs = $("#therelease").find('[name=docId]').val();
+                       var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -347,9 +344,9 @@ Template.newPressRelease.helpers ({
         
          a4v: function () {
                        var thefiles = []; 
-                      if (Router.current().params.query.edit.length == 0) {
+                      if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -381,9 +378,9 @@ Template.newPressRelease.helpers ({
                 Meteor.subscribe('images');
                  
                var thefiles = [];
-               if (Router.current().params.query.edit.length == 0) {
+               if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -411,9 +408,9 @@ Template.newPressRelease.helpers ({
         
          a5v: function () {
                        var thefiles = []; 
-                      if (Router.current().params.query.edit.length == 0) {
+                      if (Router.current().params.query.edit == undefined) {
                         var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        var docs = Router.current().params.query.new;
                    
                    PostAssets.find({docId:docs}).forEach(
                                             function(files){
@@ -444,39 +441,34 @@ Template.newPressRelease.helpers ({
         featured: function () {
                     var featuredfile ="/media/file_placeholder.png";
                     var thisdoc = "";
-                        if (Router.current().params.query.edit.length == 0) {
-                        var theid = Meteor.users.findOne()._id;
-                        var docs = $("#therelease").find('[name=docId]').val();
+                        if (Router.current().params.query.edit == undefined) {
+                        
+                                    var theid = Meteor.users.findOne()._id;
+                                    var docs = Router.current().params.query.new;
+                                    
+                                    if (PostAssets.findOne({docId:docs , type:"featured"}) == undefined) {
+                                        featuredfile ="/media/file_placeholder.png";
+                                        
+                                        } else {
                    
-                   PostAssets.find({docId:docs , type:"featured"}).forEach(
-                                            function(files){
-                                            
-                                               // thefiles.push ("{_id:"+files.filename+"}");
-                                                featuredfile =Images.findOne({_id:files.filename}).url();
-                                            
-                                            
-                                            });
-                  } else { 
+                                        featuredfile = Images.findOne({_id:PostAssets.findOne({docId:docs , type:"featured"}).filename}).url();
+                                   
+                                         }
+                                                                                    
+                        } else { 
                   
                                 if (PostAssets.find({docId:Router.current().params.query.edit , type:"featured"}) != undefined) {
-                         PostAssets.find({docId:Router.current().params.query.edit , type:"featured"}).forEach(
-                                            function(files){
-                                            
-                                               // thefiles.push ("{_id:"+files.filename+"}");
-                                                featuredfile = Images.findOne({_id:files.filename}).url();
-                                            
-                                            
-                                            });
-                                            
-                                             return featuredfile;
+                                
+                                       featuredfile = Images.findOne({_id:PostAssets.findOne({docId:Router.current().params.query.edit , type:"featured"}).filename}).url();
+                                  
+                             
                                  } else {
                                  
-                                    return "/media/file_placeholder.png";
+                                    featuredfile =  "/media/file_placeholder.png";
                                   }
-                  
-                            
-                  
+                    
                   }
+                   return featuredfile;
         } ,
         
         distributionlists:function(e) {
@@ -486,7 +478,7 @@ Template.newPressRelease.helpers ({
                           if ( Router.current().params.query.edit !=undefined) {
                             thisdoc =Router.current().params.query.edit;
                            } else {
-                            thisdoc = $("#therelease").find('[name=docId]').val();
+                            thisdoc = Router.current().params.query.new;
                            }
                           
                           if(PostDistribution.findOne({"docId":thisdoc}) != undefined) {
@@ -526,7 +518,7 @@ Template.newPressRelease.events ({
             e.preventDefault();
                 var theId =  Meteor.users.findOne()._id;
                 var d = new Date();
-                var docs = $("#therelease").find('[name=docId]').val();
+                var docs = Router.current().params.query.new;
                 
                 var thelist = [];
                             
@@ -687,7 +679,7 @@ Template.newPressRelease.events ({
     var files = event.target.files;
     
     var theId =  Meteor.users.findOne()._id;
-    var docs = $("#therelease").find('[name=docId]').val();
+    var docs = Router.current().params.query.new;
     
         $('#assetlist').css("display","none");
          $('#uploading').css("display","inherit");
@@ -718,7 +710,7 @@ Template.newPressRelease.events ({
                     var files = event.target.files;
     
                     var theId =  Meteor.users.findOne()._id;
-                     var docs = $("#therelease").find('[name=docId]').val();
+                     var docs = Router.current().params.query.new;
     
                       $('#assetlist').css("display","none");
                       $('#uploading').css("display","inherit");
@@ -746,11 +738,4 @@ Template.newPressRelease.events ({
   
   
 });
-
-
-
-
-
-
-
 

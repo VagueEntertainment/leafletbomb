@@ -3,7 +3,7 @@ Template.companyPage.helpers({
 posts:function() {
             
             
-        return Posts.find({status:2});
+        return Posts.find({status:2}, {sort:{releasedate:1}});
         },
 
   companyName:function() {

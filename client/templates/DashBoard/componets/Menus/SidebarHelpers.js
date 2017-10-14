@@ -35,9 +35,11 @@ Template.dashboardMenu.events({
 
 
     'click #releaseAdd': function() {
-    
-                            var id = Company.findOne().userId;
-                            Router.go('/dashboard/'+id+'/newPressRelease');
+                             var theid = Company.findOne().userId;
+                                var d = new Date();
+                                  var docs = Company.findOne()._id+"_"+d.getTime();
+                                  
+                            Router.go('/dashboard/'+theid+'/newPressRelease?new='+theid+"_"+docs);
                         },
 
 

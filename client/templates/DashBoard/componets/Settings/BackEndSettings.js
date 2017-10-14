@@ -6,12 +6,21 @@ respondTo: function() {
                  
                 
                 return Settings.findOne({type:"email"}).respondTo;
+            },
+
+
+fromWho: function() {
+
+                 
+                
+                return Settings.findOne({type:"email"}).fromWho;
+            },
+
+
+fullFrom: function() {
+
+                return Settings.findOne({type:"email"}).fromWho+" <"+Settings.findOne({type:"email"}).respondTo+">";
             }
-
-
-
-
-
 
 
 
@@ -34,7 +43,8 @@ Template.BackEndSettings.events({
 
                     info = {
                             companyId:Company.findOne()._id,
-                            respondTo:$(e.target).find('[name=respond]').val(),
+                            fromWho:$(e.target).find('[name=fromwho]').val(),
+                            respondTo:$(e.target).find('[name=respondto]').val(),
                             type:"email"
                     
                         };

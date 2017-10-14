@@ -271,7 +271,7 @@ function sendthemall(docId) {
                                             questions:""
                                             
                                         };
-                                        var reply = Settings.findOne({type:"email"}).respondTo;
+                                        var reply = Settings.findOne({type:"email"}).fromWho+" <"+Settings.findOne({type:"email"}).respondTo+">";
                                         //console.log(reply);
                     if(PostEngage.findOne({docId:docId} && {influencerEmail:emailaddress}) == undefined) {                    
                            PostEngage.insert(engage);                 
