@@ -9,23 +9,7 @@ Template.companyMenu.helpers({
                     return Company.findOne().companyName;
             }, 
 
-  teamCounter:function() {
-                return 0;
-                },                               
-            
-        draftCounter:function() {
-                    return Posts.find({userId: Company.findOne()._id, status:0 }).count();
-                },
-                
-        scheduleCounter:function() {
-                    return Posts.find({userId: Company.findOne()._id, status:1 }).count();
-                },
-                
-        publishCounter:function() {
-                    return Posts.find({userId: Company.findOne()._id, status:2 }).count();
-                },                
-
-
+  
 
 
 });
@@ -51,6 +35,25 @@ Template.companyMenu.events({
           
                     },     
 
+
+
+});
+
+
+Template.PressReleaseItem.helpers({
+
+
+featuredImage: function() {
+                       var featuredfile = "/media/file_placeholder.png"
+                     PostAssets.find({docId:this.docId , type:"featured"}).forEach(
+                                            function(files){
+
+                                                featuredfile =Images.findOne({_id:files.filename}).url();
+                                            
+                                            
+                                            });
+                    return featuredfile;
+                }
 
 
 });
