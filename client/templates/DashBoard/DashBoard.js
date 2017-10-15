@@ -9,7 +9,34 @@ Template.dashBoard.helpers({
                            });
                                    
                           return list;  
-                    }
+                    },
+                    
+                    
+     aftersetupVisibility: function() {
+                                var cleared = 0;
+                            if(Settings.findOne({type:"email"}) == undefined) {
+                                
+                                    } else {
+                                       cleared = cleared + 1;
+                                    }
+                    
+                            if(CompanyAssets.findOne({type:"companyLogo" }) == undefined) {
+                                
+                                    } else {
+                                         cleared = cleared + 1;
+                                        }
+                            
+                            if(CompanyTeam.findOne({type:"master"}) == undefined) {
+                               
+                                    } else {
+                                         cleared = cleared + 1;
+                                    } 
+                                    
+                           if(cleared == 3) { return "hidden";}         
+                                    
+                                    
+                                
+                        },                    
                     
             
             });

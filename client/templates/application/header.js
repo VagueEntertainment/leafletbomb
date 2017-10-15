@@ -3,7 +3,12 @@ Template.header.helpers ( {
     user: function() {
             if(Meteor.users.find().count() == 1) {
                    if(Meteor.users.findOne().profile.accounttype == "marketer") {  
-                            Router.go('/dashboard/'+Meteor.users.findOne()._id);
+                   
+                            if(Company.findOne() != undefined) {
+                                    Router.go('/dashboard/'+Meteor.users.findOne()._id);
+                            } else {
+                                Router.go('/marketerSetup/'+Meteor.users.findOne()._id);
+                            }
                             } else {
                             Router.go('/influence/'+Meteor.users.findOne()._id);
                             }   

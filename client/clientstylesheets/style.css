@@ -543,7 +543,8 @@ font-weight: 400;
  
  .login-dialog {
     background:#fff;
-    width:60%;
+    width:30%;
+    height:70%;
     margin:auto; 
    
     text-align:center; 
