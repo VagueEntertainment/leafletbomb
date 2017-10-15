@@ -63,8 +63,17 @@ Template.releaseItem.helpers({
         return this.title;
         },    
         
-    companyLogoSmall: function() {var file = CompanyAssets.findOne({"companyId":this.userId , "type":"companyLogoSmall"}).filename;
-                          return Images.findOne({_id:file}).url();
+    featuredImage: function() {
+                       var featuredfile = "/media/file_placeholder.png"
+                     PostAssets.find({docId:this.docId , type:"featured"}).forEach(
+                                            function(files){
+
+                                                featuredfile =Images.findOne({_id:files.filename}).url();
+                                            
+                                            
+                                            });
+                    return featuredfile;
+                
     
    }, 
    

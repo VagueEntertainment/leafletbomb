@@ -17,13 +17,39 @@ Template.dashboardMenu.helpers({
                     return Posts.find({userId: Company.findOne()._id, status:0 }).count();
                 },
                 
+        draftCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:0 }).count() != 0) {
+                        return "visible";
+                    } else {
+                        return "hidden";
+                    }
+                },        
+                
         scheduleCounter:function() {
                     return Posts.find({userId: Company.findOne()._id, status:1 }).count();
                 },
+         schedCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:1 }).count() != 0) {
+                        return "visible";
+                    } else {
+                        return "hidden";
+                    }
+                },          
+                
+                
                 
         publishCounter:function() {
                     return Posts.find({userId: Company.findOne()._id, status:2 }).count();
-                },                
+                },  
+                
+         pubCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:2 }).count() != 0) {
+                        return "visible";
+                    } else {
+                        return "hidden";
+                    }
+                },          
+                              
 
 
 
