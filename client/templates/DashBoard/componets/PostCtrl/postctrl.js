@@ -282,7 +282,7 @@ function sendthemall(docId) {
                                     reply,
                                     title+' - '+company,
                                     `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
-                                        <img src=“http://`+window.location.hostname+`:3000/mail/`+docId+`?inf=`+list[listnum]`” width=“0” height=“0”>
+                                       
                                         To be release on: `+Posts.findOne({docId:docId}).releasedate+` <br/><br/>
                                       `+fullRelease+` <br/><br/>
                                       For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`?inf=`+list[listnum]+`>Click Here<a>`
@@ -296,7 +296,7 @@ function sendthemall(docId) {
                     }
   }
   
-  
+  // <img src=“http://`+window.location.hostname+`:3000/mail/`+docId+`?inf=`+list[listnum]`” width=“0” height=“0”>
   
 function document(release) {
 
