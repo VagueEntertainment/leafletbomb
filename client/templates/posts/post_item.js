@@ -45,88 +45,9 @@ Template.postItem.helpers ( {
               
               
        releasechanged: function() {
-       var text = this.release;
        
+          return document(this.release);
        
-       
-       var thefiles = [];
-                   PostAssets.find({docId:this.docId}).forEach(
-                                            function(files){
-                                            
-                                               // thefiles.push ("{_id:"+files.filename+"}");
-                                                thefiles.push(Images.findOne({_id:files.filename}).url());
-                                            
-                                            
-                                            });
-        
-          
-         // text = text.replace(/\*/g, "<li>");
-          
-          //Finds bullets  (BROKEN AT THE MOMENT///
-       /*    var bullets = text.split('*');
-           var bulletlist = "";
-          var bulletnum = 1;
-          bulletlist = bullets[0];
-          while(bulletnum < bullets.length) {
-         
-                    var breakout = bullets[bulletnum].split("\n")[0];
-                bulletlist = bulletlist+"<li>"+breakout+"</li>";                        
-                    
-            bulletnum = bulletnum + 1;
-          }
-          
-          text = bulletlist + bullets[bulletnum -1].slice(10);
-          
-          */
-          
-          text = text.replace(/\n/g, "<br/>");
-      
-          text = text.replace(/{{asset1}}/g, "<img  src='"+thefiles[0]+"' class='postimg' />");
-          
-           text = text.replace(/{{asset2}}/g, "<img  src='"+thefiles[1]+"' class='postimg' />");
-           
-           text = text.replace(/{{asset3}}/g, "<img  src='"+thefiles[2]+"' class='postimg' />");
-          
-           text = text.replace(/{{asset4}}/g, "<img  src='"+thefiles[3]+"' class='postimg' />");
-           
-            text = text.replace(/{{asset5}}/g, "<img  src='"+thefiles[4]+"' class='postimg' />");
-          
-          
-          var quoteCutter = text.split('"');
-          var quotenum = 1;
-          text = quoteCutter[0];
-          while(quotenum < quoteCutter.length) {
-                        if(quotenum % 2 != 0) {
-                text = text+"<br/><div style='width:10px;height:100%;color:#fff;float:left'> </div> <div class='postquote'><p>"+quoteCutter[quotenum]+'</b></div><br/>';
-                } else {
-                    text = text+quoteCutter[quotenum];
-                    }
-          
-          
-            quotenum = quotenum + 1;
-          }
-      
-      
-        //End Quote check//
-        //Splits and rejoins text based on the citation of the quotes//
-        text = text.split("---");
-        var num = 1;
-        var fullRelease = text[0];
-        while(num < text.length) {
-                if(num % 2 != 0) {
-                fullRelease = fullRelease+'<div class="postcite"><b>'+text[num]+'</b></div><br/>';
-                } else {
-                    fullRelease = fullRelease+text[num];
-                    }
-                
-            num = num + 1;
-        }
-        //End citation check //
-        
-        
-        
-        
-        return fullRelease;
        },
        
        /* This needs to be done in one or two lines. But I'm using a hammer today. Tommorow
@@ -388,3 +309,89 @@ Template.postItem.helpers ( {
         },
         
 });
+
+function document(release) {
+
+var text = release;
+       
+       
+       
+       var thefiles = [];
+                   PostAssets.find({docId:this.docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+        
+          
+         // text = text.replace(/\*/g, "<li>");
+          
+          //Finds bullets  (BROKEN AT THE MOMENT///
+       /*    var bullets = text.split('*');
+           var bulletlist = "";
+          var bulletnum = 1;
+          bulletlist = bullets[0];
+          while(bulletnum < bullets.length) {
+         
+                    var breakout = bullets[bulletnum].split("\n")[0];
+                bulletlist = bulletlist+"<li>"+breakout+"</li>";                        
+                    
+            bulletnum = bulletnum + 1;
+          }
+          
+          text = bulletlist + bullets[bulletnum -1].slice(10);
+          
+          */
+          
+          text = text.replace(/\n/g, "<br/>");
+      
+          text = text.replace(/{{asset1}}/g, "<img  src='"+thefiles[0]+"' class='postimg' />");
+          
+           text = text.replace(/{{asset2}}/g, "<img  src='"+thefiles[1]+"' class='postimg' />");
+           
+           text = text.replace(/{{asset3}}/g, "<img  src='"+thefiles[2]+"' class='postimg' />");
+          
+           text = text.replace(/{{asset4}}/g, "<img  src='"+thefiles[3]+"' class='postimg' />");
+           
+            text = text.replace(/{{asset5}}/g, "<img  src='"+thefiles[4]+"' class='postimg' />");
+          
+          
+          var quoteCutter = text.split('"');
+          var quotenum = 1;
+          text = quoteCutter[0];
+          while(quotenum < quoteCutter.length) {
+                        if(quotenum % 2 != 0) {
+                text = text+"<br/><div style='width:10px;height:100%;color:#fff;float:left'> </div> <div class='postquote'><p>"+quoteCutter[quotenum]+'</b></div><br/>';
+                } else {
+                    text = text+quoteCutter[quotenum];
+                    }
+          
+          
+            quotenum = quotenum + 1;
+          }
+      
+      
+        //End Quote check//
+        //Splits and rejoins text based on the citation of the quotes//
+        text = text.split("---");
+        var num = 1;
+        var fullRelease = text[0];
+        while(num < text.length) {
+                if(num % 2 != 0) {
+                fullRelease = fullRelease+'<div class="postcite"><b>'+text[num]+'</b></div><br/>';
+                } else {
+                    fullRelease = fullRelease+text[num];
+                    }
+                
+            num = num + 1;
+        }
+        //End citation check //
+        
+        
+        
+        
+        return fullRelease;
+}

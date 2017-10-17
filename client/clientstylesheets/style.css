@@ -882,6 +882,20 @@ font-weight: 400;
 }  
 
 
+#companyTrademark {
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+}  
+  
+#companyLogo {
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+} 
+
+
+
 /*.banner {
     background-color: Red;
     position: absolute;

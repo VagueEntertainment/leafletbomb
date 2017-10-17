@@ -61,13 +61,21 @@ Template.header.helpers ( {
                             }
     },
     
-    logo: function() {
+    trademark: function() {
                         Meteor.subscribe('images');
                         Meteor.subscribe('companyassets');
                             var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}).filename;
                           return Images.findOne({_id:file}).url();
         
         },
+        
+    logo: function() {
+                        Meteor.subscribe('images');
+                        Meteor.subscribe('companyassets');
+                            var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogoSmall"}).filename;
+                          return Images.findOne({_id:file}).url();
+        
+        },    
     
     url: function() {
             if(Meteor.users.findOne() != undefined) {

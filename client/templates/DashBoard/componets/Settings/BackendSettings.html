@@ -1,19 +1,42 @@
 <template name="BackEndSettings" >
-<div style="width:100%;height:100%;overflow:auto;background:#FFF;padding:10px;radius:4px;">
 
 <h1>Backend Settings</h1>
+<div style="width:100%;height:100%;overflow:auto;background:#FFF;padding:10px;radius:4px;">
 
-        <form>
+ <form>
  <div class="dashBoard-Settings"> 
 
     <div style="float:left;width:90%;padding:5px">
         <h3>Email Settings</h3>
                <p>currently set to: {{fullFrom}} </p>
+               
          <div class="list_Item">
          <table style="width:100%"><tr>
              <td style="width:15%">From:</td> <td><input style="width:100%" type="text" name="fromwho" placeholder="Name" value="{{fromWho}}"></td></tr>
              <tr><td style="width:15%">Reply To:</td> <td><input style="width:100%" type="text" name="respondto" placeholder="no-reply@example.com" value="{{respondTo}}"></td>
              </tr></table>
+         </div>
+
+   </div>
+    <div class="dashBoard-Settings">
+  
+  <!-- <input style="float:right" type="submit" id="submit" value="Submit"> -->
+  </div>
+   </div>
+  
+ 
+ <div class="dashBoard-Settings"> 
+
+    <div style="float:left;width:90%;padding:5px">
+        <h3>Scheduling</h3>
+               
+               
+         <div class="list_Item">
+       <!--  <table style="width:100%"><tr>
+             <td style="width:15%">From:</td> <td><input style="width:100%" type="text" name="fromwho" placeholder="Name" value="{{fromWho}}"></td></tr>
+             <tr><td style="width:15%">Reply To:</td> <td><input style="width:100%" type="text" name="respondto" placeholder="no-reply@example.com" value="{{respondTo}}"></td>
+             </tr></table> -->
+             Comming Soon
          </div>
 
    </div>
@@ -26,4 +49,5 @@
    </form>
 
 </div>
+
 </template>

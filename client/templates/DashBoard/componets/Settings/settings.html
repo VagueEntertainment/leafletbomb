@@ -36,13 +36,17 @@
    
      <div style="float:left;width:30%">  
   <h3>Visual Assets</h3>
+  <label id="trademarkbox" for="companyTrademark" ><div class="thumbnail" style="width:260px;height:80px;"> 
+  <img src="{{companyLogo}}" width=256px height=70px alt="Trademark:"> 
+  </div></label>
   
-  Trademark:<img src="{{companyLogo}}" width=128px height=64px > 
-    <input name="companyLogo" class="LogoInput" type="file" single />
+    <input id="companyTrademark" name="companyLogo" class="LogoInput" type="file" single />
  <!-- <input type="text" name="companyLogo" value=""> -->
   <br>
-  Logo:<img src="{{companyLogoSmall}}" width=64px height=64px >
-    <input name="companyLogoSmall" class="LogoSmallInput" type="file" single />
+  <label id="logobox" for="companyLogo" ><div class="thumbnail" style="width:130px;height:130px;"> 
+  <img src="{{companyLogoSmall}}" width=128px height=128px alt="Logo:" >
+  </div></label>
+    <input id="companyLogo" name="companyLogoSmall" class="LogoSmallInput" type="file" single />
  
  </div>
         
