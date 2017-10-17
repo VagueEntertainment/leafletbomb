@@ -7,7 +7,9 @@ buttons:function() {
         
         } else if (Meteor.users.find().count() == 0) {
             } else {
-                return '<td><button id="companyPreview" class="button__flat" >Preview</button></td>';
+               // return '<td><button id="companyPreview" class="button__flat" >Preview</button></td>';
+               
+               return "";
      
         }
     

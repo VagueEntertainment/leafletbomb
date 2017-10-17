@@ -48,6 +48,12 @@ Meteor.publish('settings', function() {return Settings.find();});
 Meteor.publish('prteam', function(user) {
                                   return CompanyTeam.find();
                                         }); 
+                                        
+Meteor.publish('accounts', function() {
+                                  return Meteor.users.find({});;
+                                        }); 
+
+                                        
 Meteor.publish('distrolist', function(user) {
                                   return DistributionLists.find();
                                         });                                                                                

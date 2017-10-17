@@ -518,8 +518,13 @@ Template.newPressRelease.events ({
             e.preventDefault();
                 var theId =  Meteor.users.findOne()._id;
                 var d = new Date();
-                var docs = Router.current().params.query.new;
-                
+                var docs = "" 
+                if(Router.current().params.query.new == undefined) {
+                    docs = Router.current().params.query.edit;
+                } else {
+                    docs = Router.current().params.query.new;
+                }
+                console.log("Current Doc "+docs);
                 var thelist = [];
                             
                 DistributionLists.find().forEach( function(stuff) { 

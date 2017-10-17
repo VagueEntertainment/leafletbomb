@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
+import { Accounts } from 'meteor/accounts-base';
 
 MAIL_URL = 'smtp://ideas:B3V4ug3@vagueentertainment.com:587'
 

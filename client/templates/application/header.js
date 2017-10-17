@@ -1,21 +1,26 @@
 Template.header.helpers ( {
 
     user: function() {
-            if(Meteor.users.find().count() == 1) {
-                   if(Meteor.users.findOne().profile.accounttype == "marketer") {  
-                   
-                            if(Company.findOne() != undefined) {
+            if(Meteor.users.findOne() != undefined) {
+                      /*  switch (Meteor.users.findOne().profile.accounttype) {
+                        
+                         case "marketer": if(Company.findOne() != undefined) {
                                     Router.go('/dashboard/'+Meteor.users.findOne()._id);
                             } else {
                                 Router.go('/marketerSetup/'+Meteor.users.findOne()._id);
-                            }
-                            } else {
-                            Router.go('/influence/'+Meteor.users.findOne()._id);
-                            }   
-                    //if(Company.find().count() === 0) {  
-                            return Meteor.users.findOne().emails[0].address; 
-                          //  } else 
-                          //  return Company.findOne().companyName;
+                            }; break;
+                         case "teamMember" : if(Company.findOne() != undefined) {
+                                    Router.go('/dashboard/'+Company.findOne().userId);
+                                    };
+                           break;
+                            
+                         default: Router.go('/influence/'+Meteor.users.findOne()._id); break;
+                         
+                         } */
+                                 
+                                return "DashBoard";
+                           // return Meteor.users.findOne().emails[0].address; 
+                         
                 
                 } else {
                     //   Router.go('/welcome');
@@ -26,7 +31,7 @@ Template.header.helpers ( {
     
     avatar: function () {
     
-             if(Meteor.users.find().count() == 1) {
+             if(Meteor.users.findOne() != undefined) {
                             Meteor.subscribe('images');
                             Meteor.subscribe('companyassets');
              
@@ -65,13 +70,15 @@ Template.header.helpers ( {
         },
     
     url: function() {
-            if(Meteor.users.find().count() == 1) {
-                       if(Meteor.users.findOne().profile.accounttype == "marketer") {
-                                 return "/dashBoard/"+Meteor.users.findOne()._id;
-                          } else {
-                                return '/influence/'+Meteor.users.findOne()._id;
-                          }       
-                
+            if(Meteor.users.findOne() != undefined) {
+            
+                        switch(Meteor.users.findOne().profile.accounttype) {
+                        
+                            case "marketer" : return "/dashBoard/"+Meteor.users.findOne()._id;break;
+                            case "teamMember" : return "/dashBoard/"+Company.findOne().userId;break;
+                            default : return '/influence/'+Meteor.users.findOne()._id; break;
+                            
+                            }
                 
                 } else {
                         //Router.go('/');
@@ -127,3 +134,21 @@ Template.header.helpers ( {
 
 
 });
+
+Template.header.events ({
+
+
+    'click #newsroom' : function() {
+                        
+                        Router.go("/"+Company.findOne().companyName);
+                        }
+
+
+
+
+
+
+
+
+});
+

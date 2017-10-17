@@ -9,7 +9,7 @@ font-weight: 400;
 
 
 
-.grid-block, .main, .post, .comments, .comment-form, .login-dialog, .popup , .side_navbar , .slideIn  {
+.grid-block, .main, .post, .comments, .comment-form, .login-dialog, .popup , .side_navbar , .slideIn, .login-dialog {
 
     /*background: #fff; */
     
@@ -37,7 +37,7 @@ font-weight: 400;
     bottom:0px;
     left:0px;
     right:0px;
-    overflow: auto;
+    overflow: hidden;
     
     
     } 
@@ -120,7 +120,7 @@ font-weight: 400;
     .side_navbar {
         position: absolute;
         border-radius: 0px 0px 3px 3px;
-        height:100%;
+        /*height:100%; */
         background:#FBFBFC;
         top:0px;
         bottom:0px;

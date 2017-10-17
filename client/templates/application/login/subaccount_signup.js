@@ -1,4 +1,21 @@
-Template.marketerSignup.helpers ( {
+Template.subaccountSignup.helpers ( {
+
+
+    company: function() {
+    
+                    if(Company.findOne() != undefined) {
+    
+                         var company = Company.findOne({userId:Router.current().params.query.company}).companyName;
+                        
+                    
+                        return "for "+company;
+                    
+                    } else {
+                            return "";
+                        }
+                    },
+                    
+                 
 
     user: function() {
             if(Meteor.users.find().count() == 1) {
@@ -14,11 +31,8 @@ Template.marketerSignup.helpers ( {
                     return "No users";
                 }
     
-    }
+    },
     
    
-    
-
-
 
 });

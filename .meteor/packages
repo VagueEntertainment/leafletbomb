@@ -21,7 +21,7 @@ twbs:bootstrap
 session@1.1.7
 iron:router
 sacha:spin
-accounts-password@1.4.0
+accounts-password
 aramk:quill
 useraccounts:unstyled
 useraccounts:iron-routing

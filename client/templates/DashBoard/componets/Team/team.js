@@ -12,7 +12,11 @@ userId:function() {
 team: function() {
                     var id= Meteor.users.findOne()._id;
                 return CompanyTeam.find({type:"user"});
-            }
+            },
+            
+          
+            
+           
 
 
 });
@@ -139,6 +143,17 @@ avatar: function(e) {
  userid: function(e) {
             return CompanyTeam.findOne({name:this.name})._id;
  
+ },
+ 
+ status: function(e) {
+            Meteor.subscribe("accounts");
+        var theid = CompanyTeam.findOne({email:this.email})._id;
+            if(Meteor.users.findOne({emails: {$elemMatch: {address:this.email}}}) == undefined) {
+                return "Not Joined";
+            } else {
+                return "Joined";
+                } 
+ 
  }
 
 
@@ -208,11 +223,11 @@ Template.teamList.events ({
                                 
                                 
                                
-                            
+                                console.log("from submit "+ this._id);
                                
                                 
-                            
-                           if(CompanyTeam.find({"name":$(e.target).find('[name=name]').val()}).count() == 0) {
+                            if(this._id == undefined) {
+                          //if(CompanyTeam.find({"name":$(e.target).find('[name=name]').val()}).count() == 0) {
                            
                                      var info = {
                                     companyId:Company.findOne()._id,
@@ -227,6 +242,10 @@ Template.teamList.events ({
                                 };
                                     
                                 CompanyTeam.insert(info); 
+                                
+                               var memberId = CompanyTeam.findOne({name:$(e.target).find('[name=name]').val()})._id
+                                
+                                sendinvite($(e.target).find('[name=name]').val(),$(e.target).find('[name=email]').val(),memberId);
                         
                               } else {
                               
@@ -239,13 +258,18 @@ Template.teamList.events ({
                                     about:$(e.target).find('[name=about]').val(),   
                                 };
                                     
-                                   var listId = $(theid).find('[name=userid]').val();
-                                         CompanyTeam.update({"_id": listId},{$set: info}); 
+                                  // var listId = $(theid).find('[name=userid]').val();
+                                         CompanyTeam.update({"_id": this._id},{$set: info}); 
                               }
                               //  var theid = "#"+$(e.target).find('[name=userid]').val();
                                 
+                                
+                                
                             $("#teamaddwindow").css('visibility', 'hidden');
                             $(theid).css('visibility', 'hidden');
+                            
+                            
+                            
                             
                                     },
                                     
@@ -352,5 +376,32 @@ Template.teamList.events ({
   }                     
 
 });
+
+
+function sendinvite(name,emailaddress,memberId) {
+
+                            
+                           
+                            var title = "Join Request";
+                            var reply = CompanyTeam.findOne({type:"master"}).email;
+                            var company = Company.findOne().companyName;
+                            
+                            var companyId = Company.findOne().userId;
+                            
+                            Meteor.call(
+                                    'sendEmail',
+                                     name +"<"+emailaddress+">",
+                                    reply,
+                                    title+' - '+company,
+                                    `<h1>`+title+`</h1> </br><br/>
+                                        <br/><br/>
+  To join the team <a href=http://`+window.location.hostname+`:3000/JoinTeam/?company=`+companyId+`&accounttype=teamMember&name=`+name+`&email=`+emailaddress+`>Click Here<a>`
+                                     
+                                    ); 
+                        
+                       
+  }
+
+
 
 
