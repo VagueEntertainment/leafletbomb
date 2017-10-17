@@ -380,7 +380,7 @@ Template.teamList.events ({
 
 function sendinvite(name,emailaddress,memberId) {
 
-                            
+                            var thename = name.replace(/" "/g,"%20");
                            
                             var title = "Join Request";
                             var reply = CompanyTeam.findOne({type:"master"}).email;
@@ -395,7 +395,7 @@ function sendinvite(name,emailaddress,memberId) {
                                     title+' - '+company,
                                     `<h1>`+title+`</h1> </br><br/>
                                         <br/><br/>
-  To join the team <a href=http://`+window.location.hostname+`:3000/JoinTeam/?company=`+companyId+`&accounttype=teamMember&name=`+name+`&email=`+emailaddress+`>Click Here<a>`
+  To join the team <a href=http://`+window.location.hostname+`:3000/JoinTeam/?company=`+companyId+`&accounttype=teamMember&email=`+emailaddress+`&name=`+thename+`>Click Here<a>`
                                      
                                     ); 
                         
