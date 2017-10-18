@@ -99,7 +99,22 @@ Template.pressReleaseList.events({
 'click ': function() {
                        Router.go("/"+Company.findOne().companyName+"?pr="+this.docId);
 
-                    }
-
+                    },
+                    
+                 
 });      
+
+Template.companyPage.events ({
+
+'click #companySidebar' : function () {
+                        if($("#companySidebar").css("left") != "0px") {
+                        $("#companySidebar").css("animation-name" , "sideBarSlideIn");
+                        } else {
+                        
+                        $("#companySidebar").css("animation-name" , "sideBarSlideOut");
+                        }
+                        
+                    }   
+                    
+});                    
         

@@ -132,7 +132,7 @@ Template.header.helpers ( {
                 if(location.replace(/%20/g," ") == Company.findOne().companyName) { 
                 return "Newsroom";           
                 } else {   
-    return location;
+    return '';
     }
     
     },
