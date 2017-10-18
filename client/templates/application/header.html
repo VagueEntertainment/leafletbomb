@@ -7,8 +7,8 @@
             <table style ="padding:20px;height:100%">
             <tr>
             <td style="text-align:center">&nbsp;<img id="newsroom" src="{{logo}}" width="auto" height=40px ></td>
-            <td><div style="height:40px;width:1px;background:lightgray;padding:1px;"> </div> </td>
-            <td><img src="{{trademark}}" height="40px" width="auto" alt={{title}} > &nbsp;&nbsp; &nbsp;&nbsp; <strong> - {{whereWeAt}} - </strong></td>
+            <td><div style="height:40px;width:1px;background:#2DD1AC;padding:1px;"> </div> </td>
+            <td><img src="{{trademark}}" height="40px" width="auto" alt={{title}} > &nbsp;&nbsp; &nbsp;&nbsp; <strong> {{whereWeAt}}  </strong></td>
             {{> headerButtons}}
             
             
@@ -18,11 +18,11 @@
         <div class="navbar-right" role="navigation">
             <table style="padding:10px">
                 <tr>
-                    <th><div class="input-group margin-bottom-sm">
+                    <!-- <th><div class="input-group margin-bottom-sm">
                              <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
                                 <input class="form-control" type="text" placeholder="Search">
-                        </div></th>
-                    <th><div class="header-button"><a href="{{url}}">
+                        </div></th> -->
+                    <th><div class="header-button"><a class="header_button" href="{{url}}">
                     <img src="{{avatar}}"  height="18" width="auto" alt={{user}} ></a></div></th>
                 </tr>
              </table>

@@ -130,7 +130,7 @@ Template.header.helpers ( {
     whereWeAt: function() {
                 var location = Router.current().url.split("/")[1].split("?")[0];
                 if(location.replace(/%20/g," ") == Company.findOne().companyName) { 
-                return "Newsroom";           
+                return "- Newsroom -";           
                 } else {   
     return '';
     }

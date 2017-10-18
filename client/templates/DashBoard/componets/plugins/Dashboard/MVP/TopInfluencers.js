@@ -10,7 +10,7 @@ width:function(e) {
 },
 
 height:function(e) {
-     return "42%";
+     return "48%";
 },
 
 });
