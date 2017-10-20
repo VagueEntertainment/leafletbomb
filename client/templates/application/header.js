@@ -64,8 +64,12 @@ Template.header.helpers ( {
     trademark: function() {
                         Meteor.subscribe('images');
                         Meteor.subscribe('companyassets');
-                            var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}).filename;
-                          return Images.findOne({_id:file}).url();
+                                if(CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}) != undefined) {
+                                var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}).filename;
+                                return Images.findOne({_id:file}).url();
+                          } else {
+                            return "/media/newLogo_green.png";
+                            }
         
         },
         

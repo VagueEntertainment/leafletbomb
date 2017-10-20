@@ -7,7 +7,7 @@ font-weight: 400;
 
 }
 
-.navbar, .login-dialog, .side_navbar, .post-content, .post-packets {
+.navbar, .login-dialog, .side_navbar, .post-content, .post-packets, .finalsteps {
 
  -webkit-box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -445,6 +445,9 @@ font-weight: 400;
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
     
+     animation-duration: 0.5s;
+     animation-fill-mode: forwards;
+    
  
  }
  
@@ -819,6 +822,17 @@ font-weight: 400;
         
         }
         
+        
+        .border_line {
+        
+        background:#2DD1AC;
+        width:100%;
+        height:2px;
+        margin-top:10px;
+        margin-bottom:10px;
+        
+        }
+        
          @keyframes sideBarSlideIn {
         
             from {
@@ -883,8 +897,71 @@ font-weight: 400;
         
         }
         
+        /* Wizard */
+        
+       @keyframes wizardIn {
+        
+            from {
+                right: -50%;
+                
+                }
+                
+                to {
+                    right:26%;
+                   
+                }
+            
+        
+        }
+        
+         @keyframes wizardOut {
+        
+            from {
+                right: 26%;
+                
+                }
+                
+                to {
+                    right:100%;
+                   
+                }
+            
+        
+        }
         
         
+         @keyframes wizardBack {
+        
+            from {
+                right: 100%;
+                
+                }
+                
+                to {
+                    right:26%;
+                   
+                }
+            
+        
+        }
+        
+        @keyframes wizardRe {
+        
+            from {
+                right: 26%;
+                
+                }
+                
+                to {
+                    right:-50%;
+                   
+                }
+            
+        
+        }
+        
+        
+        /*End Wizard */
         
         
         

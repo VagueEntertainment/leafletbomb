@@ -1,8 +1,11 @@
 <template name="setupNotices">
 
 
-<div style="background-color:#fefefe;border-style:solid;border-width:1px;border-radius:5px;border-color:black;padding:20px;">
+<div class="finalsteps" style="background-color:#fefefe;border-radius:5px;padding:20px;">
 
+<img height=64px; src="/media/newLogo_green.png"> 
+<div class="border_line"> </div>
+<br>
 <h1> Almost there! </h1>
 
 <p> Welcome to your new Dashboard. Before we get started making news, you need to setup a few more things. 
@@ -10,10 +13,11 @@ These can be changed at any time, but your life will be made easier if you check
 
 
  <ul>
-  <li id="emailCheck" style="visibility:{{emailCheckVisibility}};padding:20px;width:50%">Email Settings. (Settings --> Backend --> Look for "Email Settings")</li>
-  <br/>
   <li id="ltCheck" style="visibility:{{ltCheckVisibility}};padding:20px;width:50%">Logo & Trademark. (Settings --> Company --> Look for "Visual Assets") </li>
   <br/>
+  <li id="emailCheck" style="visibility:{{emailCheckVisibility}};padding:20px;width:50%">Email Settings. (Settings --> Backend --> Look for "Email Settings")</li>
+  <br/>
+ 
   <li id="maCheck" style="visibility:{{maCheckVisibility}};padding:20px;width:50%">Master Account. (Team --> Click on Master Account) </li>
 
 </ul> 

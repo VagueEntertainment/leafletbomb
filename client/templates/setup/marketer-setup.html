@@ -1,98 +1,219 @@
 <template name="marketerSetup" >
 <img src="/media/testlogo.png" width=auto height=100% style="opacity:0.05;float:right">
-<div style="background:#fff;padding:10px;radius:4px;position:absolute;top:10%;bottom:1%;left:20%;right:20%;overflow:auto">
+<!--<div style="background:#fff;padding:10px;radius:4px;position:absolute;top:10%;bottom:1%;left:20%;right:20%;overflow:auto"> -->
+
+<!--<div class="dashBoard-AaG" style="position:absolute;top:5%;bottom:1%;left:20%;right:20%;padding:10px;overflow:auto"> -->
 
 
-<h1>Welcome Marketer</h1>
+<div id="slide1" class="dashBoard-AaG" style="text-align:center;position:absolute;right:-50%;bottom:20%;height:50%">
 
-<form>
+ <img height=64px width=auto src="/media/newLogo_green.png">
 
-
-<div class="dashBoard-AaG">
-<h2> Company Info</h2>
-
-<div style="float:left;width:33%">
-  <h3>General</h3>
+ <h2> Setup Wizard</h2>
   
-  Company Name:<br>
-  <input type="text" name="companyName" value="{{companyName}}">
-  <br>
-  Category:<br>
-  <input type="text" name="category" value="{{category}}">
-  <br>
-  <h3>Communication</h3>
-  Phone #:<br>
-  <input type="text" name="companyPhone" value="{{companyPhone}}">
-  <br>
-  Email:<br>
-  <input type="text" name="email" value="{{email}}">
+  <div class="border_line"> </div>
+ 
+    <br><br>
+
+    <h1> Welcome Marketer </h1>
+
+<img style="left:46%;right:46%;position:absolute;bottom:10px;height:64px;" id="next" src="/Buttons/go.png">
+
+</div>
+
+<form id="setupForm">
+
+<div >
+
+<div  id="slide2" class="dashBoard-AaG" style="position:absolute;right:-50%;bottom:20%;height:50%;text-align:center;">
+ <img height=64px width=auto src="/media/newLogo_green.png">
+
+  <h2>General</h2>
+  
+  <div class="border_line"> </div>
+ 
+    <br>
+  <h4>Company Name:</h4>
+  <input style="width:90%;" type="text" name="companyName" value="{{companyName}}">
+  <br><br>
+  <h4>Category:</h4>
+  <input style="width:90%;" type="text" name="category" value="{{category}}">
   <br>
   
+  <img style="left:10px;position:absolute;top:10px;height:32px;" id="back" src="/Buttons/retreat.png">
+  <img style="right:10px;position:absolute;bottom:10px;height:32px;" id="next" src="/Buttons/go.png">
   </div>
-  <div style="float:left;width:33%">  
-  <h3>Address</h3>
-  Address:<br>
-  <input type="text" name="companyAddress" value="{{companyAddress}}">
+  
+  
+  
+  
+  <div   id="slide3" class="dashBoard-AaG" style="position:absolute;right:-50%;bottom:20%;height:50%;text-align:center;">
+  
+  <img height=64px width=auto src="/media/newLogo_green.png">
+
+  <h2>Communication</h2>
+  
+  <div class="border_line"> </div>
+ 
+    <br>
+  
+  <h4>Phone #:</h4>
+  <input style="width:90%;" type="text" name="companyPhone" value="{{companyPhone}}">
+  <br><br>
+ <h4> Email:</h4>
+  <input style="width:90%;" type="text" name="email" value="{{email}}">
   <br>
-  City:<br>
-  <input type="text" name="companyCity" value="{{companyCity}}">
-  <br/>
-  State:<br>
-  <input type="text" name="companyState" value="{{companyState}}">
-  <br>
-  Country:<br>
-    <input type="text" name="companyCountry" value="{{companyCountry}}">
-  <br/>
+  
+  <img style="left:10px;position:absolute;top:10px;height:32px;" id="back" src="/Buttons/retreat.png">
+  <img style="right:10px;position:absolute;bottom:10px;height:32px;" id="next" src="/Buttons/go.png">
   </div>
   
-  <div style="float:left;width:33%">  
+  
+  
+  
+  <div  id="slide4" class="dashBoard-AaG" style="position:absolute;right:-50%;bottom:20%;height:50%;text-align:center;">
+  
+   <img height=64px width=auto src="/media/newLogo_green.png">
+
+  <h2>Address</h2>
+  
+  <div class="border_line"> </div>
+ 
+  <table style="margin-right:5%;margin-left:5%;width:100%">
+  <tr> <td style="width:50%;text-align:left">
+  <h4>Address:</h4>
+  <textarea cols="80" rows="8" style="height:50%;width:100%;text-align:left" name="companyAddress">{{companyAddress}}</textarea>
+  </td>
+  <td style="width:50%;text-align:left">
+  <h4>City:</h4>
+  <input style="width:40%;text-align:left" type="text" name="companyCity" value="{{companyCity}}">
+  <br/>
+ <h4> State:</h4>
+  <input style="width:30%;text-align:left" type="text" name="companyState" value="{{companyState}}">
+  <br>
+  <h4>Country:</h4>
+    <input style="width:40%;text-align:left" type="text" name="companyCountry" value="{{companyCountry}}">
+  </td></tr>
+  </table>
+  
+  <img style="left:10px;position:absolute;top:10px;height:32px;" id="back" src="/Buttons/retreat.png">
+  <img style="right:10px;position:absolute;bottom:10px;height:32px;" id="next" src="/Buttons/go.png">
+  </div>
+  
+  
+  
+  
+  <div class="dashBoard-AaG" style="position:absolute;right:-50%;bottom:20%;height:50%;text-align:center;">
+  
+   <img height=64px width=auto src="/media/newLogo_green.png">
+
+  <h2>Web Pressence</h2>
+  
+  <div class="border_line"> </div>
+ 
+    <br>
+  
 
   <br/>
-  <h3>Web Pressence</h3>
   Home Page:<br>
-  <input type="text" name="url" value="{{url}}">
+  <input style="width:90%;" type="text" name="url" value="{{url}}">
   <br>
   Twitter:<br>
-  <input type="text" name="twitter" value="{{twitter}}">
+  <input style="width:90%;" type="text" name="twitter" value="{{twitter}}">
   <br>
   Facebook:<br>
-  <input type="text" name="facebook" value="{{facebook}}">
+  <input  style="width:90%;" type="text" name="facebook" value="{{facebook}}">
   <br/>
+  <img style="right:10px;position:absolute;bottom:10px;height:64px;" id="next" src="/Buttons/go.png">
   </div>
   </div>
   
   
-   <div class="dashBoard-AaG">
+<!--   <div  id="slide5" class="dashBoard-AaG" style="position:absolute;right:-50%;bottom:20%;height:50%;text-align:center;">
    
+    <img height=64px width=auto src="/media/newLogo_green.png">
+
   <h2>Optional</h2>
+  
+  <div class="border_line"> </div>
+ 
+    <br>
+   
   
    <div style="float:left;width:33%">  
   
   <h3> Misc </h3>
   Tags: (Seperate with ',' )<br>
-  <input type="text" name="keywords" value="{{keywords}}" >
+  <input style="width:90%;" type="text" name="keywords" value="{{keywords}}" >
   <br>
   Other Sites: (Seperate with ',' ) <br>
-  <input type="text" name="othersites" value="{{othersites}}" >
+  <input style="width:90%;" type="text" name="othersites" value="{{othersites}}" >
   <br>
-  
+  <img style="left:10px;position:absolute;bottom:10px;height:64px;" id="back" src="/Buttons/retreat.png">
+  <img style="right:10px;position:absolute;bottom:10px;height:64px;" id="next" src="/Buttons/go.png">
   </div>
-  </div>
+  </div> -->
  
   
   
  
-  <div class="dashBoard-AaG">
-  <h3>About</h3>
-    <textarea name="about" cols="80" rows="10">{{about}} </textarea>
+  <div   id="slide5" class="dashBoard-AaG" style="position:absolute;right:-50%;bottom:20%;height:50%;text-align:center;">
   
-  <button style="float:right" type="button" onclick="{{wherewego}}">Cancel</button> 
-  <input type="submit" value="Submit">
+  
+    <img height=64px width=auto src="/media/newLogo_green.png">
+
+  <h2>About</h2>
+  
+  <div class="border_line"> </div>
+ 
+    <br>
+  
+    <textarea name="about" cols="80" rows="9">{{about}} </textarea>
+    <br>
+    <img style="left:10px;position:absolute;top:10px;height:32px;" id="back" src="/Buttons/retreat.png">
+  <img style="right:10px;position:absolute;bottom:10px;height:32px;" id="next" src="/Buttons/go.png">
  </div>
+ 
+   <div   id="slide6" class="dashBoard-AaG" style="position:absolute;right:-50%;bottom:20%;height:50%;text-align:center;">
+  
+  
+    <img height=64px width=auto src="/media/newLogo_green.png">
+
+  <h2>Visual Assets</h2>
+  
+  <div class="border_line"> </div>
+    <br>
+    <br>
+    <table style="margin:auto;width:80%;text-align:center">
+        <tr>
+         <td style="width:80%"> 
+                <label id="trademarkbox" for="companyTrademark" ><div class="thumbnail" style="width:520px;height:160px;"> 
+                <img src="{{companyLogo}}" width=512px height=140px alt="Trademark:"> 
+                </div></label> 
+                <input id="companyTrademark" name="companyLogo" class="LogoInput" type="file" single />
+            </td>
+            
+        <td style="width:20%"> 
+            <label id="logobox" for="companyLogo" ><div class="thumbnail" style="width:160px;height:160px;"> 
+            <img src="{{companyLogoSmall}}" width=160px height=160px alt="Logo:" >
+             </div></label>
+             <input id="companyLogo" name="companyLogoSmall" class="LogoSmallInput" type="file" single />
+        </td>
+     </tr>
+    </table>
+    <br>
+    
+    <img style="left:10px;position:absolute;top:10px;height:32px;" id="back" src="/Buttons/retreat.png">
+  
+  <button class="Dashboard_Button" style="float:left;height:10%;width:15%" type="button" onclick="{{wherewego}}">Cancel</button> 
+  <input class="Dashboard_Button" style="float:right;height:10%;width:15%" type="submit" value="Submit">
+ </div>
+ 
+ 
  
 </form>
  
-</div>
+<!-- </div> -->
 
 
 </template>

@@ -1,3 +1,27 @@
+Template.stopPage.rendered=function () {
+
+   if (Company.find().count() == 0) {
+   // console.log("found "+Company.find().count());
+        if(Meteor.users.find().count() == 0) {
+             console.log("No users found");
+                 Router.go("/marketerSignup?accounttype=marketer");
+            } else {
+                 Router.go('/marketerSetup/'+Meteor.userId());
+            }
+     } else if (Company.find().count() !=0) {
+    
+            Router.go("/"+Company.findOne().companyName);
+        } 
+        
+        console.log(Company.find().count());
+    
+
+}
+
+
+
+
+
 Template.stopPage.helpers({
 
 
@@ -17,23 +41,7 @@ Template.stopPage.helpers({
 
 });
 
-Template.stopPage.rendered=function () {
-
-   if (Company.find().count() == 0) {
-   // console.log("found "+Company.find().count());
-        if(Meteor.users.find().count() == 0) {
-             console.log("No users found");
-                 Router.go("/marketerSignup?accounttype=marketer");
-            } else {
-                 Router.go('/marketerSetup/'+Meteor.userId());
-            }
-     } else if (Company.find().count() == 1) {
-    
-            Router.go("/"+Company.findOne().companyName);
-        } 
-    
-
-} 
+ 
 
 Template.stopPage.events({
 
