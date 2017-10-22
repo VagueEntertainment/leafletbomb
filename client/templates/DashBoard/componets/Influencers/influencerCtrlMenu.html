@@ -1,0 +1,28 @@
+<template name="influencerCtrlMenu">
+<!--  <h3>{{companyName}}</h3> -->
+           
+            
+            
+           {{{avatar}}}
+              <h3> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+{{Name}} </h3>           
+ <div style="float:right"> ({{companyName}}) </div>
+ <br/><br/>
+ <table >
+ <tr><td> <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{phone}}</td></tr>
+ <tr ><td> <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;<a class="nav_button" href='mailto:{{email}}'>{{email}}</a></td></tr>
+ <tr><td> <i class="fa fa-address-card-o" aria-hidden="true"></i>&nbsp;{{address}}</td></tr>
+ 
+ </table>
+            
+            <br/>
+            <h4> Controls </h4>
+            <div class="border_line" > </div>
+            <br/>
+            
+             <div class="nav_buttons"><a class="nav_button" id="editRelease"><div> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit</div></a></div>
+             <div class="nav_buttons"><a class="nav_button" id="removeRelease"><div> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Remove </div></a></div>
+            
+
+ <button class="Dashboard_Button" id="backbutton" style="position:absolute;left:1%;right:1%;bottom:10px;width:98%;height:5%" type="button" >Back</button> 
+</template>

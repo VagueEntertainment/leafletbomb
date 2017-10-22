@@ -114,7 +114,43 @@ Template.companyPage.events ({
                         $("#companySidebar").css("animation-name" , "sideBarSlideOut");
                         }
                         
-                    }   
+                    },  
+                    
+'click #faqSidebar' : function () {
+                        
+                        
+                        if($("#faqSidebar").css("right") != "0px") {
+                        $("#faqSidebar").css("animation-name" , "interactBarSlideIn");
+                        $("#questionSidebar").css("visibility", "hidden");
+                        } else {
+                        $("#questionSidebar").css("visibility", "visible");
+                        $("#faqSidebar").css("animation-name" , "interactBarSlideOut");
+                        }
+                        
+                    },
+'click #questionSidebar' : function () {
+                       
+                        if($("#questionSidebar").css("right") != "0px") {
+                        $("#questionSidebar").css("animation-name" , "interactBarSlideIn");
+                        } else {
+                        
+                        $("#questionSidebar").css("animation-name" , "interactBarSlideOut");
+                        }
+                        
+                    },
+ 'scroll #mainPage' : function() {
+                            
+                        $('#header').css('opacity', 0.2);
+                        
+                        
+                        },
+                        
+  'mousemove #mainPage' : function() {
+                            
+                        $('#header').css('opacity', 1);
+                        
+                        
+                        }                                                                               
                     
 });                    
         

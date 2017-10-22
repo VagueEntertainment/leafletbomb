@@ -24,7 +24,7 @@ Template.header.helpers ( {
                 
                 } else {
                     //   Router.go('/welcome');
-                    return "Login / Create Account";
+                    return "Login";
                 }
     
     },
@@ -153,12 +153,7 @@ Template.header.events ({
     'click #newsroom' : function() {
                         
                         Router.go("/"+Company.findOne().companyName);
-                        }
-
-
-
-
-
+                        },
 
 
 

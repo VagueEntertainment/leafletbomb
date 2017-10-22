@@ -4,7 +4,7 @@ Template.postsList.helpers({
                 var docId= Router.current().url.split("/")[Router.current().url.split("/").length -1].split("?")[0];
                     
                 if(Posts.find().count() == 0) {
-                        Router.go("/");
+                        return Posts.findOne();
                         } else {
                            
                             var d = new Date();
@@ -16,7 +16,10 @@ Template.postsList.helpers({
                                 return Posts.find({docId:docId}, {sort:{releasedate: -1}});
                                 }
                         }
-            } 
+            } ,
+            
+       
+            
             });
             
 Template.postsList.rendered=function() {

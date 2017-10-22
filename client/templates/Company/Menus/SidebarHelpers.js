@@ -17,16 +17,6 @@ Template.companyMenu.helpers({
 
 Template.companyMenu.events({
 
-
-    'click #releaseAdd': function() {
-                             var theid = Company.findOne().userId;
-                                var d = new Date();
-                                  var docs = Company.findOne()._id+"_"+d.getTime();
-                                  
-                            Router.go('/dashboard/'+theid+'/newPressRelease?new='+theid+"_"+docs);
-                        },
-
-
     'click #SettingListItem' : function(e) {
                               $("#dashboard_CompanyConfig").css("visibility", "visible");
                               $("#dashboard_CompanyConfig").css("animation-name" , "slideInAnim");
