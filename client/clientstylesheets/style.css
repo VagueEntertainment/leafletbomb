@@ -49,8 +49,8 @@ font-weight: 400;
     left:0px;
     right:0px;
     overflow: hidden;
-    /*background-color:#D6D6D6; */
-    background-color:#2DD1AC
+    background-color:#D6D6D6;
+    /*background-color:#2DD1AC */
     
     } 
     
@@ -278,6 +278,8 @@ font-weight: 400;
     /*background:white; */
     background:#2DD1AC;
     border-style:solid;
+    color:white;
+    text-align:center;
    
    }
         
@@ -826,7 +828,7 @@ font-weight: 400;
             animation-duration: 0.5s;
             animation-fill-mode: forwards;
             position:absolute;
-            top:0px;
+            top:6%;
             bottom:0px;
             
             background:#fff;
@@ -842,7 +844,7 @@ font-weight: 400;
             animation-duration: 0.5s;
             animation-fill-mode: forwards;
             position:absolute;
-            top:0px;
+            top:6%;
             bottom:0px;
             
             background:#fff;
