@@ -1,3 +1,13 @@
+Template.dashBoard.rendered=function () {
+
+ if(Meteor.userId() == null) {
+        Router.go("/login");
+    
+    }
+    
+}    
+
+
 Template.dashBoard.helpers({               
                     
       influencerlist:function() {

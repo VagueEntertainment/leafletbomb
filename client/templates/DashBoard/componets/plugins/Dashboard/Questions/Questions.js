@@ -18,5 +18,10 @@ height:function(e) {
         return "50%";
 },
 
+questions: function() {
+                    
+                return PostQuestions.find();
+            }
+
 
 });

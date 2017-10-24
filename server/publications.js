@@ -68,8 +68,15 @@ Meteor.publish("influencers",function(){return Influencers.find(); });
 
 Meteor.publish('postdistribution',function(){return PostDistribution.find(); });
 
-Meteor.publish('postquestions',function(){return PostQuestions.find(); });   
 
 Meteor.publish('postfaq',function(){return PostFAQ.find(); });
 
-Meteor.publish('postengagement',function(doc){return PostEngage.find({docId:doc}); });            
+Meteor.publish('postengagement',function(doc){return PostEngage.find({docId:doc}); });       
+
+
+Meteor.publish('postquestions',function(){return PostQuestions.find(); });
+
+Meteor.publish('postanswers',function(){return PostAnswers.find(); });
+
+
+     

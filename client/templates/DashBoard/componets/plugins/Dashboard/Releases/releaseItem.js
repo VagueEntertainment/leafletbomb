@@ -94,7 +94,7 @@ Template.releaseItem.helpers({
             }
    },
    
-   totalcomments:function(e) { return 0; },
+   totalcomments:function(e) { return PostQuestions.find({docId:this.docId}).count(); },
    
    totalshared:function(e) {return 0; },
         

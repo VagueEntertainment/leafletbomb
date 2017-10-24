@@ -2,6 +2,11 @@ Template.newPressRelease.rendered=function () {
 
     $('#releasedatepicker').datepicker();
     $('#archivedatepicker').datepicker();
+    
+    if(Meteor.userId() == null) {
+        Router.go("/login");
+    
+    }
 
 }
 
@@ -73,8 +78,14 @@ Template.newPressRelease.helpers ({
                             } else {
                             themonth = (d.getMonth() + 1);
                             }
+                            var currentdate = themonth+'/'+theday+'/'+d.getFullYear();
+                           /* if($("#therelease").find('[name=releasedate]').val() == currentdate) {
+                                    return currentdate;    
+                            } else {
+                              return  $("#therelease").find('[name=releasedate]').val();
+                            } */
+                            return $("#therelease").find('[name=releasedate]').val();
                             
-                    return themonth+'/'+theday+'/'+d.getFullYear();    
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).releasedate;
         }

@@ -1,3 +1,14 @@
+Template.postCtrl.rendered=function () {
+
+
+if(Meteor.userId() == null) {
+        Router.go("/login");
+    
+    }
+
+}
+
+
 Template.postCtrl.helpers ({
 
    posts: function() {
@@ -16,7 +27,13 @@ Template.postCtrl.helpers ({
   emailEngagment: function(e) {
                     var id = Router.current().params.docId;
                     
-                   return PostEngage.find();
+                        if(PostEngage.find() == undefined) {
+                            return PostDistribution.findOne({docId:id}).list;
+                            
+                    } else { 
+                        return PostEngage.find();
+                   }
+                   
                     
                     },
                     
@@ -52,6 +69,17 @@ Template.postSendItem.helpers ({
                 }
                 },                       
                                 
+
+});
+
+
+Template.postQA.helpers ({
+
+questions: function() {
+                    var id = window.location.pathname.split("/")[4].split("?")[0];
+                return PostQuestions.find({docId:id});
+            }
+
 
 });
 
