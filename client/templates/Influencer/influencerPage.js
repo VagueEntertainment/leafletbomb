@@ -169,19 +169,19 @@ Template.influencerPage.events ({
                         }
                         
                     },
- 'scroll #mainPage' : function() {
+/* 'scroll #mainPage' : function() {
                             
                         $('#header').css('opacity', 0.2);
                         
                         
-                        },
+                        }, 
                         
   'mousemove #mainPage' : function() {
                             
                         $('#header').css('opacity', 1);
                         
                         
-                        },  
+                        },  */
                         
    'click #addQuestion' : function() {
                            

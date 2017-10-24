@@ -84,7 +84,8 @@ Template.newPressRelease.helpers ({
                             } else {
                               return  $("#therelease").find('[name=releasedate]').val();
                             } */
-                            return $("#therelease").find('[name=releasedate]').val();
+                            //return $("#therelease").find('[name=releasedate]').val();
+                            return currentdate;   
                             
                 } else {
                     return Posts.findOne({docId:Router.current().params.query.edit}).releasedate;
@@ -695,7 +696,17 @@ Template.newPressRelease.events ({
     var files = event.target.files;
     
     var theId =  Meteor.users.findOne()._id;
-    var docs = Router.current().params.query.new;
+     
+      var docs = "";
+                     
+                     
+                      if(Router.current().params.query.new == undefined) {
+                    docs = Router.current().params.query.edit;
+                } else {
+                    docs = Router.current().params.query.new;
+                }
+    
+    
     
         $('#assetlist').css("display","none");
          $('#uploading').css("display","inherit");
@@ -726,7 +737,17 @@ Template.newPressRelease.events ({
                     var files = event.target.files;
     
                     var theId =  Meteor.users.findOne()._id;
-                     var docs = Router.current().params.query.new;
+                     var docs = "";
+                     
+                     
+                      if(Router.current().params.query.new == undefined) {
+                    docs = Router.current().params.query.edit;
+                } else {
+                    docs = Router.current().params.query.new;
+                }
+                     
+                     
+                     
     
                       $('#assetlist').css("display","none");
                       $('#uploading').css("display","inherit");
@@ -737,12 +758,26 @@ Template.newPressRelease.events ({
                         if (err) {
         
                          } else {
+                                if( PostAssets.findOne({docId:docs , type:"featured"}) == undefined) {
                                 var info = {
                                        docId:docs,
                                      filename:fileObj._id,
                                      type:"featured"
                                       };
             PostAssets.insert(info);
+            
+            } else {
+                var id = PostAssets.findOne({docId:docs , type:"featured"})._id;
+                var info = {
+                                       docId:docs,
+                                     filename:fileObj._id,
+                                     type:"featured"
+                                      };
+                                      
+                                      
+                PostAssets.update({"_id": id},{$set: info});
+            
+            }
             $('#assetlist').css("display","inherit");
             $('#uploading').css("display","none");
           }

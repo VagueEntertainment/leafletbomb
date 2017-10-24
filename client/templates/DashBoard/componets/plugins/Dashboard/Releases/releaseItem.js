@@ -65,6 +65,7 @@ Template.releaseItem.helpers({
         
     featuredImage: function() {
                        var featuredfile = "/media/file_placeholder.png"
+                       if(this.docId != undefined) {
                      PostAssets.find({docId:this.docId , type:"featured"}).forEach(
                                             function(files){
 
@@ -72,6 +73,8 @@ Template.releaseItem.helpers({
                                             
                                             
                                             });
+                                            
+                         }                   
                     return featuredfile;
                 
     
@@ -108,8 +111,10 @@ Template.releaseItems.events({
                     
                     var theid = e.target.id;
                     
-                    console.log(theid);
-                    Router.go("/dashboard/"+this.userId+"/postCtrl/"+theid);
+                    
+                    if(theid.length != 0) {
+                        Router.go("/dashboard/"+this.userId+"/postCtrl/"+theid);
+                    }
                 }
 
 

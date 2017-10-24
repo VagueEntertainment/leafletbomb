@@ -416,7 +416,57 @@ Template.influencerSetup.events ({
     
     }
        
-   // Router.go('/dashboard/'+Meteor.users.findOne()._id);
-    
+         var emailinfo = {
+                            companyId:Company.findOne()._id,
+                            fromWho:$("#setupForm").find('[name=companyName]').val(),
+                            respondTo:$("#setupForm").find('[name=email]').val(),
+                            type:"email"
+                    
+                        };
+                        
+                        if(Settings.findOne({type:"email"}) == undefined) {
+                        
+                            Settings.insert(emailinfo);
+                        
+                        } else {
+                            Settings.update({_id:Settings.findOne({type:"email"})._id},{$set:emailinfo});
+                        }
+                        
+                        
+                         var theId =  Company.findOne().userId;
+                         var theid = "#"+this._id;
+                        
+                        
+      if(CompanyTeam.find({"name":$('#setupForm').find('[name=name]').val()}).count() == 0) {
+                           
+                            var info = {
+                                    companyId:Company.findOne()._id,
+                                    name:Meteor.user().profile.name,
+                                    email:Meteor.user().emails[0].address,
+                                    url:$('#setupForm').find('[name=url]').val(),
+                                    phone:$('#setupForm').find('[name=companyPhone]').val(),
+                                    about:"",
+                                    userId:theId,
+                                    type:"master" 
+                                };
+                                    
+                                CompanyTeam.insert(info); 
+                        
+                              } else {
+                              
+                                    var info = {
+                                    companyId:Company.findOne()._id,
+                                    name:Meteor.user().profile.name,
+                                    email:Meteor.user().emails[0].address,
+                                    url:$('#setupForm').find('[name=url]').val(),
+                                    phone:$('#setupForm').find('[name=companyPhone]').val(),
+                                    about:"",
+                                    userId:theId,
+                                     
+                                };
+                                    
+                                   var listId = $(theid).find('[name=userid]').val();
+                                         CompanyTeam.update({"_id": listId},{$set: info}); 
+                              }                     
 
 }

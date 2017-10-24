@@ -95,12 +95,13 @@ Template.postItem.helpers ( {
         },
         companySPPhone:function() {
         
-        return CompanyTeam.findOne({userId:this.authorId}).phone;
+        return "phone: "+ CompanyTeam.findOne({userId:this.authorId}).phone;
         },
         companySPImg:function() {
                          Meteor.subscribe('postassets');
                             Meteor.subscribe('images');
                             Meteor.subscribe('companyassets');
+                            
                         var file = CompanyAssets.findOne({"companyId":this.userId, "type":"companySPImg"}).filename;
                         
                           return Images.findOne({_id:file}).url();
@@ -312,7 +313,7 @@ Template.postItem.helpers ( {
 
 function document(release) {
 
-var text = release;
+    var text = release;
        
        
        

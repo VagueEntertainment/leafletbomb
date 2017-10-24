@@ -138,19 +138,7 @@ Template.companyPage.events ({
                         }
                         
                     },
- 'scroll #mainPage' : function() {
-                            
-                        $('#header').css('opacity', 0.2);
-                        
-                        
-                        },
-                        
-  'mousemove #mainPage' : function() {
-                            
-                        $('#header').css('opacity', 1);
-                        
-                        
-                        }                                                                               
+                                                                              
                     
 });                    
         
