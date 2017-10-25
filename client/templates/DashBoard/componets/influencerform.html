@@ -1,15 +1,13 @@
 <template name="influencerForm">
-
-
 <h2>Influencer <i style="float:right" id="delete" class="fa fa-trash" aria-hidden="true"></i></h2>
-<div style="width:100%;height:2px;background:#000"> </div>
-<br/>
+<div class="border_line" > </div>
+
 <form style="text-align:right;padding:10px;" id="influencerform">
 <div class="row">
 
 <div >
 <h3 style="text-align:left">General</h3>
-<br/>
+
 <table style="100%"><tr>
 <td style="width:10%"> <i class="fa fa-user-circle-o fa-4x" aria-hidden="true"></i></td>
 <td style="width:90%;text-align:left"> <input style="width:100%" type="text" name="name" value="{{Name}}" placeholder="Name"><br/>
@@ -24,21 +22,20 @@ URL: <input style="width:90%" type="text" name="url" value="{{url}}"><br/>
 Address: <input  style="width:90%" type="text" name="address" value="{{address}}"><br/>
 State: <input style="width:90%" type="text" name="state" value="{{state}}"><br/>
 Country: <input  style="width:90%" type="text" name="country" value="{{country}}"><br/>
-<br/>
 
 <h3 style="text-align:left">Optional</h3>
 </div>
  <div style="text-align:left">
- <br><br>Personal Message:
-<textarea cols="80" rows="18" name="notes">{{about}} </textarea>
+ Personal Message:
+<textarea cols="80" rows="8" name="notes">{{about}} </textarea>
 
 </div></div>
 
 <br/>
 <table style="width:100%;">
 <tr>
-<td><button style="float:left" type="button" id="influencercancel">Cancel</button></td>
-<td><input type="submit" value="Submit" name="isubmit"></td>
+<td><button class="header-button" style="float:left" type="button" id="influencercancel">Cancel</button></td>
+<td><input class="header-button" type="submit" value="Submit" name="isubmit"></td>
 </tr></table> 
 
 </form>

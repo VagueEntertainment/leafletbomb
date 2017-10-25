@@ -46,7 +46,7 @@ Template.postItem.helpers ( {
               
        releasechanged: function() {
        
-          return document(this.release);
+          return document(this.docId,this.release);
        
        },
        
@@ -311,14 +311,15 @@ Template.postItem.helpers ( {
         
 });
 
-function document(release) {
+function document(docId,release) {
 
     var text = release;
-       
+      
        
        
        var thefiles = [];
-                   PostAssets.find({docId:this.docId}).forEach(
+                    
+                   PostAssets.find({docId:docId}).forEach(
                                             function(files){
                                             
                                                // thefiles.push ("{_id:"+files.filename+"}");

@@ -1,12 +1,39 @@
+Template.influencerPage.rendered=function() {
+
+       var influencer = "";
+       var docId= Router.current().url.split("/")[Router.current().url.split("/").length -1].split("?")[0];
+         
+        if(Router.current().params.query.inf != undefined) {
+         influencer = Router.current().params.query.inf;
+         var influencername = Influencers.findOne({_id:influencer}).Name;
+         var id = PostEngage.findOne({docId:docId} && {influencerName:influencername})._id;
+            console.log("from stuff "+id);
+            var seen = {
+                        seen:1
+                        };
+                        
+            PostEngage.update({_id:id}, {$set:seen});
+        }
+
+
+}
+
+
+
+
+
+
 Template.influencerPage.helpers({
 
 posts:function() {
-                    if(Router.current().params.query.pr == undefined) {
+                    var docId = window.location.pathname.split("/")[2].split("?")[0];
+                   
+                    if(docId == undefined) {
                   
                         return Posts.find({status:2}, {sort:{releasedate:1}, limit: 1});
         
                     } else {
-                            return Posts.find({docId:Router.current().params.query.pr , status:2}, {sort:{releasedate:1}, limit: 1});
+                            return Posts.find({docId:docId , status:2}, {sort:{releasedate:1}, limit: 1});
                     }
         },
         
@@ -169,19 +196,6 @@ Template.influencerPage.events ({
                         }
                         
                     },
-/* 'scroll #mainPage' : function() {
-                            
-                        $('#header').css('opacity', 0.2);
-                        
-                        
-                        }, 
-                        
-  'mousemove #mainPage' : function() {
-                            
-                        $('#header').css('opacity', 1);
-                        
-                        
-                        },  */
                         
    'click #addQuestion' : function() {
                            
@@ -228,8 +242,9 @@ Template.influencerPage.events ({
                         faq:0,
                         };
                         
-                        if (question.length < 12) {
+                        if (question.length > 8) {
                             PostQuestions.insert(info);
+                            
                         }
     
  

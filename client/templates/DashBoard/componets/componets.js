@@ -146,8 +146,20 @@ distributionlists:function() {
                         return DistributionLists.find();
                     },
          influencerlist:function() {
+                        if(Router.current().params.query.distlist != undefined) {
+                            if(Router.current().params.query.distlist == "all") {
+                                return Influencers.find();
+                            } else {
+                                    var Dist_List = [];
+                                   Dist_List =  DistributionLists.findOne({_id:Router.current().params.query.distlist}).list;
+                                            //console.log(Dist_List);
+                                  
+                                return DistributionLists.findOne({_id:Router.current().params.query.distlist}).list;
+                            }
+                        } else {
+                            return Influencers.find();
                         
-                        return Influencers.find();
+                        }
                     },
          presslist:function() {
                         
@@ -199,14 +211,56 @@ distributionlists:function() {
  
 Template.influencerItem.helpers({
 
-userid: function() {return this._id;},
+userid: function() {
+            Meteor.subscribe('influencers');
+
+            if(Router.current().params.query.distlist != undefined) {
+                return this;
+            } else {
+
+            return this._id;
+            
+            }
+},
+
+Name: function() {
+            Meteor.subscribe('influencers');
+    if(Router.current().params.query.distlist != undefined) {
+               var id= '"'+this+'"';
+              
+            //return id;
+            
+            return Influencers.findOne({_id:this}).Name;
+        } else {
+
+        return this.Name;
+    
+    }
+},
+
+companyName: function() {
+
+    if(Router.current().params.query.distlist != undefined) {
+        
+        } else {
+
+            return this.companyName;
+    
+        }
+},
 
 avatar: function() {
 
-//<i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
+        if(Router.current().params.query.distlist != undefined) {
         
-    var md5Hash = Gravatar.hash(this.email);
-return `<img height=64 width=auto class="img-circle" src='https://www.gravatar.com/avatar/`+md5Hash+`' > </img>`;}
+        } else {
+        
+            var md5Hash = Gravatar.hash(this.email);
+            return `<img height=64 width=auto class="img-circle" src='https://www.gravatar.com/avatar/`+md5Hash+`' > </img>`;
+
+        }
+
+    }
 
 });
 
@@ -305,14 +359,16 @@ Template.influencerItem.events ({
 Template.DistributionListItem.events ({
 
     'click .list_Item': function(e) {
-                        var theid = "#"+$(e.target).find('[name=userid]').val();
-                        if($(theid).css('visibility') == 'visible') {
+                        var theid = $(e.target).find('[name=userid]').val();
+                       /* if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
                                $(theid).css("animation-name" , "slideOutAnim");
                                 } else {
                         $(theid).css('visibility', 'visible');
-                       $(theid).css("animation-name" , "slideInAnim");
-                                    }
+                       $(theid).css("animation-name" , "slideInAnim"); 
+                                    } */
+                                    
+                                    Router.go("/dashboard/"+Company.findOne()._id+"?distlist="+theid);
                        
                     },
                     

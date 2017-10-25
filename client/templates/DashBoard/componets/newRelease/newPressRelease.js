@@ -747,18 +747,22 @@ Template.newPressRelease.events ({
                 }
                      
                      
-                     
+                    
     
                       $('#assetlist').css("display","none");
                       $('#uploading').css("display","inherit");
         
      
                       for (var i = 0, ln = files.length; i < ln; i++) {
+
+                             
                               Images.insert(files[i], function (err, fileObj) {
                         if (err) {
         
                          } else {
-                                if( PostAssets.findOne({docId:docs , type:"featured"}) == undefined) {
+                                    
+                                
+                                if(PostAssets.findOne({docId:docs , type:"featured"}) == undefined) {
                                 var info = {
                                        docId:docs,
                                      filename:fileObj._id,

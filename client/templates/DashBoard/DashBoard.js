@@ -5,6 +5,15 @@ Template.dashBoard.rendered=function () {
     
     }
     
+ if(Router.current().params.query.distlist != undefined) {
+                                $("#dashboard_DistributionList").css('visibility', 'visible');
+                                $("#dashboard_Teams").css('visibility', 'hidden');
+                                $("#dashboard_Published").css('visibility', 'hidden');
+                                 $("#dashboard_Drafts").css('visibility', 'hidden');
+                                 $("#dashboard_Scheduled").css('visibility', 'hidden');
+ 
+ }    
+    
 }    
 
 
@@ -152,7 +161,9 @@ Template.distrilist.events({
                                                   }                       
                                 $("#distroaddwindow").css('visibility', 'visible');
                                 $("#distroaddwindow").find('[name=listname]').val(this.listname);
-                                $("#distroaddwindow").find('[name=message]').val(this.message);
+                                $("#distroaddwindow").find('[name=message]').val(this.message); 
+                                
+                                
                                 
                                 
 }
@@ -166,7 +177,7 @@ Template.influencer.events({
 
 
 'click' : function(e) {
-
+                            
                                 var thelist = [];
                                 
                               //  thelist = DistributionLists.findOne({"listname":this.listname}).list;

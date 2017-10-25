@@ -22,7 +22,7 @@ Template.postsList.helpers({
             
             });
             
-Template.postsList.rendered=function() {
+/*Template.postsList.rendered=function() {
 
        var influencer = "";
        var docId= Router.current().url.split("/")[Router.current().url.split("/").length -1].split("?")[0];
@@ -40,6 +40,6 @@ Template.postsList.rendered=function() {
         }
 
 
-}
+} */
            
             
