@@ -18,7 +18,7 @@ Template.header.helpers ( {
                          
                          } */
                                  
-                                return "DashBoard";
+                                return "Dashboard";
                            // return Meteor.users.findOne().emails[0].address; 
                          
                 
