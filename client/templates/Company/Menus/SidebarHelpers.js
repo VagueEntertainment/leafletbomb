@@ -9,6 +9,9 @@ Template.companyMenu.helpers({
                     return Company.findOne().companyName;
             }, 
 
+    postlist:function() {    
+        return Posts.find({status:2}, {sort:{title: -1}});
+        },
   
 
 
@@ -23,7 +26,12 @@ Template.companyMenu.events({
                               $('#DashboardSidebar').css("visibility", "hidden");
                               $('#SettingsSidebar').css("visibility", "visible");   
           
-                    },     
+                    },   
+                    
+   'click ': function() {
+                       Router.go("/"+Company.findOne().companyName+"?pr="+this.docId);
+
+                    },  
 
 
 
@@ -47,6 +55,8 @@ featuredImage: function() {
 
 
 });
+
+
 
 
 

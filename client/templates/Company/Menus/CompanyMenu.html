@@ -7,6 +7,12 @@
             <div class="border_line"> </div>
             <br/>
             
-            {{>pressReleaseList}}
+             <div class="dashposts">
+            {{#each postlist}}
+            {{> PressReleaseItem}}
+         
+            
+            {{/each}}
+        </div>    
           
 </template>
