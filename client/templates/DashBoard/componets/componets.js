@@ -164,7 +164,12 @@ distributionlists:function() {
          presslist:function() {
                         
                         return Influencers.find();
-                    }
+                    },
+                    
+        listName: function() {
+        
+                      return DistributionLists.findOne({_id:Router.current().params.query.distlist}).listname;          
+                    }            
                     
  });
  
@@ -215,7 +220,7 @@ userid: function() {
             Meteor.subscribe('influencers');
 
             if(Router.current().params.query.distlist != undefined) {
-                return this;
+                return this.trim();
             } else {
 
             return this._id;
@@ -226,11 +231,9 @@ userid: function() {
 Name: function() {
             Meteor.subscribe('influencers');
     if(Router.current().params.query.distlist != undefined) {
-               var id= '"'+this+'"';
-              
-            //return id;
+               
             
-            return Influencers.findOne({_id:this}).Name;
+            return Influencers.findOne({_id:this.trim()}).Name;
         } else {
 
         return this.Name;
@@ -241,7 +244,7 @@ Name: function() {
 companyName: function() {
 
     if(Router.current().params.query.distlist != undefined) {
-        
+            return Influencers.findOne({_id:this.trim()}).companyName;
         } else {
 
             return this.companyName;
@@ -252,7 +255,10 @@ companyName: function() {
 avatar: function() {
 
         if(Router.current().params.query.distlist != undefined) {
-        
+            email= Influencers.findOne({_id:this.trim()}).email;
+            
+            var md5Hash = Gravatar.hash(email);
+            return `<img height=64 width=auto class="img-circle" src='https://www.gravatar.com/avatar/`+md5Hash+`' > </img>`;
         } else {
         
             var md5Hash = Gravatar.hash(this.email);
