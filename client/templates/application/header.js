@@ -17,15 +17,17 @@ Template.header.helpers ( {
                          default: Router.go('/influence/'+Meteor.users.findOne()._id); break;
                          
                          } */
-                                 
-                                return "Dashboard";
+                var location = Router.current().url.split("/")[1].split("?")[0];
+                if(location.replace(/%20/g," ") == Company.findOne().companyName) { 
+                    return "Dashboard";           
+                } else {   
+                    return "Newsroom";
+                }                
                            // return Meteor.users.findOne().emails[0].address; 
-                         
-                
-                } else {
-                    //   Router.go('/welcome');
-                    return "Login";
-                }
+            } else {
+                //   Router.go('/welcome');
+                return "Login";
+            }
     
     },
     
@@ -52,7 +54,7 @@ Template.header.helpers ( {
     
                 if(Company.find().count() === 0) {  
                 
-                            return "LeafLeft Bomb"; 
+                            return "Leaflet Bomb"; 
                             
                             
                             } else {
@@ -83,19 +85,25 @@ Template.header.helpers ( {
     
     url: function() {
             if(Meteor.users.findOne() != undefined) {
-            
-                        switch(Meteor.users.findOne().profile.accounttype) {
-                        
-                            case "marketer" : return "/dashBoard/"+Meteor.users.findOne()._id;break;
-                            case "teamMember" : return "/dashBoard/"+Company.findOne().userId;break;
-                            default : return '/influence/'+Meteor.users.findOne()._id; break;
-                            
-                            }
-                
-                } else {
-                        //Router.go('/');
-                    return "/login";
+                //Makes it so that it routes to Newsroom if on dashboard.
+                var location = Router.current().url.split("/")[1].split("?")[0];
+                if(location.replace(/%20/g," ") != Company.findOne().companyName) {
+                    return "/" + Company.findOne().companyName
                 }
+                else {
+                    switch(Meteor.users.findOne().profile.accounttype) {
+                    
+                        case "marketer" : return "/dashBoard/"+Meteor.users.findOne()._id;break;
+                        case "teamMember" : return "/dashBoard/"+Company.findOne().userId;break;
+                        default : return '/influence/'+Meteor.users.findOne()._id; break;
+                        
+                    }
+                }
+                
+            } else {
+                    //Router.go('/');
+                return "/login";
+            }
     
     },
     
@@ -136,8 +144,8 @@ Template.header.helpers ( {
                 if(location.replace(/%20/g," ") == Company.findOne().companyName) { 
                 return "- Newsroom -";           
                 } else {   
-    return '';
-    }
+                    return '';
+                }
     
     },
     
