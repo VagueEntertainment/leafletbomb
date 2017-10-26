@@ -429,14 +429,14 @@ Template.distributionList.events ({
                 var theId =  Meteor.users.findOne()._id;
                     var theid = "";
                     
-                     if(Router.current().params.query.distlist != undefined) {
+                    // if(Router.current().params.query.distlist == undefined) {
                     
                                 theid = "#"+this._id;
                                 
-                                } else {
+                            //    } else {
                                 
-                                    theid ="#"+this.trim();
-                                }
+                             //       theid ="#"+this.trim();
+                            //    }
                     
                         var info = {
     

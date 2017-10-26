@@ -150,6 +150,16 @@ Template.header.helpers ( {
     },
     
     
+    buttonVisible: function() {
+    
+                        if(Company.findOne() == undefined) {
+                            return "hidden";
+                        
+                        } else {
+                            return "visible";
+                        }
+    }
+    
 
 
 

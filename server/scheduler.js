@@ -10,7 +10,7 @@ Meteor.startup(function () {
 
 function checkScheduledPosts() {
 
-  var test = Company.findOne()._id;
+ 
   var scheduled = Posts.find({status:1}).count();
   
     var d = new Date();
@@ -32,12 +32,7 @@ function checkScheduledPosts() {
                                var theDate = themonth+'/'+theday+'/'+(d.getFullYear()); 
   
   
-  
- // console.log("this is the company id "+test);
-  
-  //console.log("This company has "+scheduled+" releases");
-  
- // console.log("Todays date " + theDate);   
+   
   
   for(var num = 0; num < Posts.find({status:1}).count(); num = num + 1) {
   
