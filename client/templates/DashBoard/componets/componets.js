@@ -427,7 +427,16 @@ Template.distributionList.events ({
         'submit #influencerform': function(e) {
             e.preventDefault();
                 var theId =  Meteor.users.findOne()._id;
-                    var theid = "#"+this._id;
+                    var theid = "";
+                    
+                     if(Router.current().params.query.distlist != undefined) {
+                    
+                                theid = "#"+this._id;
+                                
+                                } else {
+                                
+                                    theid ="#"+this.trim();
+                                }
                     
                         var info = {
     

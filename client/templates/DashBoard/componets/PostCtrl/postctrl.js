@@ -290,6 +290,9 @@ function sendthemall(docId) {
                              }
                          //End citation check //
                             
+                            
+                            
+                            
                             var engage = {
                                             docId:docId,
                                             influencerName:name,
@@ -309,12 +312,27 @@ function sendthemall(docId) {
                                      name +"<"+emailaddress+">",
                                     reply,
                                     title+' - '+company,
+                                     `<!DOCTYPE html>
+                                        <html><head>`+
+                                            htmlStyling()+
+                                        `</head>
+                                        <body>`+
+                                        //`<div class="post" style="background-image:url('{{featured}}');padding-top:{{topPadding}}"> 
+                                        `<div class="post" >
+        
+                                          <div class="post-content">`+
                                     `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
                                        
                                         To be release on: `+Posts.findOne({docId:docId}).releasedate+` <br/><br/>
                                       `+fullRelease+` <br/><br/>
-                                      For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`?inf=`+list[listnum]+`>Click Here<a>`
-                                     
+                                      For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`?inf=`+list[listnum]+`>Click Here<a>`+
+                                      
+                                        `</div>  
+            
+           
+                                        </div>
+                                        </body>
+                                        </html>`
                                     ); 
                         
                         }
@@ -410,4 +428,73 @@ var text = release;
         
         
         return fullRelease;
+}
+
+
+function htmlStyling() {
+
+
+
+/*return `<style>
+
+.post-content, .post-packets, {
+
+ -webkit-box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+
+}
+
+.post , .container {
+
+font-family: "Montserrat", Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-weight: 400;
+
+}
+
+ .thumbnail {
+        width: 80%;
+        height: auto;
+        margin:auto;
+   }
+   
+     .postimg {
+        width: 40%;
+        height: auto;
+        margin:auto;
+        display: block;
+   
+   }
+   
+    .postquote {
+        margin-top:10px;
+        margin-left:5%;
+        background:#fde6;
+        padding:10px;
+        border-radius:3px;
+        -webkit-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
+        -moz-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
+        box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
+        border-style: none none none solid;
+        border-color:red;
+     
+     }
+      .postcite {
+        text-align:right;
+        width:100%;
+        
+      
+      }
+
+
+</style>`; */
+
+return `<link rel="stylesheet" type="text/css" class="__meteor-css__" href="http://`+window.location.hostname+`:3000/merged-stylesheets.css?hash=7feaa8a9b90961e70d4b2214abd5f31ca7144498">
+`;
+
+
+
 }
