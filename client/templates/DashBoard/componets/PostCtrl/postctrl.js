@@ -312,19 +312,60 @@ function sendthemall(docId) {
                                      name +"<"+emailaddress+">",
                                     reply,
                                     title+' - '+company,
-                                     `<!DOCTYPE html>
-                                        <html><head>`+
+                                     `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+                                        <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">`+
                                             htmlStyling()+
                                         `</head>
-                                        <body>`+
+                                        <body style="text-align:center">`+
                                         //`<div class="post" style="background-image:url('{{featured}}');padding-top:{{topPadding}}"> 
-                                        `<div class="post" >
-        
-                                          <div class="post-content">`+
-                                    `<h1>`+title+`</h1> <h3>`+tagline+`</h3> </br><br/>
-                                       
-                                        To be release on: `+Posts.findOne({docId:docId}).releasedate+` <br/><br/>
-                                      `+fullRelease+` <br/><br/>
+                                        `<center><table "width:80%;;">`+
+                                        `<tr><td style="text-align:left">
+                                        <h1>`+title+`</h1>
+                                        </td></tr>
+                                         <tr><td style="text-align:left">
+                                          <h3>`+tagline+`</h3>
+                                          </tr></td>
+                                          </br><br/>
+                                            
+                                        <tr><td style="text-align:left"> To be release on: `+Posts.findOne({docId:docId}).releasedate+` </tr></td>
+                                        
+                                        <br/><br/>
+                                      <tr><td style="text-align:center">`+fullRelease+`</tr></td> <br/><br/>
+                                      
+                                                          <h2>About</h2>
+                                    <p>{{about}}</p>
+            
+                                        <!-- Contact info area -->
+                                        <div class="post-contactInfo"> 
+                                             <h3><b>Contact Us:</b></h3>
+                                             {{companyName}} <br/>
+                                                {{companyAddress}} <br/>
+                                                 {{companyCity}}, {{companyState}}, {{companyCountry}}<br/>
+                                                 {{companyPhone}} <br/>
+              
+             
+                                                 <table>
+                                                    <tr>
+                                                        <th><a href="http://twitter.com/{{twitter}}"><img src="/Social/twitter.png" style="width:25px;height:auto;"></a> </th>
+                                                        <th><a href="https://www.facebook.com/{{facebook}}"><img src="/Social/fb.png" style="width:25px;height:auto;"></a> </th>
+                                                    </tr>
+                                                </table> 
+                                              </div>
+            
+                                        <!-- About us area -->
+                                            <div class="post-companyInfo">
+                                                <h3><b>Spokesperson:</b></h3>
+                                                 <h2><img src="{{companySPImg}}" style="width:34px;height:auto"> {{companySP}} </h2> <!--personName{{companySPName}}-->
+                                                    <a href="mailto:{{email}}">{{email}}</a> <br/>
+                                                {{companySPPhone}} <br />
+                                                 <br/>
+                                             <br/>
+                                        </div> 
+                                      
+                                      </table> </center>
+                                      
+                                      
+                                      
                                       For full release <a href=http://`+window.location.hostname+`:3000/release/`+docId+`?inf=`+list[listnum]+`>Click Here<a>`+
                                       
                                         `</div>  
