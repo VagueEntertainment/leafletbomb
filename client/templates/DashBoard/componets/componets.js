@@ -203,6 +203,94 @@ distributionlists:function() {
                     },
 
 });
+
+
+
+Template.influencerForm.helpers ({
+
+        Name: function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).Name;
+                         } else { 
+
+                         return this.Name;
+            
+                          }
+                },
+        companyName:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).companyName;
+                         } else { 
+
+                         return this.companyName;
+            
+                          }
+                },
+        phone:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).phone;
+                         } else { 
+
+                         return this.phone;
+            
+                          }
+                },
+        email:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).email;
+                         } else { 
+
+                         return this.email;
+            
+                          }
+                },
+        url:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).url;
+                         } else { 
+
+                         return this.url;
+            
+                          }
+                },
+        address:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).address;
+                         } else { 
+
+                         return this.address;
+            
+                          }
+                },
+        state:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).state;
+                         } else { 
+
+                         return this.state;
+            
+                          }
+                },
+        country:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).country;
+                         } else { 
+
+                         return this.country;
+            
+                          }
+                },
+        about:function() {
+                         if(Router.current().params.query.distlist != undefined) {
+                            return Influencers.findOne({_id:this.trim()}).about;
+                         } else { 
+
+                         return this.about;
+            
+                          }
+                }        
+
+});
    
  
  Template.DistributionListItem.helpers({
@@ -221,11 +309,11 @@ userid: function() {
 
             if(Router.current().params.query.distlist != undefined) {
                 return this.trim();
-            } else {
+            } else { 
 
             return this._id;
             
-            }
+           }
 },
 
 Name: function() {
@@ -361,6 +449,8 @@ Template.influencerItem.events ({
 
 
 });
+
+
 
 Template.DistributionListItem.events ({
 
