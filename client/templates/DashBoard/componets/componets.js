@@ -175,7 +175,31 @@ distributionlists:function() {
  
  Template.distrobutionForm.helpers({
  
+    listname: function() {
     
+                    if(this.listname == undefined) {
+                            return DistributionList.findOne({_id:this.trim()}).listname;
+                         } else { 
+
+                         return this.listname;
+            
+                          }
+    
+        },
+        
+    message: function() {
+    
+                if(this.message == undefined) {
+                            return DistributionList.findOne({_id:this.trim()}).message;
+                         } else { 
+
+                         return this.message;
+            
+                          }
+    
+        },    
+        
+        
 
      influencerlist:function() {
                           var list = [];
@@ -209,7 +233,7 @@ distributionlists:function() {
 Template.influencerForm.helpers ({
 
         Name: function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.Name == undefined) {
                             return Influencers.findOne({_id:this.trim()}).Name;
                          } else { 
 
@@ -218,7 +242,7 @@ Template.influencerForm.helpers ({
                           }
                 },
         companyName:function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.companyName == undefined) {
                             return Influencers.findOne({_id:this.trim()}).companyName;
                          } else { 
 
@@ -227,7 +251,7 @@ Template.influencerForm.helpers ({
                           }
                 },
         phone:function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.phone == undefined) {
                             return Influencers.findOne({_id:this.trim()}).phone;
                          } else { 
 
@@ -236,7 +260,7 @@ Template.influencerForm.helpers ({
                           }
                 },
         email:function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.email == undefined) {
                             return Influencers.findOne({_id:this.trim()}).email;
                          } else { 
 
@@ -245,7 +269,7 @@ Template.influencerForm.helpers ({
                           }
                 },
         url:function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.url == undefined) {
                             return Influencers.findOne({_id:this.trim()}).url;
                          } else { 
 
@@ -254,7 +278,7 @@ Template.influencerForm.helpers ({
                           }
                 },
         address:function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.address == undefined) {
                             return Influencers.findOne({_id:this.trim()}).address;
                          } else { 
 
@@ -263,7 +287,7 @@ Template.influencerForm.helpers ({
                           }
                 },
         state:function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.state == undefined) {
                             return Influencers.findOne({_id:this.trim()}).state;
                          } else { 
 
@@ -272,7 +296,7 @@ Template.influencerForm.helpers ({
                           }
                 },
         country:function() {
-                         if(Router.current().params.query.distlist != undefined) {
+                         if(this.country == undefined) {
                             return Influencers.findOne({_id:this.trim()}).country;
                          } else { 
 
@@ -281,11 +305,11 @@ Template.influencerForm.helpers ({
                           }
                 },
         about:function() {
-                         if(Router.current().params.query.distlist != undefined) {
-                            return Influencers.findOne({_id:this.trim()}).about;
+                         if(this.notes == undefined) {
+                            return Influencers.findOne({_id:this.trim()}).notes;
                          } else { 
 
-                         return this.about;
+                         return this.notes;
             
                           }
                 }        
@@ -435,7 +459,15 @@ Template.influencerItem.events ({
                     },
                     
      'click #delete': function(e) {
-                        var theid = "#"+$(e.target).find('[name=userid]').val();
+     
+                        var theid = "";
+                        
+                        if(this._id == undefined) {
+                                theid = "#"+this.trim();
+                        } else {
+                                theid = "#"+this._id;
+                        }
+                        
                         if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
                                $(theid).css("animation-name" , "slideOutAnim");
@@ -443,9 +475,57 @@ Template.influencerItem.events ({
                         $(theid).css('visibility', 'visible');
                        $(theid).css("animation-name" , "slideInAnim");
                                     }
-                                    Influencers.remove({"_id":this._id});
+                                    
+                                    if(this._id == undefined) {
+                                        Influencers.remove({"_id":this.trim()});
+                                    } else {
+                                        Influencers.remove({"_id":this._id});
+                                    }
                        
-                    }    
+                    },
+                    
+        'click #listdelete': function(e) {  
+        
+                           var distrolist = Router.current().params.query.distlist;
+                           
+                             var list = DistributionLists.findOne({_id:distrolist}).list;
+                             var newlist = [];
+                             
+                             for (var num = 0;num < list.length;num = num + 1) {
+                                    
+                                    if( Influencers.findOne({_id:list[num]}) != undefined ) {
+                                            newlist.push(list[num]);
+                                            }
+                                }
+        
+                                DistributionLists.update({_id:distrolist},{$set: {list:newlist}});
+                            console.log("list "+newlist);
+                          
+                          
+        
+        },          
+                    
+                    
+      'mouseenter .list_Item': function() {
+                    if(this._id == undefined) {
+                        $('#'+this.trim()+'opts').css('visibility', 'visible');
+                    } else {
+                $('#'+this._id+'opts').css('visibility', 'visible');
+                
+                }
+      
+      },
+      
+       'mouseleave .list_Item': function() {
+                        if(this._id == undefined) {
+                            $('#'+this.trim()+'opts').css('visibility', 'hidden');
+                    } else {
+       
+                $('#'+this._id+'opts').css('visibility', 'hidden');
+                
+                }
+      
+      },       
 
 
 });
@@ -455,31 +535,49 @@ Template.influencerItem.events ({
 Template.DistributionListItem.events ({
 
     'click .list_Item': function(e) {
-                        var theid = $(e.target).find('[name=userid]').val();
-                       /* if($(theid).css('visibility') == 'visible') {
-                                $(theid).css('visibility', 'hidden');
-                               $(theid).css("animation-name" , "slideOutAnim");
-                                } else {
-                        $(theid).css('visibility', 'visible');
-                       $(theid).css("animation-name" , "slideInAnim"); 
-                                    } */
-                                    
+                        //var theid = $(e.target).find('[name=userid]').val();
+                       var theid = this._id;
                                     Router.go("/dashboard/"+Company.findOne()._id+"?distlist="+theid);
                        
-                    },
+                    }, 
+                    
+       'click #edit': function(e) {
+                       // console.log("Edit clicked "+$(e.target).find('[name=userid]').val());
+                      // var theid = "#"+$(e.target).find('[name=userid]').val();
+                      
+                            var theid = "#"+this._id;
+                        if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                               
+                                } else {
+                                    $(theid).css('visibility', 'visible');
+                       
+                                    } 
+                                    
+                  },                                
                     
      'click #delete': function(e) {
                         var theid = "#"+$(e.target).find('[name=userid]').val();
                         if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
-                               $(theid).css("animation-name" , "slideOutAnim");
+                               
                                 } else {
                         $(theid).css('visibility', 'visible');
-                       $(theid).css("animation-name" , "slideInAnim");
+                       
                                     }
                                     DistributionLists.remove({"_id":this._id});
                        
-                    }                  
+                    },
+                    
+      'mouseenter .list_Item': function() {
+                $('#'+this._id+'opts').css('visibility', 'visible');
+      
+      },
+      
+       'mouseleave .list_Item': function() {
+                $('#'+this._id+'opts').css('visibility', 'hidden');
+      
+      },                              
 
 
 });
@@ -507,7 +605,15 @@ Template.distributionList.events ({
                             
                     },
         'click #influencercancel' : function(e) {
-                                 var theid = "#"+this._id;
+                                 var theid = "";
+                                 
+                                 if(this._id != undefined) {
+                                  theid = "#"+this._id;
+                                  }else {
+                                    theid = "#"+this.trim();
+                                    }
+                                 
+                                 
                                 $("#influenceraddwindow").css('visibility', 'hidden');
                                 $(theid).css('visibility', 'hidden');
                             
@@ -517,21 +623,19 @@ Template.distributionList.events ({
         'submit #influencerform': function(e) {
             e.preventDefault();
                 var theId =  Meteor.users.findOne()._id;
-                    var theid = "";
-                    
-                    // if(Router.current().params.query.distlist == undefined) {
-                    
-                                theid = "#"+this._id;
-                                
-                            //    } else {
-                                
-                             //       theid ="#"+this.trim();
-                            //    }
+                     var theid = "";
+                                 
+                                 if(this._id != undefined) {
+                                  theid = "#"+this._id;
+                                  }else {
+                                    theid = "#"+this.trim();
+                                    }
                     
                         var info = {
     
                                     userId:theId,
                                     Name:$(e.target).find('[name=name]').val(),
+                                    phone:$(e.target).find('[name=phone]').val(),
                                     companyName:$(e.target).find('[name=company]').val(),
                                     email:$(e.target).find('[name=email]').val(),
                                     url:$(e.target).find('[name=url]').val(),
@@ -540,36 +644,53 @@ Template.distributionList.events ({
                                     country:$(e.target).find('[name=country]').val(),
                                     notes:$(e.target).find('[name=notes]').val()
                             };
+                            
+                            
     
                         
+                          var listId = "";
+                                    
+                                         if(this._id != undefined) {
+                                  listId = this._id;
+                                  }else {
+                                    listId = this.trim();
+                                    }
                         
-                         if(Influencers.find({"Name":$(e.target).find('[name=name]').val()}).count() == 0) {
-    
+                        
+                         if(Influencers.findOne({_id:listId}) == undefined) {
+                                console.log("Creating New "+listId);
                                 Influencers.insert(info);
                         
                               } else {
-                                    var listId = Influencers.findOne({"Name":$(e.target).find('[name=name]').val()})._id;
+                                    console.log("Updating "+listId);
+                                    console.log(info);
                                          Influencers.update({"_id": listId},{$set: info}); 
                               }
                      
                             $("#influenceraddwindow").css('visibility', 'hidden');
                             $(theid).css('visibility', 'hidden');
                             
-                             $(e.target).find('[name=name]').val(""),
-                             $(e.target).find('[name=company]').val(""),
-                             $(e.target).find('[name=email]').val(""),
-                             $(e.target).find('[name=url]').val(""),
-                             $(e.target).find('[name=address]').val(""),
-                             $(e.target).find('[name=state]').val(""),
-                             $(e.target).find('[name=country]').val(""),
-                             $(e.target).find('[name=notes]').val("")
+                            //$(e.target).find('[name=name]').val(""),
+                          //  $(e.target).find('[name=company]').val(""),
+                           //  $(e.target).find('[name=email]').val(""),
+                          //  $(e.target).find('[name=url]').val(""),
+                           //  $(e.target).find('[name=address]').val(""),
+                          //   $(e.target).find('[name=state]').val(""),
+                          //   $(e.target).find('[name=country]').val(""),
+                          //   $(e.target).find('[name=notes]').val("")
                     
                 },
                 
        'submit #distributionform': function(e) {
             e.preventDefault();
                 var theId =  Meteor.users.findOne()._id;
-                            var theid = "#"+this._id;
+                            var theid = "";
+                                 
+                                 if(this._id != undefined) {
+                                  theid = "#"+this._id;
+                                  }else {
+                                    theid = "#"+this.trim();
+                                    }
                             
                             var thelist = [];
                             
@@ -594,7 +715,14 @@ Template.distributionList.events ({
                                 DistributionLists.insert(info); 
                         
                               } else {
-                                    var listId = DistributionLists.findOne({"listname":$(e.target).find('[name=listname]').val()})._id;
+                                    var listId = "";
+                                    
+                                         if(this._id != undefined) {
+                                  listId = this._id;
+                                  }else {
+                                    listId = this.trim();
+                                    }
+                                    
                                          DistributionLists.update({"_id": listId},{$set: info}); 
                               }
                         
