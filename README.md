@@ -1,6 +1,6 @@
 ![](http://leafletbomb.io/wp-content/uploads/2017/10/Export_1.png)
 
-[![Join the chat at https://gitter.im/LeafletBomb/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/LeafletBomb/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://riot.im/app/#/room/#leafletbomb:matrix.org](https://img.shields.io/badge/gitter-join_chat-green.svg)](https://riot.im/app/#/room/#leafletbomb:matrix.org)
 
 Leaflet Bomb is an open source PR & Marketing platform designed to help organizations share their message.
 
