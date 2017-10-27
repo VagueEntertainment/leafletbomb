@@ -44,10 +44,11 @@
 <template name="DistributionListItem">
 
 <div class="list_Item"> 
-<tr style="border-radius:10px;pointer-events: none;">
+<tr style="border-radius:10px;width:100%;">
     <td><i class="fa fa-envelope-open-o fa-2x" aria-hidden="true"></i></td>
-   <td style="pointer-events: none;">{{listname}}</td>
-   <td>{{numinlist}}</td>
+   <td style="pointer-events: none;width:80%">{{listname}}</td>
+   <td style="pointer-events: none;width:10%;"></td>
+   <td id="{{distid}}opts" style="width:10%;visibility:hidden"><i id="edit" class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>&nbsp; <i id="delete" class="fa fa-trash fa-2x" aria-hidden="true"></i></td>
    
    <td><input name="userid" type="hidden" value="{{distid}}"></td>
 </tr>    
@@ -78,10 +79,12 @@
 
 <template name="influencerItem">
  <div class="list_Item" >
-<tr style="border-radius:10px;pointer-events: none;">
+<tr style="border-radius:10px;">
     <td>{{{avatar}}}</td>
-   <td style="text-align:left;width:50%">{{Name}}</td>
-   <td style="text-align:left;width:50%">({{companyName}})</td>
+   <td style="text-align:left;width:50%;pointer-events: none;">{{Name}}</td>
+   <td style="text-align:left;width:40%;pointer-events: none;">({{companyName}})</td>
+    <td id="{{userid}}opts" style="width:10%;visibility:hidden">&nbsp; <i style="float:right;" id="listdelete" class="fa fa-trash fa-2x" aria-hidden="true"></i></td>
+   
    <td><input name="userid" type="hidden" value="{{userid}}"></td>
    
 </tr>
