@@ -18,6 +18,11 @@ height:function(e) {
         return "50%";
 },
 
+display: function() {
+
+        return "none";
+},
+
 questions: function() {
                     
                 return PostQuestions.find();
