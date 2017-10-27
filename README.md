@@ -20,8 +20,10 @@ At the time of writing Meteor's mail subsystem must have the MAIL_URL enviroment
     
 `cp settings-sample.conf settings.conf`
     
-Edit settings.conf with your information
+Edit settings.conf with your information, if you need more information check out our [Wiki page on Email setup](https://github.com/LeafletBomb/leafletbomb/wiki/Configuring-Email).
     
 Run leaflet bomb by running these commands.
  cd leafletbomb 
  ./startup.sh
+
+If you are interested in the future of the Leaflet Bomb and what we are aiming to do, please check out [the roadmap on our wiki](https://github.com/LeafletBomb/leafletbomb/wiki/Roadmap).
