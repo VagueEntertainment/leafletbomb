@@ -19,7 +19,7 @@ releaselist: function(e) {
                 if(Posts.findOne({userId: id,status:2 }) == undefined) {
                    postlist = [{title:'No Published Releases ',tagline:'0 found'}];
                 } else {
-                   postlist = Posts.find({userId: id, status:2 }, {sort:{releasedate: -1}});
+                   postlist = Posts.find({userId: id, status:2 }, {sort:{releasedate: -1, docId:-1}});
                     }
          return postlist;
                         
@@ -31,7 +31,7 @@ releaselist: function(e) {
                 if(Posts.findOne({userId: id,status:0 }) == undefined) {
                    postlist = [{title:'No Drafts ',tagline:'0 found'}];
                 } else {
-                   postlist = Posts.find({userId: id, status:0 }, {sort:{releasedate: -1}});
+                   postlist = Posts.find({userId: id, status:0 }, {sort:{releasedate: -1, docId:-1}});
                     }
          return postlist;
                         
@@ -43,7 +43,7 @@ releaselist: function(e) {
                 if(Posts.findOne({userId: id,status:1 }) == undefined) {
                    postlist = [{title:'No Scheduled Releases  ',tagline:'0 found'}];
                 } else {
-                   postlist = Posts.find({userId: id, status:1 }, {sort:{releasedate: -1}});
+                   postlist = Posts.find({userId: id, status:1 }, {sort:{releasedate: -1, docId:-1}});
                    
                     }
             

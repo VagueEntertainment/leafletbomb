@@ -10,7 +10,7 @@ Template.companyMenu.helpers({
             }, 
 
     postlist:function() {    
-        return Posts.find({status:2}, {sort:{title: -1}});
+        return Posts.find({status:2}, {sort:{releasedate: -1 , docId:-1}});
         },
   
 
