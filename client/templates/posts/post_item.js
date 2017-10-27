@@ -37,7 +37,7 @@ Template.postItem.helpers ( {
                    return "10px";
                    } else {
                    
-                   return "500px";
+                   return "360px";
                    }
                    
               } ,                       

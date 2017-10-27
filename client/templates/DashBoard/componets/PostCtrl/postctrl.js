@@ -216,7 +216,7 @@ Template.postCtrlMenu.events ({
                                                        };
                                     
                                     Posts.update({"_id": docid},{$set:statusupdate});
-     
+                                        Router.go('/dashboard/'+Company.findOne().userId);
                         },                                               
 
 
