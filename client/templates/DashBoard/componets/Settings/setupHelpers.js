@@ -114,7 +114,7 @@ Template.marketerSettings.events ({
             if(CompanyAssets.findOne({companyId:theId} && {type:"companyLogo"}) == undefined) {           
                     CompanyAssets.insert(info);
                     } else {
-                        var assId = CompanyAssets.findOne({companyId:theId})._id;
+                        var assId = CompanyAssets.findOne({companyId:theId} && {type:"companyLogo"})._id;
                         CompanyAssets.update({"_id": assId},{$set: info});
                     
                     }
@@ -147,7 +147,7 @@ Template.marketerSettings.events ({
             if(CompanyAssets.findOne({companyId:theId} && {type:"companyLogoSmall"}) == undefined) {           
                     CompanyAssets.insert(info);
                     } else {
-                        var assId = CompanyAssets.findOne({companyId:theId})._id;
+                        var assId = CompanyAssets.findOne({companyId:theId} && {type:"companyLogoSmall"})._id;
                         CompanyAssets.update({"_id": assId},{$set: info});
                     
                     }

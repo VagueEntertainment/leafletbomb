@@ -282,7 +282,7 @@ function sendthemall(docId) {
                                 
                                 /* gets post assets */
                                  var thefiles = [];
-                   PostAssets.find({docId:this.docId}).forEach(
+                   PostAssets.find({docId:docId}).forEach(
                                             function(files){
                                             
                                                // thefiles.push ("{_id:"+files.filename+"}");
@@ -550,6 +550,14 @@ function sendthemall(docId) {
                                                   line-height: 22px !important;
                                               }
                                           }
+                                          
+                                          .postimg {
+                                                     width: 40%;
+                                                     height: auto;
+                                                     margin:auto;
+                                                     display: block;
+   
+                                                    }
                                   
                                       </style>
                                       <!-- Progressive Enhancements : END -->
