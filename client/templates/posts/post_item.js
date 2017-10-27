@@ -34,10 +34,10 @@ Template.postItem.helpers ( {
                         var docs = this.docId;
                    
                    if (PostAssets.findOne({docId:docs , type:"featured"}) == undefined) {
-                   return "10px";
+                   return "1%";
                    } else {
                    
-                   return "360px";
+                   return "25%";
                    }
                    
               } ,                       
