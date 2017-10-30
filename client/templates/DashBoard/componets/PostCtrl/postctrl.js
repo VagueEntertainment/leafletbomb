@@ -1,3 +1,5 @@
+
+
 Template.postCtrl.rendered=function () {
 
 
@@ -224,7 +226,7 @@ Template.postCtrlMenu.events ({
 
 });
 
-function sendthemall(docId) {
+ function sendthemall(docId) {
        
 
  for(var PDnum = 0;PDnum < PostDistribution.findOne({docId:docId}).list.length;PDnum = PDnum+1) {
@@ -253,7 +255,7 @@ function sendthemall(docId) {
                              var company = Company.findOne().companyName;
                              
                              
-                             /* gets trademark */
+                             // gets trademark 
                              var trademark = "";
                              
                                 if(CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}) != undefined) {
@@ -263,9 +265,9 @@ function sendthemall(docId) {
                                         trademark = `http://`+window.location.hostname+`:`+window.location.port+`/media/newLogo_green.png`;
                                     }  
                                     
-                             /* gt */
+                             // gt
                              
-                             /* gets featured image */         
+                             // gets featured image     
                                     
                              var featuredImage = "";
   
@@ -277,10 +279,10 @@ function sendthemall(docId) {
                                             
                                             });
                   
-                                /* gfi */
+                                // gfi
                                 
                                 
-                                /* gets post assets */
+                                // gets post assets 
                                  var thefiles = [];
                    PostAssets.find({docId:docId}).forEach(
                                             function(files){
@@ -291,7 +293,7 @@ function sendthemall(docId) {
                                             
                                             });
                       
-                                 /* gpa */   
+                                 // gpa    
                                     
                              
                             var text = Influencers.findOne({_id:list[listnum]}).notes+ "\n\n"+DistributionLists.findOne({_id:listId}).message +"\n\n"+ Posts.findOne({docId:docId}).release;
@@ -395,8 +397,8 @@ function sendthemall(docId) {
                                       <!-- CSS Reset : BEGIN -->
                                       <style>
                                   
-                                          /* What it does: Remove spaces around the email design added by some email clients. */
-                                          /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+                                          // What it does: Remove spaces around the email design added by some email clients. 
+                                          // Beware: It can remove the padding / margin and add a background color to the compose a reply window. 
                                           html,
                                           body {
                                               margin: 0 auto !important;
@@ -405,25 +407,25 @@ function sendthemall(docId) {
                                               width: 100% !important;
                                           }
                                   
-                                          /* What it does: Stops email clients resizing small text. */
+                                          // What it does: Stops email clients resizing small text. 
                                           * {
                                               -ms-text-size-adjust: 100%;
                                               -webkit-text-size-adjust: 100%;
                                           }
                                   
-                                          /* What it does: Centers email on Android 4.4 */
+                                          // What it does: Centers email on Android 4.4 
                                           div[style*="margin: 16px 0"] {
                                               margin: 0 !important;
                                           }
                                   
-                                          /* What it does: Stops Outlook from adding extra spacing to tables. */
+                                          // What it does: Stops Outlook from adding extra spacing to tables. 
                                           table,
                                           td {
                                               mso-table-lspace: 0pt !important;
                                               mso-table-rspace: 0pt !important;
                                           }
                                   
-                                          /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+                                          // What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. 
                                           table {
                                               border-spacing: 0 !important;
                                               border-collapse: collapse !important;
@@ -434,14 +436,14 @@ function sendthemall(docId) {
                                               table-layout: auto;
                                           }
                                   
-                                          /* What it does: Uses a better rendering method when resizing images in IE. */
+                                          // What it does: Uses a better rendering method when resizing images in IE. 
                                           img {
                                               -ms-interpolation-mode:bicubic;
                                           }
                                   
-                                          /* What it does: A work-around for email clients meddling in triggered links. */
-                                          *[x-apple-data-detectors],  /* iOS */
-                                          .x-gmail-data-detectors,    /* Gmail */
+                                          // What it does: A work-around for email clients meddling in triggered links. 
+                                          *[x-apple-data-detectors],  // iOS 
+                                          .x-gmail-data-detectors,    // Gmail 
                                           .x-gmail-data-detectors *,
                                           .aBn {
                                               border-bottom: 0 !important;
@@ -454,17 +456,17 @@ function sendthemall(docId) {
                                               line-height: inherit !important;
                                           }
                                   
-                                          /* What it does: Prevents Gmail from displaying an download button on large, non-linked images. */
+                                          // What it does: Prevents Gmail from displaying an download button on large, non-linked images. 
                                           .a6S {
                                              display: none !important;
                                              opacity: 0.01 !important;
                                          }
-                                         /* If the above doesn't work, add a .g-img class to any image in question. */
+                                         // If the above doesn't work, add a .g-img class to any image in question. 
                                          img.g-img + div {
                                              display: none !important;
                                          }
                                   
-                                         /* What it does: Prevents underlining the button text in Windows 10 */
+                                         // What it does: Prevents underlining the button text in Windows 10 
                                           .button-link {
                                               text-decoration: none !important;
                                           }
@@ -477,10 +479,10 @@ function sendthemall(docId) {
    
                                                     }
                                   
-                                          /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
-                                          /* Create one of these media queries for each additional viewport size you'd like to fix */
-                                          /* Thanks to Eric Lepetit (@ericlepetitsf) for help troubleshooting */
-                                          @media only screen and (min-device-width: 375px) and (max-device-width: 413px) { /* iPhone 6 and 6+ */
+                                          // What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  
+                                          // Create one of these media queries for each additional viewport size you'd like to fix 
+                                          // Thanks to Eric Lepetit (@ericlepetitsf) for help troubleshooting 
+                                          @media only screen and (min-device-width: 375px) and (max-device-width: 413px) { // iPhone 6 and 6+ 
                                               .email-container {
                                                   min-width: 375px !important;
                                               }
@@ -492,7 +494,7 @@ function sendthemall(docId) {
                                       <!-- Progressive Enhancements : BEGIN -->
                                       <style>
                                   
-                                          /* What it does: Hover styles for buttons */
+                                          // What it does: Hover styles for buttons 
                                           .button-td,
                                           .button-a {
                                               transition: all 100ms ease-in;
@@ -503,7 +505,7 @@ function sendthemall(docId) {
                                               border-color: #555555 !important;
                                           }
                                   
-                                          /* Media Queries */
+                                          // Media Queries 
                                           @media screen and (max-width: 600px) {
                                   
                                               .email-container {
@@ -511,7 +513,7 @@ function sendthemall(docId) {
                                                   margin: auto !important;
                                               }
                                   
-                                              /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+                                              // What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. 
                                               .fluid {
                                                   max-width: 100% !important;
                                                   height: auto !important;
@@ -519,7 +521,7 @@ function sendthemall(docId) {
                                                   margin-right: auto !important;
                                               }
                                   
-                                              /* What it does: Forces table cells into full-width rows. */
+                                              // What it does: Forces table cells into full-width rows. 
                                               .stack-column,
                                               .stack-column-center {
                                                   display: block !important;
@@ -527,12 +529,12 @@ function sendthemall(docId) {
                                                   max-width: 100% !important;
                                                   direction: ltr !important;
                                               }
-                                              /* And center justify these ones. */
+                                              // And center justify these ones. 
                                               .stack-column-center {
                                                   text-align: center !important;
                                               }
                                   
-                                              /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+                                              // What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. 
                                               .center-on-narrow {
                                                   text-align: center !important;
                                                   display: block !important;
@@ -544,7 +546,7 @@ function sendthemall(docId) {
                                                   display: inline-block !important;
                                               }
                                   
-                                              /* What it does: Adjust typography on small screens to improve readability */
+                                              // What it does: Adjust typography on small screens to improve readability
                                               .email-container p {
                                                   font-size: 17px !important;
                                                   line-height: 22px !important;
@@ -593,7 +595,7 @@ function sendthemall(docId) {
                                           <!-- Email Header : END -->
                                   
                                           <!-- Email Body : BEGIN -->
-                                          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto;" class="email-container">
+                                          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="800" style="margin: auto;" class="email-container">
                                   
                                               <!-- Hero Image, Flush : BEGIN -->
                                               <tr>
@@ -619,7 +621,7 @@ function sendthemall(docId) {
                                                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
                                                           <tr>
                                                               <td style="border-radius: 3px; background: #2DD1AC; text-align: center;" class="button-td">
-                                                                  <a href="http://`+window.location.hostname+`:`+window.location.port+`/release/`+docId+`?inf=`+list[listnum]+`" style="background: #222222; border: 15px solid #222222; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+                                                                  <a href="http://`+window.location.hostname+`:`+window.location.port+`/release/`+docId+`?inf=`+list[listnum]+`" style="background: #2DD1AC; border: 15px solid #2DD1AC; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
                                                                       &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">See Full Release</span>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                   </a>
                                                               </td>
@@ -637,7 +639,7 @@ function sendthemall(docId) {
                                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto; font-family: sans-serif; color: #888888; line-height:18px;" class="email-container">
                                           <tr>
                                               <td style="padding: 40px 10px;width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: center; color: #888888;" class="x-gmail-data-detectors">
-                                                  <webversion style="color:#cccccc; text-decoration:underline; font-weight: bold;">Get Press Kit</webversion>
+                                                  <!--<webversion style="color:#cccccc; text-decoration:underline; font-weight: bold;">Get Press Kit</webversion> -->
                                                   <br><br>
                                                   `+Company.findOne().companyName+`<br>`+Company.findOne().companyAddress+`<br>`+Company.findOne().companyPhone+`
                                                   <br><br>
@@ -684,7 +686,7 @@ function sendthemall(docId) {
                         listnum = listnum + 1;
                         }
                     }
-  }
+  } 
   
   // <img src=“http://`+window.location.hostname+`:3000/mail/`+docId+`?inf=`+list[listnum]`” width=“0” height=“0”>
   
