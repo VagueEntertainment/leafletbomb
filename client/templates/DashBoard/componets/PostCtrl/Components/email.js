@@ -1,26 +1,90 @@
-function sendthemall(docid) {
+/* this is a non working template when we can we need to use this file instead of embeding all this code into the files that call the functions. */
 
+
+export function sendthemall(docId) {
+       
 
  for(var PDnum = 0;PDnum < PostDistribution.findOne({docId:docId}).list.length;PDnum = PDnum+1) {
                          var listnum = 0;  
                          var listId = [];
                          var list = [];
                             if( PostDistribution.findOne({docId:docId}) != undefined) {
-                                 listId = PostDistribution.findOne({docId:docId}).list[PDnum];    
+                                 listId = PostDistribution.findOne({docId:docId}).list[PDnum]; 
+                                 
+                                
                          }
+                                console.log(DistributionLists.findOne());
                             if(DistributionLists.findOne({_id:listId}) != undefined) {
                                 list= DistributionLists.findOne({_id:listId}).list;
+                                
+                                
                             }
                         
                         while(listnum < list.length) {
                             var name = Influencers.findOne({_id:list[listnum]}).Name;
+                            
+                            console.log(name);
                             var emailaddress = Influencers.findOne({_id:list[listnum]}).email;
-                             var title = this.title;
-                             var tagline = this.tagline;
+                             var title = Posts.findOne({docId:docId}).title;
+                             var tagline = Posts.findOne({docId:docId}).tagline;
                              var company = Company.findOne().companyName;
-                            var text = DistributionLists.findOne({_id:listId}).message +"\n\n"+ this.release;
+                             
+                             
+                             /* gets trademark */
+                             var trademark = "";
+                             
+                                if(CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}) != undefined) {
+                                                 var file = CompanyAssets.findOne({"companyId":Company.findOne()._id , "type":"companyLogo"}).filename;
+                                trademark = `http://`+window.location.hostname+`:`+window.location.port+Images.findOne({_id:file}).url();
+                                } else {
+                                        trademark = `http://`+window.location.hostname+`:`+window.location.port+`/media/newLogo_green.png`;
+                                    }  
+                                    
+                             /* gt */
+                             
+                             /* gets featured image */         
+                                    
+                             var featuredImage = "";
+  
+                                PostAssets.find({docId:docId , type:"featured"}).forEach(
+                                            function(files){
+
+                                                featuredImage =`http://`+window.location.hostname+`:`+window.location.port+Images.findOne({_id:files.filename}).url();
+                                            
+                                            
+                                            });
+                  
+                                /* gfi */
+                                
+                                
+                                /* gets post assets */
+                                 var thefiles = [];
+                   PostAssets.find({docId:docId}).forEach(
+                                            function(files){
+                                            
+                                               // thefiles.push ("{_id:"+files.filename+"}");
+                                                thefiles.push(Images.findOne({_id:files.filename}).url());
+                                            
+                                            
+                                            });
+                      
+                                 /* gpa */   
+                                    
+                             
+                            var text = Influencers.findOne({_id:list[listnum]}).notes+ "\n\n"+DistributionLists.findOne({_id:listId}).message +"\n\n"+ Posts.findOne({docId:docId}).release;
        
                              text = text.replace(/\n/g, "<br/>");
+                             
+                             
+                              text = text.replace(/{{asset1}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[0]+"' class='postimg' />");
+          
+                                 text = text.replace(/{{asset2}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[1]+"' class='postimg' />");
+           
+                                    text = text.replace(/{{asset3}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[2]+"' class='postimg' />");
+          
+                                        text = text.replace(/{{asset4}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[3]+"' class='postimg' />");
+           
+                                            text = text.replace(/{{asset5}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[4]+"' class='postimg' />");
       
                             // Replace quotations as a quote block //
        
@@ -57,6 +121,9 @@ function sendthemall(docid) {
                              }
                          //End citation check //
                             
+                            
+                            
+                            
                             var engage = {
                                             docId:docId,
                                             influencerName:name,
@@ -66,15 +133,17 @@ function sendthemall(docid) {
                                             questions:""
                                             
                                         };
-                    if(PostEngage.findOne({docId:docId} , {influencerEmail:emailaddress}) == undefined) {                    
+                                        var reply = Settings.findOne({type:"email"}).fromWho+" <"+Settings.findOne({type:"email"}).respondTo+">";
+                                        //console.log(reply);
+                    if(PostEngage.findOne({docId:docId} && {influencerEmail:emailaddress}) == undefined) {                    
                            PostEngage.insert(engage);                 
                                  
                             Meteor.call(
                                     'sendEmail',
                                      name +"<"+emailaddress+">",
-                                    'No Reply <noreply@vagueentertainment.com>',
+                                    reply,
                                     title+' - '+company,
-                                      `<head>
+                                    `<head>
                                       <meta charset="utf-8"> <!-- utf-8 works for most cases -->
                                       <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
                                       <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
@@ -176,6 +245,14 @@ function sendthemall(docid) {
                                           .button-link {
                                               text-decoration: none !important;
                                           }
+                                          
+                                           .postimg {
+                                                     width: 40%;
+                                                     height: auto;
+                                                     margin:auto;
+                                                     display: block;
+   
+                                                    }
                                   
                                           /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
                                           /* Create one of these media queries for each additional viewport size you'd like to fix */
@@ -250,6 +327,14 @@ function sendthemall(docid) {
                                                   line-height: 22px !important;
                                               }
                                           }
+                                          
+                                          .postimg {
+                                                     width: 40%;
+                                                     height: auto;
+                                                     margin:auto;
+                                                     display: block;
+   
+                                                    }
                                   
                                       </style>
                                       <!-- Progressive Enhancements : END -->
@@ -266,7 +351,7 @@ function sendthemall(docid) {
                                   
                                   </head>
                                   <body width="100%" bgcolor="#222222" style="margin: 0; mso-line-height-rule: exactly;">
-                                      <center style="width: 100%; background: #222222; text-align: left;">
+                                      <center style="width: 100%; background: #D6D6D6; text-align: left;">
                                   
                                           <!-- Visually Hidden Preheader Text : BEGIN -->
                                           <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
@@ -278,19 +363,19 @@ function sendthemall(docid) {
                                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto;" class="email-container">
                                               <tr>
                                                   <td style="padding: 20px 0; text-align: center">
-                                                      <img src="http://placehold.it/200x50" width="200" height="50" alt="alt_text" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                                      <img src="`+trademark+`" width="200" height="50" alt="trademark" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                                                   </td>
                                               </tr>
                                           </table>
                                           <!-- Email Header : END -->
                                   
                                           <!-- Email Body : BEGIN -->
-                                          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto;" class="email-container">
+                                          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="800" style="margin: auto;" class="email-container">
                                   
                                               <!-- Hero Image, Flush : BEGIN -->
                                               <tr>
                                                   <td bgcolor="#ffffff" align="center">
-                                                      <img src="http://placehold.it/1200x600" width="600" height="" alt="alt_text" border="0" align="center" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; margin: auto;" class="g-img">
+                                                      <img src="`+featuredImage+`" width="600" height="" alt="Featured Image" border="0" align="center" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; margin: auto;" class="g-img">
                                                   </td>
                                               </tr>
                                               <!-- Hero Image, Flush : END -->
@@ -302,16 +387,16 @@ function sendthemall(docid) {
                                                   </td>
                                               </tr>
                                               <tr>
-                                                  <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: center;">
-                                                      <p style="margin: 0;">`+fullRelease+`</p>
+                                                  <td bgcolor="#ffffff" style=" border-radius:5px;padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: center;">
+                                                      <p style="margin: 0;text-align:left;">`+fullRelease+`</p>
                                                   </td>
                                               </tr>
                                               <tr>
                                                   <td bgcolor="#ffffff" style="padding: 0 40px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                                                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">
                                                           <tr>
-                                                              <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
-                                                                  <a href="http://`+window.location.hostname+`:3000/release/`+docId+`?inf=`+list[listnum]+`" style="background: #222222; border: 15px solid #222222; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+                                                              <td style="border-radius: 3px; background: #2DD1AC; text-align: center;" class="button-td">
+                                                                  <a href="http://`+window.location.hostname+`:`+window.location.port+`/release/`+docId+`?inf=`+list[listnum]+`" style="background: #2DD1AC; border: 15px solid #2DD1AC; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
                                                                       &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">See Full Release</span>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                   </a>
                                                               </td>
@@ -329,9 +414,9 @@ function sendthemall(docid) {
                                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto; font-family: sans-serif; color: #888888; line-height:18px;" class="email-container">
                                           <tr>
                                               <td style="padding: 40px 10px;width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: center; color: #888888;" class="x-gmail-data-detectors">
-                                                  <webversion style="color:#cccccc; text-decoration:underline; font-weight: bold;">Get Press Kit</webversion>
+                                                  <!--<webversion style="color:#cccccc; text-decoration:underline; font-weight: bold;">Get Press Kit</webversion> -->
                                                   <br><br>
-                                                  `+companyName+`<br>`+companyAddress+`<br>`+companyPhone+`
+                                                  `+Company.findOne().companyName+`<br>`+Company.findOne().companyAddress+`<br>`+Company.findOne().companyPhone+`
                                                   <br><br>
                                                   <unsubscribe style="color:#888888; text-decoration:underline;">unsubscribe</unsubscribe>
                                               </td>
@@ -340,7 +425,7 @@ function sendthemall(docid) {
                                       <!-- Email Footer : END -->
                                   
                                       <!-- Full Bleed Background Section : BEGIN -->
-                                      <table role="presentation" bgcolor="#709f2b" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
+                                      <table role="presentation" bgcolor="#2DD1AC" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
                                           <tr>
                                               <td valign="top" align="center">
                                                   <div style="max-width: 600px; margin: auto;" class="email-container">
@@ -351,8 +436,8 @@ function sendthemall(docid) {
                                                       <![endif]-->
                                                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                                                           <tr>
-                                                              <td style="padding: 40px; text-align: left; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #ffffff;">
-                                                                  <p style="margin: 0;">Powered by <a href="https://leafletbomb.io"> Leaflet Bomb</a></p>
+                                                              <td style="padding: 40px; text-align: right; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #ffffff;">
+                                                                  <p style="margin: 0;color:black">Dropped by <a href="https://leafletbomb.io"> Leaflet Bomb</a></p>
                                                               </td>
                                                           </tr>
                                                       </table>
@@ -368,7 +453,7 @@ function sendthemall(docid) {
                                       <!-- Full Bleed Background Section : END -->
                                   
                                       </center>
-                                  </body>`
+                                  </body>`   
                                     ); 
                         
                         }
