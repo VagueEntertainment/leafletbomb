@@ -1,5 +1,5 @@
 
-.comments , .post , .container {
+.comments , .post , .container, .nav_buttons {
 
 font-family: "Montserrat", Helvetica, Arial, sans-serif;
 font-size: 14px;
@@ -109,11 +109,13 @@ font-weight: 400;
         left:0px;
         right:0px;
         height:6%;
-        padding:1px;
+        max-height:55px;
+        
         /*margin-bottom: 10px; */
         width:100%;
         background:#FBFBFC; 
         opacity:1.0;
+        overflow:hidden;
         
         
         color:#111;
@@ -912,7 +914,7 @@ font-weight: 400;
          @keyframes sideBarSlideIn {
         
             from {
-                left: -20%;
+                left: -400px;
                 
                 }
                 
@@ -932,7 +934,7 @@ font-weight: 400;
                 }
                 
                 to {
-                    left:-20%;
+                    left:-400px;
                    
                 }
             
