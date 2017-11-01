@@ -401,7 +401,7 @@ function sendthemall(docId) {
                                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="800" style="margin: auto;" class="email-container">
                                               <tr>
                                                   <td style="padding: 20px 0; text-align: center">
-                                                      <img src="`+trademark+`" width="200" height="50" alt="trademark" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                                      <img src="`+trademark+`" width="200" height="50" alt="trademark" border="0" style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                                                   </td>
                                               </tr>
                                           </table>
