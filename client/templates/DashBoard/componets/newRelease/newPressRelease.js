@@ -685,9 +685,16 @@ Template.newPressRelease.events ({
         
         
         }
-    
-    
-    
+        
+        //file output for "clipboard" //
+  /*  var name = $(e.target).find('[name=title]').val()+"_"+$(e.target).find('[name=releasedate]').val();
+   // var readStream = $(e.target).find('[name=release]').val();
+    var readStream = ("testing stuff this is just a string");
+   
+    var newFile = new FS.File();
+    newFile.createWriteStream('files');
+    newFile.name("test.txt");
+    Files.insert(newFile); */
   
     
     }

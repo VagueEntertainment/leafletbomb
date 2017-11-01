@@ -311,6 +311,24 @@ Template.postItem.helpers ( {
         
 });
 
+
+Template.postItem.events ({
+
+    'click .btn': function(e) {
+                    var btn = $(".btn");
+                     var clipboard = new Clipboard('.btn');
+                        clipboard.on('success', function(e) {
+                        console.log(e.text);
+                         });
+                         clipboard.on('error', function(e) {
+                        console.log(e.text);
+                         });
+    
+                }
+
+
+});
+
 function document(docId,release) {
 
     var text = release;
