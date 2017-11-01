@@ -560,6 +560,26 @@ Template.postCtrlMenu.events ({
                                                      display: block;
    
                                                     }
+                                                    
+                                          .postquote {
+                                                      margin-top:10px;
+                                                      margin-left:5%;
+                                                      background:#fde6;
+                                                      padding:10px;
+                                                      border-radius:3px;
+                                                      -webkit-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
+                                                      -moz-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
+                                                      box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
+                                                      border-style: none none none solid;
+                                                      border-color:red;
+     
+                                                     }
+                                                     
+                                       .postcite {
+                                                    text-align:right;
+                                                    width:100%;
+                                                }          
+                                                    
                                   
                                       </style>
                                       <!-- Progressive Enhancements : END -->
@@ -585,7 +605,7 @@ Template.postCtrlMenu.events ({
                                           <!-- Visually Hidden Preheader Text : END -->
                                   
                                           <!-- Email Header : BEGIN -->
-                                          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto;" class="email-container">
+                                          <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="800" style="margin: auto;" class="email-container">
                                               <tr>
                                                   <td style="padding: 20px 0; text-align: center">
                                                       <img src="`+trademark+`" width="200" height="50" alt="trademark" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
@@ -600,7 +620,7 @@ Template.postCtrlMenu.events ({
                                               <!-- Hero Image, Flush : BEGIN -->
                                               <tr>
                                                   <td bgcolor="#ffffff" align="center">
-                                                      <img src="`+featuredImage+`" width="600" height="" alt="Featured Image" border="0" align="center" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; margin: auto;" class="g-img">
+                                                      <img src="`+featuredImage+`" width="800" height="" alt="Featured Image" border="0" align="center" style="width: 100%; max-width: 800px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; margin: auto;" class="g-img">
                                                   </td>
                                               </tr>
                                               <!-- Hero Image, Flush : END -->
@@ -622,7 +642,7 @@ Template.postCtrlMenu.events ({
                                                           <tr>
                                                               <td style="border-radius: 3px; background: #2DD1AC; text-align: center;" class="button-td">
                                                                   <a href="http://`+window.location.hostname+`:`+window.location.port+`/release/`+docId+`?inf=`+list[listnum]+`" style="background: #2DD1AC; border: 15px solid #2DD1AC; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
-                                                                      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">See Full Release</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Get Full Press Kit</span>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                   </a>
                                                               </td>
                                                           </tr>
@@ -636,7 +656,7 @@ Template.postCtrlMenu.events ({
                                       <!-- Email Body : END -->
                                   
                                       <!-- Email Footer : BEGIN -->
-                                      <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin: auto; font-family: sans-serif; color: #888888; line-height:18px;" class="email-container">
+                                      <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="800" style="margin: auto; font-family: sans-serif; color: #888888; line-height:18px;" class="email-container">
                                           <tr>
                                               <td style="padding: 40px 10px;width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: center; color: #888888;" class="x-gmail-data-detectors">
                                                   <!--<webversion style="color:#cccccc; text-decoration:underline; font-weight: bold;">Get Press Kit</webversion> -->
@@ -653,9 +673,9 @@ Template.postCtrlMenu.events ({
                                       <table role="presentation" bgcolor="#2DD1AC" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
                                           <tr>
                                               <td valign="top" align="center">
-                                                  <div style="max-width: 600px; margin: auto;" class="email-container">
+                                                  <div style="max-width: 800px; margin: auto;" class="email-container">
                                                       <!--[if mso]>
-                                                      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+                                                      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="800" align="center">
                                                       <tr>
                                                       <td>
                                                       <![endif]-->
