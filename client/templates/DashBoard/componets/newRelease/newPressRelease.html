@@ -1,9 +1,11 @@
 <template name="newPressRelease" >
 
-    <div style="position:absolute;top:6%;bottom:0px;left:0px;right:0px;background:#fff;overflow:hidden">
+    <div style="position:absolute;z-index:1;top:6%;bottom:0px;left:0px;right:0px;background:#fff;overflow:hidden">
         <form id = "therelease" style="width:100%">
            
-            <h1 style="text-align:center;margin-right:20%">{{pagetitle}}</h1>
+            <h1 style="text-align:center;margin-right:20%">{{pagetitle}} </h1>
+            <div class="border_line" style="width:80%"> </div>
+            
             <table style="width:100%;height:64px">
                 <tr><td ><h2><input style="width:79%" type="text" name="title" placeholder="Title" value="{{thetitle}}"></h2>
                 <input style="width:69%" type="text" name="tagline" placeholder="Tag Line" value="{{thetagline}}"></td></tr>
@@ -18,7 +20,7 @@
 
     <div style="position:absolute;width:20%;text-align:left;top:0px;right:0px;bottom:0px;overflow:hidden" >
             <br/>
-            <div  style="text-align:center;width:100%;border-style:solid;border-width:1px;border-color:#f2f2f2"><br/> <label for="upload-featured" > <img id="featured"  src="{{featured}}" alt="" class="thumbnail" /> </label> 
+            <div  style="text-align:center;width:100%;height:200px;overflow:hidden;border-style:solid;border-width:1px;border-color:#f2f2f2"><br/> <label for="upload-featured" > <img id="featured" src="{{featured}}" alt="" class="thumbnail" /> </label> 
             <input id="upload-featured" name="featuredfile" class="featuredImgInput" type="file" single/> 
             <h4 style="text-align:center"> Featured Image </h4>
             </div>
@@ -51,14 +53,14 @@
     
   <div class="dashBoard-AaG">    
 
-<div style="float:left;width:100%;text-align:left;height:55%;overflow:hidden" >
+<div style="postion:relative;float:left;width:100%;text-align:left;height:55%;overflow:hidden" >
  <!-- <h3> Discovery </h3>
   Tags: (Seperate with ',' )<br>
   <input style="width:100%" type="text" name="keywords" value="{{tags}}" >
   <br> -->
   <h3> Distribution </h3>
   
-  <div style="height:35%;overflow:auto">
+  <div style="postion:absolute;bottom:0px;height:35%;overflow:auto">
   <table style="width:100%">
     {{#each distributionlists}}
             {{> DistributionListItemSelect}}
