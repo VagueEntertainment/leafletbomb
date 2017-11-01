@@ -13,7 +13,7 @@
 
             
     <div style="width:80%;height:100%;float:left;padding:10px">
-        <h4>Release <i style="float:right" id="calender"><i style="float:right" class="fa fa-calendar" aria-hidden="true"></i></i></h4>
+        <h4>Release <i id="cheatsheet" class="fa fa-question-circle-o" aria-hidden="true"> </i> <i id="calender" style="float:right" class="fa fa-calendar" aria-hidden="true"></i></h4>
         <textarea name="release" cols="80" rows="30" style="height:100%;padding:10px">{{releasedata}} </textarea>
         <!--{{> markdown_editor}} -->
     </div>
@@ -60,7 +60,7 @@
   <br> -->
   <h3> Distribution </h3>
   
-  <div style="postion:absolute;bottom:0px;height:35%;overflow:auto">
+  <div style="postion:absolute;bottom:0px;height:45%;overflow:auto">
   <table style="width:100%">
     {{#each distributionlists}}
             {{> DistributionListItemSelect}}
@@ -106,7 +106,49 @@
 
 </form>
 
+<div id="CheatSheetWindow" class="Dialog" style="position:absolute;top:20%;bottom:20%;right:20%;left:20%">
+<H3> Formating Help </H3>
+<div class="border_line" > </div>
+<table>
+<tr>
+<td style="width:50%:height:100%;border-style:solid;border-color:#2DD1AC;border-width:0px 1px 0px 0px;padding:10px"> 
+<p>
+LeafletBomb's editor tries to remove any barriers from the creation of professional looking press releases while maintaining a minimalstic look and feel. For this reason we try to do as much formating behind the scenes allowing you to copy and paste most content directly into the editor. For those that want to add even more visual apeal to the release we have added 'triggers' to format the text or add in external content.   
+</p>
+</td>
+<td style="width:50%;height:100%;text-align:left">
+ 
+<H4>Triggers </H4>
+<div class="border_line"> </div>
+<div style="width:100%;height:100%;overflow:auto">
+<div class="list_Item">
+<strong>Quotation Marks</strong> = "": Create a 'Quote block' creates an offset area to draw attention to the speaker.
+<div class="postquote">  This is a quote. </div> </div> <br/><br/>
+<div class="list_Item">
+<strong>Citation</strong> = ---: Putting three dashes or an M-dash on either side of an authors name will create a sitation greate for quoted text. 
+ <br><strong>example:</strong>
+
+<div class="postcite"> The Author </div>
+</div> <br/>
+
+<div class="list_Item">
+
+<strong>Embedding Images</strong> = {asset[1-5]}: Embedding image assets into the press release is easy (once the asset it uploaded to the service) simple add {asset then the number of the asset followed by the close bracket } so you have {asset1}, {asset2} etc. 
+
+
 </div>
+
+</div>
+</td>
+</tr>
+</table>
+
+
+<button id="cheatsheetClose" style="position:absolute;bottom:10px;right:10px;padding:10px" class="header-button"> Close </button>
+</div>
+
+</div>
+
 
 
 </template>

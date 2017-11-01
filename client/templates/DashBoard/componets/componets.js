@@ -585,6 +585,7 @@ Template.DistributionListItem.events ({
 Template.distributionList.events ({
 
        'click #distroadd' : function(e) {
+                                Router.go("/dashboard/"+this.userId+"?distlist=new");
                                 $("#distroaddwindow").css('visibility', 'visible');
                                 $("#distroaddwindow").find('[name=listname]').val("");
                                 $("#distroaddwindow").find('[name=message]').val("");
@@ -689,7 +690,9 @@ Template.distributionList.events ({
                                  if(this._id != undefined) {
                                   theid = "#"+this._id;
                                   }else {
-                                    theid = "#"+this.trim();
+                                     if(Router.current().params.query.distlist != "new") {
+                                        theid = "#"+this.trim();
+                                        }
                                     }
                             
                             var thelist = [];

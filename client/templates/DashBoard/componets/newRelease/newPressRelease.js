@@ -524,6 +524,14 @@ Template.newPressRelease.events ({
 'click #setCalender': function(e) {
                     $("#calenderpicker").css('visibility','hidden');
                 },
+                
+'click #cheatsheet': function(e) {
+                    $("#CheatSheetWindow").css('visibility','visible');
+                },                
+'click #cheatsheetClose': function(e) {
+                    $("#CheatSheetWindow").css('visibility','hidden');
+                },                
+                                
 
 
 'submit form': function(e) {
