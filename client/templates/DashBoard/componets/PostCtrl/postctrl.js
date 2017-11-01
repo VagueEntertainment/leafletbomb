@@ -560,6 +560,26 @@ Template.postCtrlMenu.events ({
                                                      display: block;
    
                                                     }
+                                                    
+                                          .postquote {
+                                                      margin-top:10px;
+                                                      margin-left:5%;
+                                                      background:#fde6;
+                                                      padding:10px;
+                                                      border-radius:3px;
+                                                      -webkit-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
+                                                      -moz-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
+                                                      box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
+                                                      border-style: none none none solid;
+                                                      border-color:red;
+     
+                                                     }
+                                                     
+                                       .postcite {
+                                                    text-align:right;
+                                                    width:100%;
+                                                }          
+                                                    
                                   
                                       </style>
                                       <!-- Progressive Enhancements : END -->
@@ -622,7 +642,7 @@ Template.postCtrlMenu.events ({
                                                           <tr>
                                                               <td style="border-radius: 3px; background: #2DD1AC; text-align: center;" class="button-td">
                                                                   <a href="http://`+window.location.hostname+`:`+window.location.port+`/release/`+docId+`?inf=`+list[listnum]+`" style="background: #2DD1AC; border: 15px solid #2DD1AC; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
-                                                                      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">See Full Release</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff;">Get Full Press Kit</span>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                   </a>
                                                               </td>
                                                           </tr>
