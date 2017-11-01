@@ -478,6 +478,23 @@ Template.postCtrlMenu.events ({
                                                      display: block;
    
                                                     }
+                                                    
+                                                    
+                                            .postquote {
+                                                      margin-top:10px;
+                                                      margin-left:5%;
+                                                      background:#fde6;
+                                                      padding:10px;
+                                                      border-radius:3px;
+                                                      border-style: none none none solid;
+                                                      border-color:red;
+     
+                                                     }
+                                                     
+                                       .postcite {
+                                                    text-align:right;
+                                                    width:100%;
+                                                }         
                                   
                                           // What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  
                                           // Create one of these media queries for each additional viewport size you'd like to fix 
@@ -567,9 +584,6 @@ Template.postCtrlMenu.events ({
                                                       background:#fde6;
                                                       padding:10px;
                                                       border-radius:3px;
-                                                      -webkit-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
-                                                      -moz-box-shadow: 2px 4px 8px rgba(0,0,0, 0.15);
-                                                      box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
                                                       border-style: none none none solid;
                                                       border-color:red;
      
