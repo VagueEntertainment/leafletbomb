@@ -1,5 +1,5 @@
 <template name="postItem">
-
+   
         
    <div class="post" style="background-image:url('{{featured}}');padding-top:{{topPadding}}"> 
         
@@ -17,7 +17,8 @@
             <br/>
             <br/>
             <p>{{{releasechanged}}}</p>
-            
+            <div style="float:right;opacity:0.6" class="btn" data-clipboard-text={{release}}><i class="fa fa-clipboard fa-2x" aria-hidden="true"></i>
+</div>
                     <h2>About</h2>
             <p>{{about}}</p>
             
