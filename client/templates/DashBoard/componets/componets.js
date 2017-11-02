@@ -537,7 +537,7 @@ Template.DistributionListItem.events ({
     'click .list_Item': function(e) {
                         //var theid = $(e.target).find('[name=userid]').val();
                        var theid = this._id;
-                                    Router.go("/dashboard/"+Company.findOne()._id+"?distlist="+theid);
+                                    Router.go("/dashboard/"+Company.findOne().userId+"?distlist="+theid);
                        
                     }, 
                     
@@ -566,6 +566,7 @@ Template.DistributionListItem.events ({
                        
                                     }
                                     DistributionLists.remove({"_id":this._id});
+                                    Router.go("/dashboard/"+Company.findOne().userId);
                        
                     },
                     
@@ -585,7 +586,7 @@ Template.DistributionListItem.events ({
 Template.distributionList.events ({
 
        'click #distroadd' : function(e) {
-                                Router.go("/dashboard/"+this.userId+"?distlist=new");
+                                Router.go("/dashboard/"+Company.findOne().userId+"?distlist=new");
                                 $("#distroaddwindow").css('visibility', 'visible');
                                 $("#distroaddwindow").find('[name=listname]').val("");
                                 $("#distroaddwindow").find('[name=message]').val("");
@@ -593,7 +594,19 @@ Template.distributionList.events ({
                               
                             
                     },
+        'click #showall' : function(e) {
+                                Router.go("/dashboard/"+Company.findOne().userId);
+                               
+                                //$("#distroaddwindow").css('visibility', 'visible');
+                                //$("#distroaddwindow").find('[name=listname]').val("");
+                                //$("#distroaddwindow").find('[name=message]').val("");
+                                
+                              
+                            
+                    },            
+                    
         'click #influenceradd' : function(e) {
+                                Router.go("/dashboard/"+Company.findOne().userId+"?inf=new");
                                 $("#influenceraddwindow").css('visibility', 'visible');
                                 
                                 
@@ -608,10 +621,12 @@ Template.distributionList.events ({
         'click #influencercancel' : function(e) {
                                  var theid = "";
                                  
-                                 if(this._id != undefined) {
+                                if(this._id != undefined) {
                                   theid = "#"+this._id;
                                   }else {
-                                    theid = "#"+this.trim();
+                                     if(Router.current().params.query.inf != "new") {
+                                        theid = "#"+this.trim();
+                                        }
                                     }
                                  
                                  
@@ -626,12 +641,16 @@ Template.distributionList.events ({
                 var theId =  Meteor.users.findOne()._id;
                      var theid = "";
                                  
-                                 if(this._id != undefined) {
+                                /* if(this._id != undefined) {
                                   theid = "#"+this._id;
                                   }else {
-                                    theid = "#"+this.trim();
+                                     if(Router.current().params.query.distlist != "new") {
+                                        theid = "#"+this.trim();
+                                        }
                                     }
-                    
+
+                                    */
+                                                        
                         var info = {
     
                                     userId:theId,
@@ -651,11 +670,11 @@ Template.distributionList.events ({
                         
                           var listId = "";
                                     
-                                         if(this._id != undefined) {
+                                 /*        if(this._id != undefined) {
                                   listId = this._id;
                                   }else {
                                     listId = this.trim();
-                                    }
+                                    } */
                         
                         
                          if(Influencers.findOne({_id:listId}) == undefined) {
