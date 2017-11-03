@@ -395,7 +395,7 @@ function sendinvite(name,emailaddress,memberId) {
                                     title+' - '+company,
                                     `<h1>`+title+`</h1> </br><br/>
                                         <br/><br/>
-  To join the team <a href=http://`+window.location.hostname+`:3000/JoinTeam/?company=`+companyId+`&accounttype=teamMember&email=`+emailaddress+`&name=`+thename+`>Click Here<a>`
+  To join the team <a href=http://`+window.location.hostname+`:`+window.location.port+`/JoinTeam/?company=`+companyId+`&accounttype=teamMember&email=`+emailaddress+`&name=`+thename+`>Click Here<a>`
                                      
                                     ); 
                         

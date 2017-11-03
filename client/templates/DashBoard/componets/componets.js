@@ -147,7 +147,7 @@ distributionlists:function() {
                     },
          influencerlist:function() {
                         if(Router.current().params.query.distlist != undefined) {
-                            if(Router.current().params.query.distlist == "all") {
+                            if(Router.current().params.query.distlist == "new") {
                                 return Influencers.find();
                             } else {
                                     var Dist_List = [];
@@ -690,14 +690,15 @@ Template.distributionList.events ({
                             $("#influenceraddwindow").css('visibility', 'hidden');
                             $(theid).css('visibility', 'hidden');
                             
-                            //$(e.target).find('[name=name]').val(""),
-                          //  $(e.target).find('[name=company]').val(""),
-                           //  $(e.target).find('[name=email]').val(""),
-                          //  $(e.target).find('[name=url]').val(""),
-                           //  $(e.target).find('[name=address]').val(""),
-                          //   $(e.target).find('[name=state]').val(""),
-                          //   $(e.target).find('[name=country]').val(""),
-                          //   $(e.target).find('[name=notes]').val("")
+                             $(e.target).find('[name=name]').val(""),
+                             $(e.target).find('[name=company]').val(""),
+                             $(e.target).find('[name=email]').val(""),
+                             $(e.target).find('[name=url]').val(""),
+                             $(e.target).find('[name=address]').val(""),
+                             $(e.target).find('[name=state]').val(""),
+                             $(e.target).find('[name=country]').val(""),
+                             $(e.target).find('[name=notes]').val(""),
+                             $(e.target).find('[name=phone]').val("")
                     
                 },
                 
@@ -750,9 +751,11 @@ Template.distributionList.events ({
                         
                             $("#distroaddwindow").css('visibility', 'hidden');
                             $(theid).css('visibility', 'hidden');
+                            Router.go("/dashboard/"+Company.findOne().userId);
+                            if(Router.current().params.query.distlist == "new") {
                             $(e.target).find('[name=listname]').val("");
                              $(e.target).find('[name=message]').val("");
-                    
+                                }
                     
                 } , 
 
