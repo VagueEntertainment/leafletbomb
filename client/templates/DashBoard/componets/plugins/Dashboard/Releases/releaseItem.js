@@ -16,10 +16,10 @@ height:function(e) {
 releaselist: function(e) {
             var id= Company.findOne()._id;
              var postlist = [];
-                if(Posts.findOne({userId: id,status:2 }) == undefined) {
+                if(Posts.findOne({userId: id,status:2 , type:"pr"}) == undefined) {
                    postlist = [{title:'No Published Releases ',tagline:'0 found'}];
                 } else {
-                   postlist = Posts.find({userId: id, status:2 }, {sort:{releasedate: -1, docId:-1}});
+                   postlist = Posts.find({userId: id, status:2 , type:"pr"}, {sort:{releasedate: -1, docId:-1}});
                     }
          return postlist;
                         
@@ -28,10 +28,10 @@ releaselist: function(e) {
  draftlist: function(e) {
             var id= Company.findOne()._id;
             var postlist= [];
-                if(Posts.findOne({userId: id,status:0 }) == undefined) {
+                if(Posts.findOne({userId: id,status:0 , type:"pr"}) == undefined) {
                    postlist = [{title:'No Drafts ',tagline:'0 found'}];
                 } else {
-                   postlist = Posts.find({userId: id, status:0 }, {sort:{releasedate: -1, docId:-1}});
+                   postlist = Posts.find({userId: id, status:0 , type:"pr"}, {sort:{releasedate: -1, docId:-1}});
                     }
          return postlist;
                         
@@ -40,10 +40,10 @@ releaselist: function(e) {
  scheduledlist: function(e) {
             var id= Company.findOne()._id;
             var postlist = [];
-                if(Posts.findOne({userId: id,status:1 }) == undefined) {
+                if(Posts.findOne({userId: id,status:1 , type:"pr"}) == undefined) {
                    postlist = [{title:'No Scheduled Releases  ',tagline:'0 found'}];
                 } else {
-                   postlist = Posts.find({userId: id, status:1 }, {sort:{releasedate: -1, docId:-1}});
+                   postlist = Posts.find({userId: id, status:1 , type:"pr"}, {sort:{releasedate: -1, docId:-1}});
                    
                     }
             

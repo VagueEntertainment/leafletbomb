@@ -1,24 +1,22 @@
-<template name="publishedList">
+<template name="pr_draftsList">
 
-
-<div sytle="width:50%;float:left;">
+<div sytle="width:100%;float:left;">
 
 <div class="dashBoard-PressRelease" >
  <table style="width:100%">
  <tr>
- <td style="width:90%"> <h2> Published: </h2></td>
- 
+ <td style="width:90%"> <h2> Drafts: (Press Releases)</h2></td>
+ <!-- <td style="text-align:right"> <button style="width:60px; height:60px" type="button" onclick="Router.go('/dashboard/{{userId}}/newPressRelease')">+</button> </td> -->
  </tr>
  </table>
  
  <div class="dashBoard-Posts">
         <div class="dashposts">
             {{#each dashposts}}
-            {{> PublishedItem}}
+            {{> DraftItem}}
             <!-- <div id="{{docId}}" class="prPreview">
                     {{>DashpostItem}}
-                 </div>   -->
-            
+                </div>   -->
             {{/each}}
         </div>    
          
@@ -26,8 +24,8 @@
  </div>
 
 </div>
+
 <img src="/media/testlogo.png" width=auto height=100% style="opacity:0.05;float:right">
 </div>
-
 
 </template>

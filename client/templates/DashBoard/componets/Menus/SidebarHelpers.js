@@ -13,23 +13,23 @@ Template.dashboardMenu.helpers({
                 return 0;
                 },                               
             
-        draftCounter:function() {
-                    return Posts.find({userId: Company.findOne()._id, status:0 }).count();
+        pr_draftCounter:function() {
+                    return Posts.find({userId: Company.findOne()._id, status:0 , type:"pr"}).count();
                 },
                 
-        draftCount: function() {
-                    if(Posts.find({userId: Company.findOne()._id, status:0 }).count() != 0) {
+        pr_draftCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:0 , type:"pr"}).count() != 0) {
                         return "visible";
                     } else {
                         return "hidden";
                     }
                 },        
                 
-        scheduleCounter:function() {
-                    return Posts.find({userId: Company.findOne()._id, status:1 }).count();
+        pr_scheduleCounter:function() {
+                    return Posts.find({userId: Company.findOne()._id, status:1 , type:"pr"}).count();
                 },
-         schedCount: function() {
-                    if(Posts.find({userId: Company.findOne()._id, status:1 }).count() != 0) {
+         pr_schedCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:1 , type:"pr"}).count() != 0) {
                         return "visible";
                     } else {
                         return "hidden";
@@ -38,19 +38,54 @@ Template.dashboardMenu.helpers({
                 
                 
                 
-        publishCounter:function() {
-                    return Posts.find({userId: Company.findOne()._id, status:2 }).count();
+        pr_publishCounter:function() {
+                    return Posts.find({userId: Company.findOne()._id, status:2 , type:"pr"}).count();
                 },  
                 
-         pubCount: function() {
-                    if(Posts.find({userId: Company.findOne()._id, status:2 }).count() != 0) {
+         pr_pubCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:2 , type:"pr"}).count() != 0) {
                         return "visible";
                     } else {
                         return "hidden";
                     }
                 },          
                               
-
+        nl_draftCounter:function() {
+                    return Posts.find({userId: Company.findOne()._id, status:0, type:"nl" }).count();
+                },
+                
+        nl_draftCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:0, type:"nl" }).count() != 0) {
+                        return "visible";
+                    } else {
+                        return "hidden";
+                    }
+                },        
+                
+        nl_scheduleCounter:function() {
+                    return Posts.find({userId: Company.findOne()._id, status:1, type:"nl" }).count();
+                },
+         nl_schedCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:1, type:"nl" }).count() != 0) {
+                        return "visible";
+                    } else {
+                        return "hidden";
+                    }
+                },          
+                
+                
+                
+         nl_publishCounter:function() {
+                  return Posts.find({userId: Company.findOne()._id, status:2, type:"nl" }).count();
+                },  
+                
+         nl_pubCount: function() {
+                    if(Posts.find({userId: Company.findOne()._id, status:2, type:"nl" }).count() != 0) {
+                        return "visible";
+                    } else {
+                        return "hidden";
+                    }
+                }, 
 
 
 
@@ -65,8 +100,16 @@ Template.dashboardMenu.events({
                                 var d = new Date();
                                   var docs = Company.findOne().userId+"_"+d.getTime();
                                   
-                            Router.go('/dashboard/'+theid+'/newPressRelease?new='+theid+"_"+docs);
+                            Router.go('/dashboard/'+theid+'/newPressRelease?new='+theid+"_"+docs+"&type=pr");
                         },
+                        
+    'click #newsletterAdd': function() {
+                             var theid = Company.findOne().userId;
+                                var d = new Date();
+                                  var docs = Company.findOne().userId+"_"+d.getTime();
+                                  
+                            Router.go('/dashboard/'+theid+'/newPressRelease?new='+theid+"_"+docs+"&type=nl");
+                        },                    
 
 
     'click #SettingListItem' : function(e) {
@@ -171,21 +214,21 @@ Template.settingsMenu.events({
                     
        'click #backbutton' : function(e) {
                                 if($("#dashboard_CompanyConfig").css("visibility") == "hidden") { 
-                              $("#dashboard_CompanyConfig").css("visibility", "visible");
-                              $("#dashboard_CompanyConfig").css("animation-name" , "slideInAnim");
-                              $('#SettingsSidebar').css("visibility", "visible"); 
+                                        $("#dashboard_CompanyConfig").css("visibility", "visible");
+                                         $("#dashboard_CompanyConfig").css("animation-name" , "slideInAnim");
+                                         $('#SettingsSidebar').css("visibility", "visible"); 
                               } else { 
-                               $('#SettingsSidebar').css("visibility", "hidden"); 
-                                $("#dashboard_CompanyConfig").css("visibility", "hidden");
-                                $('#DashboardSidebar').css("visibility", "visible");
+                                          $('#SettingsSidebar').css("visibility", "hidden"); 
+                                          $("#dashboard_CompanyConfig").css("visibility", "hidden");
+                                          $('#DashboardSidebar').css("visibility", "visible");
                               }  
                               
-                               $("#dashboard_ThemeConfig").css("visibility", "hidden");
-                               $("#dashboard_UpgradeConfig").css("visibility", "hidden");
-                               $("#dashboard_BackendConfig").css("visibility", "hidden");
-                                $("#dashboard_PluginsConfig").css("visibility", "hidden");
+                                         $("#dashboard_ThemeConfig").css("visibility", "hidden");
+                                         $("#dashboard_UpgradeConfig").css("visibility", "hidden");
+                                         $("#dashboard_BackendConfig").css("visibility", "hidden");
+                                          $("#dashboard_PluginsConfig").css("visibility", "hidden");
                                 
-                                $("#dashboard_PressConfig").css("visibility", "hidden");
+                                         $("#dashboard_PressConfig").css("visibility", "hidden");
           
                     },                                                     
 

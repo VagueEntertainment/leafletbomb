@@ -1,16 +1,26 @@
 <template name="dashboardMenu">
 
             <br/>
-              <div > Press Releases <i id="releaseAdd" style="float:right;margin-right:5px;background:#efefef;padding:5px;border-width:1px;border-style:solid;border-radius:4px" class="fa fa-plus " aria-hidden="true"></i> </div>
+              <div > Press Releases <i id="releaseAdd" style="float:right;margin-right:1px;background:#efefef;padding:5px;border-width:1px;border-style:solid;border-radius:4px" class="fa fa-plus " aria-hidden="true"></i> </div>
             
             <br/>
-           <div class="nav_buttons"><a class="nav_button" id="DraftsItem" ><div><i class="fa fa-file-code-o" aria-hidden="true"></i>&nbsp;Drafts<span style="visibility:{{draftCount}}" class="nav_info"> {{draftCounter}} </span></div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="ScheduledItem" ><div><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;Scheduled<span style="visibility:{{schedCount}}" class="nav_info"> {{scheduleCounter}} </span></div></a></div>
-            <div class="nav_buttons"><a class="nav_button" id="PublishedItem"><div><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Published<span style="visibility:{{pubCount}}" class="nav_info"> {{publishCounter}} </span></div></a></div>
+           <div class="nav_buttons"><a class="nav_button" id="pr_DraftsItem" ><div><i class="fa fa-file-code-o" aria-hidden="true"></i>&nbsp;Drafts<span style="visibility:{{pr_draftCount}}" class="nav_info"> {{pr_draftCounter}} </span></div></a></div>
+            <div class="nav_buttons"><a class="nav_button" id="pr_ScheduledItem" ><div><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;Scheduled<span style="visibility:{{pr_schedCount}}" class="nav_info"> {{pr_scheduleCounter}} </span></div></a></div>
+            <div class="nav_buttons"><a class="nav_button" id="pr_PublishedItem"><div><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Published<span style="visibility:{{pr_pubCount}}" class="nav_info"> {{pr_publishCounter}} </span></div></a></div>
             <br/>
             <div style="width:100%;height:1px;background:#2DD1AC"> </div>
             <br/>
-            <div class="nav_buttons"><a class="nav_button" id="DashBoard"><div> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Information</div></a></div>
+            <div > News Letters <i id="newsletterAdd" style="float:right;margin-right:1px;background:#efefef;padding:5px;border-width:1px;border-style:solid;border-radius:4px" class="fa fa-plus " aria-hidden="true"></i> </div>
+            
+            <br/>
+           <div class="nav_buttons"><a class="nav_button" id="nl_DraftsItem" ><div><i class="fa fa-file-code-o" aria-hidden="true"></i>&nbsp;Drafts<span style="visibility:{{nl_draftCount}}" class="nav_info"> {{nl_draftCounter}} </span></div></a></div>
+            <div class="nav_buttons"><a class="nav_button" id="nl_ScheduledItem" ><div><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;Scheduled<span style="visibility:{{nl_schedCount}}" class="nav_info"> {{nl_scheduleCounter}} </span></div></a></div>
+            <div class="nav_buttons"><a class="nav_button" id="nl_PublishedItem"><div><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Published<span style="visibility:{{nl_pubCount}}" class="nav_info"> {{nl_publishCounter}} </span></div></a></div>
+            <br/>
+            <div style="width:100%;height:1px;background:#2DD1AC"> </div>
+            <br/>
+            
+            <div class="nav_buttons"><a class="nav_button" id="DashBoard"><div> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Dashboard</div></a></div>
             <div class="nav_buttons"><a class="nav_button" id="teamListItem"><div> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Team<span class="nav_info" style="visibility:hidden"> {{teamCounter}} </span></div></a></div>
             <div class="nav_buttons"><a class="nav_button" id="DistrobutionListItem"> <div> <i class="fa fa-address-book" aria-hidden="true"></i>&nbsp;Distribution</div> 
             </a></div> 

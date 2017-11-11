@@ -81,7 +81,7 @@ Template.companyInfo.helpers ({
 
 
 
-Template.publishedList.helpers ({
+Template.pr_publishedList.helpers ({
 
 
 userId:function() {
@@ -95,14 +95,14 @@ docId: function() {
 
 dashposts:function() {
                     var id= Company.findOne()._id;
-                return Posts.find({userId: id, status:2 }, {sort:{releasedate: -1}});
+                return Posts.find({userId: id, status:2, type:"pr" }, {sort:{releasedate: -1}});
             }
 
 
 });
 
 
-Template.scheduledList.helpers ({
+Template.pr_scheduledList.helpers ({
 
 userId:function() {
                 return Meteor.users.findOne()._id;
@@ -115,12 +115,12 @@ docId: function() {
 
 dashposts:function() {
                     var id= Company.findOne()._id;
-                return Posts.find({userId: id, status:1 }, {sort:{releasedate: -1}});
+                return Posts.find({userId: id, status:1, type:"pr" }, {sort:{releasedate: -1}});
             }
 
 });
 
-Template.draftsList.helpers ({
+Template.pr_draftsList.helpers ({
 
 userId:function() {
                 return Meteor.users.findOne()._id;
@@ -132,12 +132,78 @@ docId: function() {
 
 dashposts:function() {
                     var id= Company.findOne()._id;
-                return Posts.find({userId: id, status:0 }, {sort:{releasedate: -1}});
+                return Posts.find({userId: id, status:0, type:"pr"}, {sort:{releasedate: -1}});
             }
 
 
 
 });
+
+
+Template.nl_publishedList.helpers ({
+
+
+userId:function() {
+                return Meteor.users.findOne()._id;
+            },
+            
+docId: function() {
+                return this.docId;
+                  },
+
+
+dashposts:function() {
+                    var id= Company.findOne()._id;
+                return Posts.find({userId: id, status:2, type:"nl" }, {sort:{releasedate: -1}});
+            }
+
+
+});
+
+
+Template.nl_scheduledList.helpers ({
+
+userId:function() {
+                return Meteor.users.findOne()._id;
+            },
+            
+docId: function() {
+                return this.docId;
+                  },
+
+
+dashposts:function() {
+                    var id= Company.findOne()._id;
+                return Posts.find({userId: id, status:1, type:"nl" }, {sort:{releasedate: -1}});
+            }
+
+});
+
+Template.nl_draftsList.helpers ({
+
+userId:function() {
+                return Meteor.users.findOne()._id;
+            },
+            
+docId: function() {
+                return this.docId;
+                  },
+
+dashposts:function() {
+                    var id= Company.findOne()._id;
+                return Posts.find({userId: id, status:0, type:"nl"}, {sort:{releasedate: -1}});
+            }
+
+
+
+});
+
+
+
+
+
+
+
 
 Template.distributionList.helpers ({
 
@@ -384,7 +450,7 @@ avatar: function() {
 
 
 
-Template.draftsList.events ({
+Template.pr_draftsList.events ({
 
     'click .list_Item': function(e) {
                         var theid = '#'+this.docId;
@@ -405,7 +471,7 @@ Template.draftsList.events ({
 });
 
 
-Template.scheduledList.events ({
+Template.pr_scheduledList.events ({
 
     'click .list_Item': function(e) {
                         var theid = '#'+this.docId;
@@ -424,7 +490,7 @@ Template.scheduledList.events ({
 });
 
 
-Template.publishedList.events ({
+Template.pr_publishedList.events ({
 
     'click .list_Item': function(e) {
                         var theid = '#'+this.docId;
@@ -442,6 +508,64 @@ Template.publishedList.events ({
 
 });
 
+
+Template.nl_draftsList.events ({
+
+    'click .list_Item': function(e) {
+                        var theid = '#'+this.docId;
+                      /*  if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                               $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                        $(theid).css('visibility', 'visible');
+                       $(theid).css("animation-name" , "slideInAnim");
+                                    } */
+                                    
+                         Router.go("/dashboard/"+this.userId+"/postCtrl/"+this.docId);
+                                    
+                       
+                    }
+                    
+
+});
+
+
+Template.nl_scheduledList.events ({
+
+    'click .list_Item': function(e) {
+                        var theid = '#'+this.docId;
+                       /* if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                                $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                        $(theid).css('visibility', 'visible');
+                         $(theid).css("animation-name" , "slideInAnim");
+                                    } */
+                                   
+                       Router.go("/dashboard/"+this.userId+"/postCtrl/"+this.docId);
+                    }
+                    
+
+});
+
+
+Template.nl_publishedList.events ({
+
+    'click .list_Item': function(e) {
+                        var theid = '#'+this.docId;
+                       /* if($(theid).css('visibility') == 'visible') {
+                                $(theid).css('visibility', 'hidden');
+                                $(theid).css("animation-name" , "slideOutAnim");
+                                } else {
+                                      $(theid).css('visibility', 'visible');
+                                      $(theid).css("animation-name" , "slideInAnim");
+                                    } */
+                                    
+                       Router.go("/dashboard/"+this.userId+"/postCtrl/"+this.docId);
+                    }
+                    
+
+});
 
 
 Template.influencerItem.events ({

@@ -301,15 +301,15 @@ Template.postCtrlMenu.events ({
                              text = text.replace(/\n/g, "<br/>");
                              
                              
-                              text = text.replace(/{{asset1}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[0]+"' class='postimg' />");
+                              text = text.replace(/{{asset1}}/g, "<img width=`600` src='http://"+window.location.hostname+":"+window.location.port+thefiles[0]+"' class='postimg' />");
           
-                                 text = text.replace(/{{asset2}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[1]+"' class='postimg' />");
+                                 text = text.replace(/{{asset2}}/g, "<img width=`600` src='http://"+window.location.hostname+":"+window.location.port+thefiles[1]+"' class='postimg' />");
            
-                                    text = text.replace(/{{asset3}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[2]+"' class='postimg' />");
+                                    text = text.replace(/{{asset3}}/g, "<img width=`600` src='http://"+window.location.hostname+":"+window.location.port+thefiles[2]+"' class='postimg' />");
           
-                                        text = text.replace(/{{asset4}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[3]+"' class='postimg' />");
+                                        text = text.replace(/{{asset4}}/g, "<img width=`600` src='http://"+window.location.hostname+":"+window.location.port+thefiles[3]+"' class='postimg' />");
            
-                                            text = text.replace(/{{asset5}}/g, "<img  src='http://"+window.location.hostname+":"+window.location.port+thefiles[4]+"' class='postimg' />");
+                                            text = text.replace(/{{asset5}}/g, "<img width=`600` src='http://"+window.location.hostname+":"+window.location.port+thefiles[4]+"' class='postimg' />");
       
                             // Replace quotations as a quote block //
        
@@ -472,7 +472,7 @@ Template.postCtrlMenu.events ({
                                           }
                                           
                                            .postimg {
-                                                     width: 40%;
+                                                     max-width: 800px;
                                                      height: auto;
                                                      margin:auto;
                                                      display: block;
@@ -571,7 +571,7 @@ Template.postCtrlMenu.events ({
                                           }
                                           
                                           .postimg {
-                                                     width: 40%;
+                                                     max-width: 800px;
                                                      height: auto;
                                                      margin:auto;
                                                      display: block;
@@ -609,7 +609,7 @@ Template.postCtrlMenu.events ({
                                       <![endif]-->
                                   
                                   </head>
-                                  <body width="100%" bgcolor="#222222" style="margin: 0; mso-line-height-rule: exactly;">
+                                  <body width="100%" bgcolor="#D6D6D6" style="margin: 0; mso-line-height-rule: exactly;">
                                       <center style="width: 100%; background: #D6D6D6; text-align: left;">
                                   
                                           <!-- Visually Hidden Preheader Text : BEGIN -->
@@ -674,10 +674,10 @@ Template.postCtrlMenu.events ({
                                           <tr>
                                               <td style="padding: 40px 10px;width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: center; color: #888888;" class="x-gmail-data-detectors">
                                                   <!--<webversion style="color:#cccccc; text-decoration:underline; font-weight: bold;">Get Press Kit</webversion> -->
-                                                  <br><br>
+                                                 <!-- <br><br>
                                                   `+Company.findOne().companyName+`<br>`+Company.findOne().companyAddress+`<br>`+Company.findOne().companyPhone+`
                                                   <br><br>
-                                                  <unsubscribe style="color:#888888; text-decoration:underline;">unsubscribe</unsubscribe>
+                                                  <unsubscribe style="color:#888888; text-decoration:underline;">unsubscribe</unsubscribe> -->
                                               </td>
                                           </tr>
                                       </table>
@@ -695,7 +695,7 @@ Template.postCtrlMenu.events ({
                                                       <![endif]-->
                                                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                                                           <tr>
-                                                              <td style="padding: 40px; text-align: right; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #ffffff;">
+                                                              <td style="padding: 40px; text-align: center; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #ffffff;">
                                                                   <p style="margin: 0;color:black">Dropped by <a href="https://leafletbomb.io"> Leaflet Bomb</a></p>
                                                               </td>
                                                           </tr>
