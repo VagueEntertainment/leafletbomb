@@ -64,17 +64,6 @@ Template.dashBoard.helpers({
             
             
 Template.dashBoard.events({
-
-      /*  'click #companyedit' : function(e) {
-                //    var id= Meteor.users.findOne()._id;
-               // Router.go('/marketerSetup/'+id+'?edit="all"')
-               
-               $("#dashboard_CompanyConfig").css("visibility", "visible");
-               $("#dashboard_CompanyConfig").css("animation-name" , "slideInAnim");
-               $('#DashboardSidebar').css("visibility", "hidden");
-               $('#SettingsSidebar').css("visibility", "visible");
-                
-        }, */
                                                    
 
         'click #teamListItem' : function(e) {
@@ -92,7 +81,8 @@ Template.dashBoard.events({
                             
                     },
                     
-                    'click #DistrobutionListItem' : function(e) {
+      'click #DistrobutionListItem' : function(e) {
+                                 Router.go("/dashboard/"+Company.findOne().userId+"?list=PR");
                                 $("#dashboard_DistributionList").css('visibility', 'visible');
                                 $("#dashboard_Teams").css('visibility', 'hidden');
                                 
@@ -105,7 +95,7 @@ Template.dashBoard.events({
                                  $("#nl_dashboard_Published").css('visibility', 'hidden');
                                  $("#nl_dashboard_Drafts").css('visibility', 'hidden');
                                   
-                    },
+                    },  
                     
          'click #DashBoard' : function(e) {
          
