@@ -47,10 +47,41 @@ USER leafletbomb
 # change working dir to source directory
 WORKDIR /project/src
 
-
-
 # run meteor build
 RUN meteor build ../dist/
 
 # look for tarbal
 RUN ls ../dist
+
+
+# stage 2
+FROM mhart/alpine-node:6
+
+# add leafletbomb user
+#RUN adduser leafletbomb
+
+# change working dir to /app
+WORKDIR /app
+
+# install build deps
+RUN apk update
+RUN apk add python make g++
+
+# create /app dir
+COPY --from=0 /project/dist/* /app
+
+# untar artifact
+RUN tar xvf ./src.tar.gz
+
+# remove tarball
+RUN rm ./src.tar.gz
+
+# cd to the bundle/programs/server
+WORKDIR /app/bundle/programs/server
+
+# npm install stuff
+RUN npm install --production --save
+RUN npm install --production --save babel-runtime
+RUN npm install --production --save bcrypt
+# run application
+CMD node ../../main.js
