@@ -3,7 +3,7 @@ Template.companyPage.helpers({
 posts:function() {
                     if(Router.current().params.query.pr == undefined) {
                   
-                        return Posts.find({status:2}, {sort: {releasedate: -1, docId:-1}, limit: 1});
+                        return Posts.find({status:2 , type:"pr"}, {sort: {releasedate: -1, docId:-1}, limit: 1});
         
                     } else {
                             return Posts.find({docId:Router.current().params.query.pr , status:2}, {sort:{releasedate: -1, docId:-1}, limit: 1});
@@ -89,7 +89,7 @@ posts:function() {
 Template.pressReleaseList.helpers({
 
 postlist:function() {    
-        return Posts.find({status:2}, {sort:{title: -1}});
+        return Posts.find({status:2, type:"pr"}, {sort:{title: -1}});
         },
         
 });  
