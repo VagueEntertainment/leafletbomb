@@ -7,7 +7,6 @@ RUN apt-get update && \
     curl \
     bzip2
 
-
 # install nodejs repo
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
