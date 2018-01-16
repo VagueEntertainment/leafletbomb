@@ -7,7 +7,7 @@
   <div style="width:50%;"> <button id="Show_PRD" class="Dashboard_Button" style="padding:5px"> Press Release </button> / <button id="Show_NLD" class="Dashboard_Button" style="padding:5px"> News Letter </button> </div>
   <br/>
    
- <div style="width:50%;float:left;padding:5px;" >
+ <div style="width:50%;float:left;padding:5px;overflow=auto" >
  
         
      <div class="dashBoard-Posts">
@@ -22,10 +22,12 @@
                 </tr>
                 </table> 
                     <br/>
+                    <div >
             {{#each distributionlists}}
             {{> DistributionListItem}}
             
             {{/each}}
+                </div>
             <div class="list_Item"> </div> 
         </div>    
         
@@ -35,7 +37,7 @@
  
     </div>
     
-    <div style="width:50%;float:left;padding:5px;" >
+    <div style="width:50%;float:left;padding:5px;overflow=auto" >
  
         
      <div class="dashBoard-Posts">
