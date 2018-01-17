@@ -140,12 +140,13 @@ font-weight: 400;
         border-radius: 0px 0px 0px 0px;
         /*height:100%; */
         background:#FBFBFC;
-        top:6%;
+        top:55px; 
+        
         bottom:-9px;
         left:0px;
         width:12%;
         max-width:400px;
-        z-index:1;
+        z-index:0;
         
         animation-duration: 0.5s;
         animation-fill-mode: forwards;
@@ -876,10 +877,12 @@ font-weight: 400;
             animation-fill-mode: forwards;
             position:absolute;
             top:6%;
-            bottom:0px;
-            
+            /*bottom:0px; */
+            height: 100%;
+            overflow:auto;
             background:#fff;
             visibility: hidden; 
+           
         
         
         }
