@@ -7,11 +7,12 @@
   <div style="width:50%;"> <button id="Show_PRD" class="Dashboard_Button" style="padding:5px"> Press Release </button> / <button id="Show_NLD" class="Dashboard_Button" style="padding:5px"> News Letter </button> </div>
   <br/>
    
- <div style="width:50%;float:left;padding:5px;overflow=auto" >
- 
+social_plugins
+ <div style="width:50%;min-width:400px;float:left;padding:5px;" >
+
         
      <div class="dashBoard-Posts">
-        <div class="dashposts">
+        <div class="dashposts" >
                 <div class="list_Item"> </div>
                 <br/>
                 <table style="width:100%">
@@ -23,11 +24,14 @@
                 </table> 
                     <br/>
                     <div >
+
             {{#each distributionlists}}
             {{> DistributionListItem}}
             
             {{/each}}
+
                 </div>
+
             <div class="list_Item"> </div> 
         </div>    
         
@@ -37,7 +41,9 @@
  
     </div>
     
-    <div style="width:50%;float:left;padding:5px;overflow=auto" >
+
+    <div style="width:50%;min-width:400px;float:left;padding:5px;" >
+
  
         
      <div class="dashBoard-Posts">
@@ -53,12 +59,14 @@
                 </tr>
                 </table> 
                     <br/>
+                   
            {{#each influencerlist}}
                 
                 {{> influencerItem}}
                 
             {{/each}}
-            
+                
+                            
             <div class="list_Item"> </div> 
         </div>    
         
