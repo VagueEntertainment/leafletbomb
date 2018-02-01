@@ -4,10 +4,12 @@
  
   <h1 > Distribution: </h1>
   
-  <div style="width:50%;"> <button id="Show_PRD" class="Dashboard_Button" style="padding:5px"> Press Release </button> / <button id="Show_NLD" class="Dashboard_Button" style="padding:5px"> News Letter </button> </div>
+  <div style="width:100%;"> <button id="Show_PRD" class="Dashboard_Button" style="padding:5px"> Press Release </button> / <button id="Show_NLD" class="Dashboard_Button" style="padding:5px"> News Letter </button>
+  <button id="Show_CID" class="Dashboard_Button" style="padding:5px;float:right"> Import </button> </div>
+  
   <br/>
    
-social_plugins
+
  <div style="width:50%;min-width:400px;float:left;padding:5px;" >
 
         
@@ -88,6 +90,9 @@ social_plugins
         {{>influencerForm}}
 </div>
 
+<div class="Dialog" id="contactImportwindow" style="top:10%;bottom:10%;" >
+        {{>contactsImportTemplate}}
+</div>
 
 
 </template>

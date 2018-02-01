@@ -31,7 +31,7 @@ distributionlists:function() {
                     if(Router.current().params.query.list == "PR") {
                         if(Router.current().params.query.distlist != undefined) {
                             if(Router.current().params.query.distlist == "new") {
-                                return Influencers.find();
+                               // return Influencers.find();
                             } else {
                                     var Dist_List = [];
                                    Dist_List =  DistributionLists.findOne({_id:Router.current().params.query.distlist, type:"PR"}).list;
@@ -48,7 +48,7 @@ distributionlists:function() {
                         
                         if(Router.current().params.query.distlist != undefined) {
                             if(Router.current().params.query.distlist == "new") {
-                                return Influencers.find();
+                               // return Influencers.find();
                             } else {
                                     var Dist_List = [];
                                    Dist_List =  DistributionLists.findOne({_id:Router.current().params.query.distlist, type:"NL"}).list;
@@ -105,9 +105,11 @@ distributionlists:function() {
         
         
 
-     influencerlist:function() {
+     influencerlist:function(e) {
                           var list = [];
                           var selected = 0;
+                          
+                          console.log(e);
                           if(DistributionLists.findOne({"listname":this.listname}) != undefined) {
                                 selected = DistributionLists.findOne({"listname":this.listname}).list;
                           }
@@ -439,7 +441,13 @@ Template.distributionList.events ({
                                 Router.go("/dashboard/"+Company.findOne().userId+"?list=NL");
                               
          
-                            },                   
+                            }, 
+                            
+         'click #Show_CID' : function(e) {
+                               // Router.go("/dashboard/"+Company.findOne().userId+"?list=NL");
+                                $("#contactImportwindow").css('visibility', 'visible');
+         
+                            },                                      
 
        'click #distroadd' : function(e) {
                                 var place = Router.current().params.query.list;
@@ -612,7 +620,7 @@ Template.distributionList.events ({
                         
                             $("#distroaddwindow").css('visibility', 'hidden');
                             $(theid).css('visibility', 'hidden');
-                            Router.go("/dashboard/"+Company.findOne().userId);
+                            Router.go("/dashboard/"+Company.findOne().userId+"?list=PR");
                             if(Router.current().params.query.distlist == "new") {
                             $(e.target).find('[name=listname]').val("");
                              $(e.target).find('[name=message]').val("");

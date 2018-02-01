@@ -66,6 +66,8 @@ Meteor.publish("companyassets",function(user){return CompanyAssets.find(); });
                 
 Meteor.publish("influencers",function(){return Influencers.find(); });    
 
+Meteor.publish('import',function(){return Import.find(); });
+
 Meteor.publish('postdistribution',function(){return PostDistribution.find(); });
 
 
@@ -77,6 +79,8 @@ Meteor.publish('postengagement',function(doc){return PostEngage.find({docId:doc}
 Meteor.publish('postquestions',function(){return PostQuestions.find(); });
 
 Meteor.publish('postanswers',function(){return PostAnswers.find(); });
+
+
 
 
      

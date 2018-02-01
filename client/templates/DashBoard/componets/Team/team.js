@@ -27,6 +27,10 @@ Template.MasterAccount.helpers ({
 userId:function() {
                 return Meteor.users.findOne()._id;
             },
+            
+userid:function() {
+                return Meteor.users.findOne()._id;
+            },            
 companyId:function() {
                 return Company.findOne().userId;
             },            
@@ -72,6 +76,10 @@ Template.maTemplate.helpers ({
     userId:function() {
                 return Company.findOne().userId;
             },
+            
+            userid:function() {
+                return Meteor.users.findOne()._id;
+            },  
     companyId:function() {
                 return Company.findOne().userId;
             },            
@@ -194,7 +202,8 @@ Template.TeamItem.events ({
 Template.MasterAccount.events ({
 
         'click .list_Item': function(e) {
-                        var theid = "#"+Company.findOne().userId;
+                       // var theid = "#"+Company.findOne().userId;
+                            var theid = "#"+$(e.target).find('[name=userid]').val();
                             
                         if($(theid).css('visibility') == 'visible') {
                                 $(theid).css('visibility', 'hidden');
@@ -291,10 +300,12 @@ Template.teamList.events ({
                     
              'submit #maform' : function(e) {
                                      e.preventDefault();
-                                var theId =  Company.findOne().userId;
-                                var theid = "#"+this._id;
-                            
+                               // var theId =  Company.findOne().userId;
                                 
+                                  var theId =  Meteor.users.findOne()._id;
+                                var theid = "#"+Company.findOne().userId;
+                            
+                                console.log("from ma submit "+ theid);
                                 
                             
                            if(CompanyTeam.find({"name":$(e.target).find('[name=name]').val()}).count() == 0) {

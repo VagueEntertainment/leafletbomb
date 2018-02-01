@@ -876,7 +876,8 @@ font-weight: 400;
             animation-duration: 0.5s;
             animation-fill-mode: forwards;
             position:absolute;
-            top:6%;
+            margin-top:2%; 
+            
             /*bottom:0px; */
             height: 100%;
             overflow:auto;
