@@ -412,7 +412,7 @@ Template.DistributionListItem.events ({
                        
                                     }
                                     DistributionLists.remove({"_id":this._id});
-                                    Router.go("/dashboard/"+Company.findOne().userId);
+                                    Router.go("/dashboard/"+Company.findOne().userId+"?list=PR");
                        
                     },
                     
